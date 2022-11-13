@@ -6,8 +6,6 @@ export default {
       puzzlePosition: Object
     },
     computed: {
-      tileLetter() {
-      }
     },
     methods: {
       

@@ -16,7 +16,7 @@
       window.removeEventListener('keypress', this.doKeyPressEvent);
     },
     emits: {
-      submitWordAttempt(){ return true},
+      submitWordAttempt() { return true},
       deleteLastLetter() { return true},
       addLetterToBoard(letter) { return true}
     },

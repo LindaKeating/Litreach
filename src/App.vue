@@ -30,6 +30,12 @@
           this.updatePuzzlePosition();
         } 
       },
+      backspaceCurrentGuess() {
+        if(this.data.currentGuess.length > 0) {
+          this.data.currentGuess = this.data.currentGuess.slice(0, -1);
+          this.decreasePuzzlePosition();
+        }
+      },
       submitWordAttempt() {
         console.log('submit word attempt')
       },
@@ -39,6 +45,11 @@
         } else {
           this.data.puzzlePosition.position = 0;
           return this.data.puzzlePosition.row += 1;
+        }
+      },
+      decreasePuzzlePosition() {
+        if(this.data.puzzlePosition.position > 0) {
+          this.data.puzzlePosition.position = this.data.puzzlePosition.position - 1;
         }
       }
      },
@@ -60,6 +71,7 @@
     :currentGuess="data.currentGuess"
     :answer="['t','a','b','h', 'a', 'i', 'r']"/> 
   <Keyboard 
+    @deleteLastLetter="backspaceCurrentGuess"
     @addLetterToBoard="updateCurrentGuess"
     @submitWordAttempt="submitWordAttempt"
     :darkMode="data"
