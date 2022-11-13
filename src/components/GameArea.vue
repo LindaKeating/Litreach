@@ -1,0 +1,138 @@
+<script>
+import Letter from '../components/GameLetter.vue'
+
+export default {
+  props: {
+    answer: Array,
+    puzzlePosition: Object,
+    currentGuess: String,
+    boardState: Array
+  },
+  data(){
+    return {}
+  },
+  watch: {
+    currentGuess: function() {
+      this.$forceUpdate();
+    }
+  },
+  components: {
+    Letter
+  },
+  methods: {
+    getLetter(row, position) {
+      if (this.boardState && this.boardState[row][position]) {
+        return this.boardState[row][position];
+      } else if (this.currentGuess && this.currentGuess.charAt(position)){
+        return this.currentGuess.charAt(position);
+      } else {
+        return ""
+      }
+    }
+  }
+}
+</script>
+
+<template>
+    <div class="gameContainer">
+          <ul class="answer-row">
+            <Letter 
+              data-row=0
+              :puzzle-position="puzzlePosition"         
+              v-for="(letter, index) in answer"
+              :data-position="index"
+              :letter="getLetter(0, index)"
+              >{{ letter }}</Letter>
+          </ul>
+          <ul class="answer-row"> 
+            <Letter 
+              data-row=1
+              :puzzle-position="puzzlePosition" 
+              v-for="(letter, index) in answer"
+              :letter="getLetter(1, index)"
+              :data-position="index"
+              >{{ letter }}</Letter>
+          </ul>
+          <ul class="answer-row">
+            <Letter 
+              data-row=2
+              :puzzle-position="puzzlePosition" 
+              v-for="(letter, index) in answer"
+              :letter="getLetter(2, index)"
+              :data-position="index"
+              >{{ letter }}</Letter>
+          </ul>
+          <ul class="answer-row">
+            <Letter 
+              data-row=3
+              :puzzle-position="puzzlePosition" 
+              v-for="(letter, index) in answer"
+              :letter="getLetter(3, index)"
+              :data-position="index"
+              >{{ letter }}</Letter>
+          </ul>
+          <ul class="answer-row">
+            <Letter 
+              data-row=4
+              :puzzle-position="puzzlePosition" 
+              v-for="(letter, index) in answer"
+              :letter="getLetter(4, index)"
+              :data-position="index">{{ letter }}</Letter>
+          </ul>
+          <div class="btn-group-container">
+            <div class="btn-group btn-group-sm" role="group" aria-label="Basic example">
+              <button type="button" class="btn btn-outline-secondary">Mumhan</button>
+              <button type="button" class="btn btn-outline-secondary">Connacht</button>
+              <button type="button" class="btn btn-outline-secondary">Uladh</button>
+            </div>
+          </div>    
+        </div>
+</template>
+<style scoped lang="scss">
+
+  @import "../assets/variables.scss";
+
+  .gameContainer {
+      position: absolute;
+      top: 26%;
+      left: 50%;
+      margin-right: -50%;
+      transform: translate(-50%, -27%);
+  }
+
+  ul.answer-row {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    margin-bottom: 2px !important;
+    padding-left: 0 !important;
+  }
+
+
+  .letter {
+    min-height: 6vh;
+    line-height: 6vh;
+    list-style: none;
+    text-align: center;
+    background: #fff;
+    border: 1px solid #f9f9f9;
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+    margin: 0 5px 5px 0;
+    min-width: 8vw;
+}
+
+.btn-group-container {
+    text-align: center;
+}
+
+@media (prefers-color-scheme: dark) {
+
+  .letter {
+    background-color: $vt-c-black-soft;
+    border: 1px solid $vt-c-black-mute;
+  }
+
+}
+
+</style>
