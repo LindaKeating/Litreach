@@ -24,7 +24,7 @@ export default {
     getLetter(row, position) {
       if (this.boardState && this.boardState[row][position]) {
         return this.boardState[row][position];
-      } else if (this.currentGuess && this.currentGuess.charAt(position)){
+      } else if (row === this.puzzlePosition.row && this.currentGuess && this.currentGuess.charAt(position)){
         return this.currentGuess.charAt(position);
       } else {
         return ""
@@ -78,7 +78,7 @@ export default {
               v-for="(letter, index) in answer"
               :letter="getLetter(3, index)"
               :data-position="index"
-              :class="letterStatus(4, index)"
+              :class="letterStatus(3, index)"
               >{{ letter }}</Letter>
           </ul>
           <ul class="answer-row">
@@ -88,7 +88,7 @@ export default {
               v-for="(letter, index) in answer"
               :letter="getLetter(4, index)"
               :data-position="index"
-              :class="letterStatus(3, index)"
+              :class="letterStatus(4, index)"
               >{{ letter }}</Letter>
           </ul>
           <div class="btn-group-container">
