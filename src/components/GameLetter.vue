@@ -16,3 +16,8 @@ export default {
 <template >
   <li class="letter">{{ letter }}</li>
 </template>
+<style scope lang="scss">
+  .correctLetter {
+    background-color: green !important;
+  }
+</style>

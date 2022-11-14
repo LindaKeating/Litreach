@@ -23,7 +23,6 @@
     localStorage.setItem("puzzleState", JSON.stringify(puzzleState));
   }*/
 
-
   export default {
     data() {
       return {
@@ -51,20 +50,12 @@
       },
       submitWordAttempt() {
         console.log('check if current guess is equal to todays answer');
-
-        
         if (this.data.currentGuess.toLowerCase() === this.data.todaysPuzzle.toLowerCase()){
           // set up next word
           // show congrats screen
         } else {
           // TODO: show toast this is not the write word
           // TODO: colour the letters that are right
-
-          // commit this to current guess to the board state 
-          
-
-          // commit the board state to the local storage
-          
           console.log('the two words are not the same');
         }
         this.data.boardState[this.data.puzzlePosition.row] = this.data.currentGuess;
@@ -118,7 +109,8 @@
     :board-state="data.boardState"
     :puzzlePosition="data.puzzlePosition"
     :currentGuess="data.currentGuess"
-    :answer="['t','a','b','h', 'a', 'i', 'r']"/> 
+    :answer="['t','a','b','h', 'a', 'i', 'r']"
+    :todaysAnswer="data.todaysPuzzle" /> 
   <Keyboard 
     @deleteLastLetter="backspaceCurrentGuess"
     @addLetterToBoard="updateCurrentGuess"

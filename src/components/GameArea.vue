@@ -6,7 +6,8 @@ export default {
     answer: Array,
     puzzlePosition: Object,
     currentGuess: String,
-    boardState: Array
+    boardState: Array,
+    todaysAnswer: String
   },
   data(){
     return {}
@@ -28,6 +29,11 @@ export default {
       } else {
         return ""
       }
+    },
+    letterStatus(row, position) {
+      if (this.boardState[row].charAt(position) === this.todaysAnswer.charAt(position)) {
+        return 'correctLetter';
+      }
     }
   }
 }
@@ -42,6 +48,7 @@ export default {
               v-for="(letter, index) in answer"
               :data-position="index"
               :letter="getLetter(0, index)"
+              :class="letterStatus(0, index)"
               >{{ letter }}</Letter>
           </ul>
           <ul class="answer-row"> 
@@ -51,6 +58,7 @@ export default {
               v-for="(letter, index) in answer"
               :letter="getLetter(1, index)"
               :data-position="index"
+              :class="letterStatus(1, index)"
               >{{ letter }}</Letter>
           </ul>
           <ul class="answer-row">
@@ -60,6 +68,7 @@ export default {
               v-for="(letter, index) in answer"
               :letter="getLetter(2, index)"
               :data-position="index"
+              :class="letterStatus(2, index)"
               >{{ letter }}</Letter>
           </ul>
           <ul class="answer-row">
@@ -69,6 +78,7 @@ export default {
               v-for="(letter, index) in answer"
               :letter="getLetter(3, index)"
               :data-position="index"
+              :class="letterStatus(4, index)"
               >{{ letter }}</Letter>
           </ul>
           <ul class="answer-row">
@@ -77,7 +87,9 @@ export default {
               :puzzle-position="puzzlePosition" 
               v-for="(letter, index) in answer"
               :letter="getLetter(4, index)"
-              :data-position="index">{{ letter }}</Letter>
+              :data-position="index"
+              :class="letterStatus(3, index)"
+              >{{ letter }}</Letter>
           </ul>
           <div class="btn-group-container">
             <div class="btn-group btn-group-sm" role="group" aria-label="Basic example">
