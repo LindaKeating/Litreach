@@ -4,22 +4,35 @@
   import GameArea from './components/GameArea.vue'
 
   let darkMode = window.matchMedia('(prefers-color-scheme: dark)').matches;
-  let todaysPuzzle = 'tabhair'
+  let todaysPuzzle = 'tabhair';
+
+  let initialPuzzleState = {
+    puzzlePosition: {
+      row: 0,
+      position: 0
+    },
+    boardState: ['', '', '', '', '']
+  }
+
+  // check first if the state is in local storage, use that, if not use the object defined above
+  let puzzleState = localStorage.getItem("puzzleState") ? JSON.parse(localStorage.getItem("puzzleState")) : initialPuzzleState;
+
+  
+  /*
+  if (!localStorage.getItem("puzzleState")) {
+    localStorage.setItem("puzzleState", JSON.stringify(puzzleState));
+  }*/
 
 
   export default {
     data() {
       return {
         data: {
-          count: 0,
           darkMode: darkMode,
           todaysPuzzle: todaysPuzzle,
           currentGuess: '',
-          puzzlePosition: {
-            row: 4,
-            position: 0,
-          },
-          boardState: ["theatre", "guardia", "friends", "monkeys", ""]
+          puzzlePosition: puzzleState.puzzlePosition,
+          boardState: puzzleState.boardState
         }        
       }
     },
@@ -37,7 +50,27 @@
         }
       },
       submitWordAttempt() {
-        console.log('submit word attempt')
+        console.log('check if current guess is equal to todays answer');
+
+        
+        if (this.data.currentGuess.toLowerCase() === this.data.todaysPuzzle.toLowerCase()){
+          // set up next word
+          // show congrats screen
+        } else {
+          // TODO: show toast this is not the write word
+          // TODO: colour the letters that are right
+
+          // commit this to current guess to the board state 
+          
+
+          // commit the board state to the local storage
+          
+          console.log('the two words are not the same');
+        }
+        this.data.boardState[this.data.puzzlePosition.row] = this.data.currentGuess;
+        this.data.currentGuess = "";
+        this.updatePuzzlePosition();
+        this.updateLocalStoragePuzzleState();
       },
       updatePuzzlePosition() {
         if (this.data.puzzlePosition.position < this.data.todaysPuzzle.length) {
@@ -50,6 +83,22 @@
       decreasePuzzlePosition() {
         if(this.data.puzzlePosition.position > 0) {
           this.data.puzzlePosition.position = this.data.puzzlePosition.position - 1;
+        }
+      },
+      updateLocalStoragePuzzleState() {
+        let puzzleState = {
+          'puzzlePosition': this.data.puzzlePosition,
+          'boardState': this.data.boardState
+        }
+        localStorage.setItem("puzzleState", JSON.stringify(puzzleState))
+      },
+      setNextRowPuzzlePosition() {
+        if (this.data.puzzlePosition.row < 4) {
+          this.data.puzzlePosition.row = this.data.puzzlePosition.row + 1;
+          this.data.puzzlePosition.position = 0;
+        } else {
+          // no more guess attempts 
+          // either move to next word in todays game or set game over
         }
       }
      },
