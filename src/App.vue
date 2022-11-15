@@ -2,6 +2,7 @@
   import Nav from './components/Nav.vue'
   import Keyboard from './components/Keyboard.vue'
   import GameArea from './components/GameArea.vue'
+  import Modal from './components/Modal.vue'
 
   let darkMode = window.matchMedia('(prefers-color-scheme: dark)').matches;
   let todaysPuzzle = 'tabhair';
@@ -31,7 +32,8 @@
           todaysPuzzle: todaysPuzzle,
           currentGuess: '',
           puzzlePosition: puzzleState.puzzlePosition,
-          boardState: puzzleState.boardState
+          boardState: puzzleState.boardState,
+          modalOpen: false
         }        
       }
     },
@@ -91,19 +93,27 @@
           // no more guess attempts 
           // either move to next word in todays game or set game over
         }
+      },
+      openModal() {
+        console.log('open Modal method fired');
+        return this.data.modalOpen = !this.data.modalOpen
       }
      },
     components: {
       Nav,
       Keyboard,
-      GameArea
+      GameArea,
+      Modal
     }
   }
-  
-
 </script>
 
 <template>
+  <Modal 
+    @modalOpenState="openModal" 
+    :modalOpen="data.modalOpen"
+    :class="data.modalOpen ? 'show' : ''"></Modal>
+  <button class="btn" @click="openModal">Open Modal</button>
   <Nav :data="data"/>
   <GameArea
     :board-state="data.boardState"
