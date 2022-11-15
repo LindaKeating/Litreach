@@ -3,6 +3,7 @@
   import Keyboard from './components/Keyboard.vue'
   import GameArea from './components/GameArea.vue'
   import Modal from './components/Modal.vue'
+  import GameRoundEnded from './components/GameRoundEnded.vue'
 
   let darkMode = window.matchMedia('(prefers-color-scheme: dark)').matches;
   let todaysPuzzle = 'tabhair';
@@ -103,7 +104,8 @@
       Nav,
       Keyboard,
       GameArea,
-      Modal
+      Modal,
+      GameRoundEnded
     }
   }
 </script>
@@ -112,7 +114,9 @@
   <Modal 
     @modalOpenState="openModal" 
     :modalOpen="data.modalOpen"
-    :class="data.modalOpen ? 'show' : ''"></Modal>
+    :class="data.modalOpen ? 'show' : ''">
+    <GameRoundEnded />
+  </Modal>
   <button class="btn" @click="openModal">Open Modal</button>
   <Nav :data="data"/>
   <GameArea
