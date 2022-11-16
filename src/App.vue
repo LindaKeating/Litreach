@@ -64,6 +64,7 @@
           this.updateTodaysAttemptsRecord();
           this.setNextRoundPuzzlePosition();
           this.data.currentGuess = "";
+          this.data.boardState = ["", "", "", "", ""]
           this.moveToNextRound();
           this.updateLocalStoragePuzzleState();
           return this.data.modalOpen = true;
@@ -74,12 +75,12 @@
           // TODO: show toast this is not the write word
           // TODO: colour the letters that are right
           console.log('the two words are not the same');
-         /* this.data.boardState[this.data.puzzlePosition.row] = this.data.currentGuess;
+          this.data.boardState[this.data.puzzlePosition.row] = this.data.currentGuess;
           this.data.currentGuess = "";
           this.updatePuzzlePosition();
-          this.moveToNextRound();
+          //this.moveToNextRound();
           this.updateLocalStoragePuzzleState();
-          return this.data.modalOpen = true; */
+          //return this.data.modalOpen = true; */
         }
 
       },

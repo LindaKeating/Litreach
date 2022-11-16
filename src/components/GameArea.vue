@@ -3,7 +3,7 @@ import Letter from '../components/GameLetter.vue'
 
 export default {
   props: {
-    answer: Array,
+    answer: String,
     puzzlePosition: Object,
     currentGuess: String,
     boardState: Array,
