@@ -7,13 +7,17 @@ export default {
     puzzlePosition: Object,
     currentGuess: String,
     boardState: Array,
-    todaysAnswer: String
+    todaysAnswer: String,
+    currentRound: Number
   },
   data(){
     return {}
   },
   watch: {
     currentGuess: function() {
+      this.$forceUpdate();
+    },
+    currentRound: function() {
       this.$forceUpdate();
     }
   },

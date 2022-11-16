@@ -6,14 +6,16 @@
   import GameRoundEnded from './components/GameRoundEnded.vue'
 
   let darkMode = window.matchMedia('(prefers-color-scheme: dark)').matches;
-  let todaysPuzzle = 'tabhair';
+  let todaysPuzzle = ['tabhair', 'bringloid', 'fosta', 'amharc', 'dalba'];
 
   let initialPuzzleState = {
     puzzlePosition: {
       row: 0,
       position: 0
     },
-    boardState: ['', '', '', '', '']
+    boardState: ['', '', '', '', ''],
+    todaysAttempts: [],
+    currentRound: 0
   }
 
   // check first if the state is in local storage, use that, if not use the object defined above
@@ -34,13 +36,16 @@
           currentGuess: '',
           puzzlePosition: puzzleState.puzzlePosition,
           boardState: puzzleState.boardState,
-          modalOpen: false
+          modalOpen: false,
+          todaysAttempts: puzzleState.todaysAttempts,
+          currentRound: puzzleState.currentRound
         }        
       }
     },
     methods: {
       updateCurrentGuess (letter) {
-        if (this.data.currentGuess.length < this.data.todaysPuzzle.length) {
+        let currentRound = this.data.currentRound;
+        if (this.data.currentGuess.length < this.data.todaysPuzzle[currentRound].length) {
           this.data.currentGuess = this.data.currentGuess.concat(letter);
           this.updatePuzzlePosition();
         } 
@@ -52,22 +57,42 @@
         }
       },
       submitWordAttempt() {
-        console.log('check if current guess is equal to todays answer');
-        if (this.data.currentGuess.toLowerCase() === this.data.todaysPuzzle.toLowerCase()){
+        let currentRound = this.data.currentRound;
+        // right answer submitted
+        if (this.data.currentGuess.toLowerCase() === this.data.todaysPuzzle[currentRound].toLowerCase()){
+          // commit attempt to local storage
+          this.updateTodaysAttemptsRecord();
+          this.setNextRoundPuzzlePosition();
+          this.data.currentGuess = "";
+          this.moveToNextRound();
+          this.updateLocalStoragePuzzleState();
+          return this.data.modalOpen = true;
+          // are the more words in todays game?
           // set up next word
           // show congrats screen
         } else {
           // TODO: show toast this is not the write word
           // TODO: colour the letters that are right
           console.log('the two words are not the same');
+         /* this.data.boardState[this.data.puzzlePosition.row] = this.data.currentGuess;
+          this.data.currentGuess = "";
+          this.updatePuzzlePosition();
+          this.moveToNextRound();
+          this.updateLocalStoragePuzzleState();
+          return this.data.modalOpen = true; */
         }
-        this.data.boardState[this.data.puzzlePosition.row] = this.data.currentGuess;
-        this.data.currentGuess = "";
-        this.updatePuzzlePosition();
-        this.updateLocalStoragePuzzleState();
+
+      },
+      moveToNextRound() {
+        this.data.currentRound += 1;
+      },
+      setNextRoundPuzzlePosition() {
+        this.data.puzzlePosition.position = 0;
+        this.data.puzzlePosition.row = 0;
       },
       updatePuzzlePosition() {
-        if (this.data.puzzlePosition.position < this.data.todaysPuzzle.length) {
+        let currentRound = this.data.currentRound;
+        if (this.data.puzzlePosition.position < this.data.todaysPuzzle[currentRound].length) {
           return this.data.puzzlePosition.position += 1;
         } else {
           this.data.puzzlePosition.position = 0;
@@ -82,7 +107,9 @@
       updateLocalStoragePuzzleState() {
         let puzzleState = {
           'puzzlePosition': this.data.puzzlePosition,
-          'boardState': this.data.boardState
+          'boardState': this.data.boardState,
+          'todaysAttempts': this.data.todaysAttempts,
+          'currentRound': this.data.currentRound
         }
         localStorage.setItem("puzzleState", JSON.stringify(puzzleState))
       },
@@ -98,6 +125,12 @@
       openModal() {
         console.log('open Modal method fired');
         return this.data.modalOpen = !this.data.modalOpen
+      },
+      updateTodaysAttemptsRecord() {
+        this.data.todaysAttempts[this.data.currentRound] = {
+          answer: this.data.todaysPuzzle[this.data.currentRound],
+          attempts: this.data.puzzlePosition.row
+        }
       }
      },
     components: {
@@ -115,7 +148,8 @@
     @modalOpenState="openModal" 
     :modalOpen="data.modalOpen"
     :class="data.modalOpen ? 'show' : ''">
-    <GameRoundEnded />
+    <GameRoundEnded 
+      :boardState="data.boardState"/>
   </Modal>
   <button class="btn" @click="openModal">Open Modal</button>
   <Nav :data="data"/>
@@ -124,7 +158,8 @@
     :puzzlePosition="data.puzzlePosition"
     :currentGuess="data.currentGuess"
     :answer="['t','a','b','h', 'a', 'i', 'r']"
-    :todaysAnswer="data.todaysPuzzle" /> 
+    :todaysAnswer="data.todaysPuzzle[data.currentRound]" 
+    :currentRound="data.currentRound"/> 
   <Keyboard 
     @deleteLastLetter="backspaceCurrentGuess"
     @addLetterToBoard="updateCurrentGuess"
