@@ -157,7 +157,7 @@
     :board-state="data.boardState"
     :puzzlePosition="data.puzzlePosition"
     :currentGuess="data.currentGuess"
-    :answer="['t','a','b','h', 'a', 'i', 'r']"
+    :answer="data.todaysPuzzle[data.currentRound]"
     :todaysAnswer="data.todaysPuzzle[data.currentRound]" 
     :currentRound="data.currentRound"/> 
   <Keyboard 
