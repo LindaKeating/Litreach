@@ -14,7 +14,7 @@
       position: 0
     },
     boardState: ['', '', '', '', ''],
-    todaysAttempts: [],
+    todaysAttempts: [{}, {}, {}, {} , {}],
     currentRound: 0
   }
 
@@ -147,8 +147,10 @@
   <Modal 
     @modalOpenState="openModal" 
     :modalOpen="data.modalOpen"
+
     :class="data.modalOpen ? 'show' : ''">
     <GameRoundEnded 
+      :todaysAttempts="data.todaysAttempts"
       :boardState="data.boardState"/>
   </Modal>
   <button class="btn" @click="openModal">Open Modal</button>
