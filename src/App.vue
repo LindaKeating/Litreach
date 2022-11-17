@@ -2,9 +2,6 @@
   import { answers } from  '../src/answers.js';
   import '../src/dates.js';
 
-  console.log(new Date().getDOY());
-
-
   import Nav from './components/Nav.vue'
   import Keyboard from './components/Keyboard.vue'
   import GameArea from './components/GameArea.vue'
@@ -23,7 +20,8 @@
     },
     boardState: ['', '', '', '', ''],
     todaysAttempts: [{}, {}, {}, {} , {}],
-    currentRound: 0
+    currentRound: 0,
+    statistics: {}
   }
 
   // check first if the state is in local storage, use that, if not use the object defined above
@@ -44,9 +42,10 @@
           currentGuess: '',
           puzzlePosition: puzzleState.puzzlePosition,
           boardState: puzzleState.boardState,
-          modalOpen: false,
+          modalOpen: true,
           todaysAttempts: puzzleState.todaysAttempts,
-          currentRound: puzzleState.currentRound
+          currentRound: puzzleState.currentRound,
+          statistics: puzzleState.statistics
         }        
       }
     },
@@ -73,6 +72,7 @@
           this.setNextRoundPuzzlePosition();
           this.data.currentGuess = "";
           this.moveToNextRound();
+          this.updateStatistics();
           this.updateLocalStoragePuzzleState();
           return this.data.modalOpen = true;
         } else {
@@ -80,6 +80,7 @@
           this.data.currentGuess = "";
           this.updatePuzzlePosition();
           if(this.data.puzzlePosition.row > 4) {
+            this.updateStatistics();
             this.updateTodaysAttemptsRecord();
             this.moveToNextRound();
             this.data.modalOpen = true;
@@ -118,7 +119,8 @@
           'puzzlePosition': this.data.puzzlePosition,
           'boardState': this.data.boardState,
           'todaysAttempts': this.data.todaysAttempts,
-          'currentRound': this.data.currentRound
+          'currentRound': this.data.currentRound,
+          'statistics': this.data.statistics
         }
         localStorage.setItem("puzzleState", JSON.stringify(puzzleState))
       },
@@ -140,6 +142,10 @@
           answer: this.data.todaysPuzzle[this.data.currentRound],
           attempts: this.data.puzzlePosition.row
         }
+      },
+      updateStatistics() {
+        let todaysDate = new Date().getDOY();
+        this.data.statistics[todaysDOY] = this.data.todaysAttempts;
       }
      },
     components: {
@@ -159,7 +165,8 @@
     :modalOpen="data.modalOpen"
 
     :class="data.modalOpen ? 'show' : ''">
-    <GameDayEnded />
+    <GameDayEnded 
+      :statistics="data.statistics"/>
     <GameRoundEnded 
       :todaysAttempts="data.todaysAttempts"
       :boardState="data.boardState"/>
