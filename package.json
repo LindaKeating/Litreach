@@ -12,8 +12,10 @@
     "@fortawesome/free-solid-svg-icons": "^6.2.1",
     "@fortawesome/vue-fontawesome": "^3.0.2",
     "@popperjs/core": "^2.11.6",
+    "apexcharts": "^3.36.3",
     "bootstrap": "^5.2.2",
-    "vue": "^3.2.45"
+    "vue": "^3.2.45",
+    "vue3-apexcharts": "^1.4.1"
   },
   "devDependencies": {
     "@vitejs/plugin-vue": "^3.1.2",

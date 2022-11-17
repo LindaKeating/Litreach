@@ -1,12 +1,20 @@
 <script >
+  import { answers } from  '../src/answers.js';
+  import '../src/dates.js';
+
+  console.log(new Date().getDOY());
+
+
   import Nav from './components/Nav.vue'
   import Keyboard from './components/Keyboard.vue'
   import GameArea from './components/GameArea.vue'
   import Modal from './components/Modal.vue'
   import GameRoundEnded from './components/GameRoundEnded.vue'
+  import GameDayEnded from './components/GameDayEnded.vue'
 
   let darkMode = window.matchMedia('(prefers-color-scheme: dark)').matches;
-  let todaysPuzzle = ['tabhair', 'bringloid', 'fosta', 'amharc', 'dalba'];
+  let todaysDOY = new Date().getDOY();
+  let todaysPuzzle = [answers[todaysDOY * 5], answers[(todaysDOY * 5) + 1], answers[(todaysDOY * 5) + 2], answers[(todaysDOY * 5) + 3], answers[(todaysDOY * 5) + 4]];
 
   let initialPuzzleState = {
     puzzlePosition: {
@@ -64,28 +72,28 @@
           this.updateTodaysAttemptsRecord();
           this.setNextRoundPuzzlePosition();
           this.data.currentGuess = "";
-          this.data.boardState = ["", "", "", "", ""]
           this.moveToNextRound();
           this.updateLocalStoragePuzzleState();
           return this.data.modalOpen = true;
-          // are the more words in todays game?
-          // set up next word
-          // show congrats screen
         } else {
-          // TODO: show toast this is not the write word
-          // TODO: colour the letters that are right
-          console.log('the two words are not the same');
           this.data.boardState[this.data.puzzlePosition.row] = this.data.currentGuess;
           this.data.currentGuess = "";
           this.updatePuzzlePosition();
-          //this.moveToNextRound();
+          if(this.data.puzzlePosition.row > 4) {
+            this.updateTodaysAttemptsRecord();
+            this.moveToNextRound();
+            this.data.modalOpen = true;
+          }
           this.updateLocalStoragePuzzleState();
-          //return this.data.modalOpen = true; */
         }
 
       },
       moveToNextRound() {
         this.data.currentRound += 1;
+        this.data.puzzlePosition.row = 0;
+        this.data.puzzlePosition.position = 0;
+        this.data.currentGuess = "";
+        this.data.boardState = ["", "", "", "", ""]
       },
       setNextRoundPuzzlePosition() {
         this.data.puzzlePosition.position = 0;
@@ -139,7 +147,8 @@
       Keyboard,
       GameArea,
       Modal,
-      GameRoundEnded
+      GameRoundEnded,
+      GameDayEnded
     }
   }
 </script>
@@ -150,11 +159,11 @@
     :modalOpen="data.modalOpen"
 
     :class="data.modalOpen ? 'show' : ''">
+    <GameDayEnded />
     <GameRoundEnded 
       :todaysAttempts="data.todaysAttempts"
       :boardState="data.boardState"/>
   </Modal>
-  <button class="btn" @click="openModal">Open Modal</button>
   <Nav :data="data"/>
   <GameArea
     :board-state="data.boardState"
