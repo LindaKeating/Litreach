@@ -21,7 +21,7 @@
   </div>
 </template>
 <script>
-  import { updateClipboard } from '../clipboard.js';
+  import { convertAttemptsToStars } from '../clipboard.js';
   import VueApexCharts from "vue3-apexcharts";
   import VueCountdown from '@chenfengyuan/vue-countdown';
 
@@ -53,29 +53,13 @@
       },
       copyToClipBoard() {
         let shareString = '#Litreach \x0A';
-        this.todaysAttempt.reverse().forEach(function(element) {
-          if(element.answer) {
-            switch(element.attempts) {
-              case 5:
-                shareString += '❌❌❌❌❌ \x0A';
-              case 4: 
-                shareString += '⭐❌❌❌❌ \x0A';
-              case 3: 
-                shareString += '⭐⭐❌❌❌ \x0A';
-              case 2: 
-                shareString += '⭐⭐⭐❌❌ \x0A';
-              case 1: 
-                shareString += '⭐⭐⭐⭐❌ \x0A';
-              default:
-                shareString += '⭐⭐⭐⭐⭐ \x0A';
-            }
-          } else {
-            shareString += '----- \x0A';
-          }
+        this.todaysAttempt.forEach(function(element) {
+          let c = element.attempts.toString();
+          shareString += convertAttemptsToStars(c);   
         });
+        console.log(shareString, 'shareString');
         navigator.permissions.query({name: "clipboard-write"}).then((result) => {
           if (result.state === "granted" || result.state === "prompt") {
-            console.log('share String to Navigator', shareString);
             navigator.clipboard
             .writeText(shareString)
             .then(() => {
