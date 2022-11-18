@@ -2,12 +2,13 @@
   <Transition name="fade">
     <div class="Modal modal fade" 
       :class="modalOpen ? 'Visible' : ''"
+      :heading="heading"
       v-if="modalOpen">
       <div class="modal-dialog" role="document">
           <div class="modal-content">
             <div class="modal-header">
               <div class="modal-title">
-                  Title Here
+                  {{ heading }}
               </div>
               <button 
               @click.prevent="close">Close</button>
@@ -27,7 +28,8 @@
   export default {
     name: 'Modal',
     props: {
-      "modalOpen": Boolean
+      "modalOpen": Boolean,
+      "heading": String
     },
     methods: {
       close() {
@@ -50,6 +52,9 @@
 
 .Modal {
 
+  .modal-content {
+    background-color: black;
+  }
   
   &.Visible {
     display: block;

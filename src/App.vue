@@ -21,7 +21,10 @@
     boardState: ['', '', '', '', ''],
     todaysAttempts: [{}, {}, {}, {} , {}],
     currentRound: 0,
-    statistics: {}
+    statistics: {
+
+    },
+    gameEnded: false
   }
 
   // check first if the state is in local storage, use that, if not use the object defined above
@@ -155,6 +158,11 @@
       Modal,
       GameRoundEnded,
       GameDayEnded
+    },
+    computed: {
+      gameEnded() {
+        return this.data.currentRound > 4 ? true : false;
+      }
     }
   }
 </script>
@@ -166,8 +174,11 @@
 
     :class="data.modalOpen ? 'show' : ''">
     <GameDayEnded 
-      :statistics="data.statistics"/>
+      v-if="gameEnded"
+      :statistics="data.statistics"
+      :todaysAttempt="data.todaysAttempts"/>
     <GameRoundEnded 
+      v-if="!gameEnded"
       :todaysAttempts="data.todaysAttempts"
       :boardState="data.boardState"/>
   </Modal>
