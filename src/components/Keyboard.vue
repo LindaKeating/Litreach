@@ -47,49 +47,111 @@
     <div class="keyboard">
           <ul class="keyboard-row">
             <KeyboardLetter 
-              @click="this.$emit('keyBoardClick', 'q')"
+              @click="this.$emit('addLetterToBoard', 'q');"
               :letter="'q'" />
-            <KeyboardLetter :letter="'w'" />
-            <KeyboardLetter :letter="'e'" />
-            <KeyboardLetter :letter="'r'" />
-            <KeyboardLetter :letter="'t'" />
-            <KeyboardLetter :letter="'y'" />
-            <KeyboardLetter :letter="'u'" />
-            <KeyboardLetter :letter="'i'" />
-            <KeyboardLetter :letter="'o'" />
-            <KeyboardLetter :letter="'p'" />
-          </ul>
-          <ul class="keyboard-row">
-            <KeyboardLetter :letter="'a'" />
-            <KeyboardLetter :letter="'s'" />
-            <KeyboardLetter :letter="'d'" />
-            <KeyboardLetter :letter="'f'" />
-            <KeyboardLetter :letter="'g'" />
-            <KeyboardLetter :letter="'h'" />
-            <KeyboardLetter :letter="'j'" />
-            <KeyboardLetter :letter="'k'" />
-            <KeyboardLetter :letter="'l'" />
-          </ul>
-          <ul class="keyboard-row">
-            <KeyboardLetter :letter="'z'" />
-            <KeyboardLetter :letter="'x'" />
-            <KeyboardLetter :letter="'c'" />
-            <KeyboardLetter :letter="'v'" />
-            <KeyboardLetter :letter="'b'" />
-            <KeyboardLetter :letter="'n'" />
-            <KeyboardLetter :letter="'m'" />
+            <KeyboardLetter 
+              @click="this.$emit('addLetterToBoard', 'w');"
+              :letter="'w'" />
+            <KeyboardLetter 
+              @click="this.$emit('addLetterToBoard', 'e');"
+              :letter="'e'" />
+            <KeyboardLetter 
+              @click="this.$emit('addLetterToBoard', 'r');"
+              :letter="'r'" />
+            <KeyboardLetter 
+              @click="this.$emit('addLetterToBoard', 't');"
+              :letter="'t'" />
+            <KeyboardLetter 
+              @click="this.$emit('addLetterToBoard', 'y');"
+              :letter="'y'" />
+            <KeyboardLetter 
+              @click="this.$emit('addLetterToBoard', 'u');"
+              :letter="'u'" />
+            <KeyboardLetter 
+              @click="this.$emit('addLetterToBoard', 'i');"
+              :letter="'i'" />
+            <KeyboardLetter 
+              @click="this.$emit('addLetterToBoard', 'o');"
+              :letter="'o'" />
+            <KeyboardLetter 
+              @click="this.$emit('addLetterToBoard', 'p');"
+              :letter="'p'" />
           </ul>
           <ul class="keyboard-row">
             <KeyboardLetter 
+              @click="this.$emit('addLetterToBoard', 'a');"
+              :letter="'a'" />
+            <KeyboardLetter 
+              @click="this.$emit('addLetterToBoard', 's');"
+              :letter="'s'" />
+            <KeyboardLetter 
+              @click="this.$emit('addLetterToBoard', 'd');"
+              :letter="'d'" />
+            <KeyboardLetter 
+              @click="this.$emit('addLetterToBoard', 'f');"
+              :letter="'f'" />
+            <KeyboardLetter 
+              @click="this.$emit('addLetterToBoard', 'g');"
+              :letter="'g'" />
+            <KeyboardLetter 
+              @click="this.$emit('addLetterToBoard', 'h');"
+              :letter="'h'" />
+            <KeyboardLetter 
+              @click="this.$emit('addLetterToBoard', 'j');"
+              :letter="'j'" />
+            <KeyboardLetter 
+              @click="this.$emit('addLetterToBoard', 'k');"
+              :letter="'k'" />
+            <KeyboardLetter 
+              @click="this.$emit('addLetterToBoard', 'l');"
+              :letter="'l'" />
+          </ul>
+          <ul class="keyboard-row">
+            <KeyboardLetter 
+              @click="this.$emit('addLetterToBoard', 'z');"
+              :letter="'z'" />
+            <KeyboardLetter 
+              @click="this.$emit('addLetterToBoard', 'x');"
+              :letter="'x'" />
+            <KeyboardLetter 
+              @click="this.$emit('addLetterToBoard', 'c');"
+              :letter="'c'" />
+            <KeyboardLetter 
+              @click="this.$emit('addLetterToBoard', 'v');"
+              :letter="'v'" />
+            <KeyboardLetter 
+              @click="this.$emit('addLetterToBoard', 'b');"
+              :letter="'b'" />
+            <KeyboardLetter 
+              @click="this.$emit('addLetterToBoard', 'n');"
+              :letter="'n'" />
+            <KeyboardLetter 
+              @click="this.$emit('addLetterToBoard', 'm');"
+              :letter="'m'" />
+          </ul>
+          <ul class="keyboard-row">
+            <KeyboardLetter 
+              @click="this.$emit('submitWordAttempt');"
               @keyup.enter="this.$emit('EnterKey', 'CheckRow')"
               :letter="'TOMHAS'" />
-            <KeyboardLetter :letter="'á'" />
-            <KeyboardLetter :letter="'é'" />
-            <KeyboardLetter :letter="'ú'" />
-            <KeyboardLetter :letter="'í'" />
-            <KeyboardLetter :letter="'ó'" />
-            <KeyboardLetter :letter="'m'" />
-            <li class="keyboard-letter  lastitem">
+            <KeyboardLetter 
+              @click="this.$emit('addLetterToBoard', 'á');"
+              :letter="'á'" />
+            <KeyboardLetter 
+              @click="this.$emit('addLetterToBoard', 'é');"
+              :letter="'é'" />
+            <KeyboardLetter 
+              @click="this.$emit('addLetterToBoard', 'ú');"
+              :letter="'ú'" />
+            <KeyboardLetter 
+              @click="this.$emit('addLetterToBoard', 'í');"
+              :letter="'í'" />
+            <KeyboardLetter 
+              @click="this.$emit('addLetterToBoard', 'ó');"
+              :letter="'ó'" />
+            <li 
+              @click="this.$emit('deleteLastLetter');"
+              class="keyboard-letter  lastitem">
               <i class="fa-solid fa-delete-left"></i>
             </li>
           </ul>
