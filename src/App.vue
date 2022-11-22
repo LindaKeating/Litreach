@@ -26,7 +26,8 @@
     statistics: {
 
     },
-    gameEnded: false
+    gameEnded: false,
+    lastPlayedDate: undefined
   }
 
   // check first if the state is in local storage, use that, if not use the object defined above
@@ -51,7 +52,8 @@
           currentModal: '',
           todaysAttempts: puzzleState.todaysAttempts,
           currentRound: puzzleState.currentRound,
-          statistics: puzzleState.statistics
+          statistics: puzzleState.statistics,
+          lastPlayedDate: puzzleState.lastPlayedDate
         }        
       }
     },
@@ -126,7 +128,8 @@
           'boardState': this.data.boardState,
           'todaysAttempts': this.data.todaysAttempts,
           'currentRound': this.data.currentRound,
-          'statistics': this.data.statistics
+          'statistics': this.data.statistics,
+          'lastPlayedDate': todaysDOY
         }
         localStorage.setItem("puzzleState", JSON.stringify(puzzleState))
       },
@@ -169,8 +172,8 @@
         return this.data.currentRound > 4 ? true : false;
       }
     },
-    created() {
-      if(this.data.todaysAttempts && this.data.todaysAttempts['0'] && this.data.todaysAttempts['0'].answer != todaysPuzzle[0]) {
+    mounted() {
+      if(!this.data.lastPlayedDate || this.data.lastPlayedDate !== todaysDOY) {
         this.data.boardState = initialPuzzleState.boardState;
         this.data.todaysAttempts = initialPuzzleState.todaysAttempts;
         this.data.currentRound = initialPuzzleState.currentRound;
