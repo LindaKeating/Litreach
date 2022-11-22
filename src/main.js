@@ -10,6 +10,7 @@ import { fas, faPhone , faStar, faChartLine, faEnvelope } from "@fortawesome/fre
 import { far, faStar as farStar } from "@fortawesome/free-regular-svg-icons";
 import { faCircleE } from "@fortawesome/pro-solid-svg-icons";
 import { faCircle1, faCircle2, faCircle3, faCircle4, faCircle5 } from "@fortawesome/pro-solid-svg-icons";
+import { faDeleteLeft } from "@fortawesome/pro-regular-svg-icons";
 
 library.add(
   fas,
@@ -24,7 +25,8 @@ library.add(
   faCircle2,
   faCircle3,
   faCircle4,
-  faCircle5
+  faCircle5,
+  faDeleteLeft
   );
 
 import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";

@@ -150,9 +150,10 @@
               @click="this.$emit('addLetterToBoard', 'ó');"
               :letter="'ó'" />
             <li
-              @click="this.$emit('deleteLastLetter');"
               class="keyboard-letter  lastitem">
-              <i class="fa-solid fa-delete-left"></i>
+              <font-awesome-icon 
+                @click="this.$emit('deleteLastLetter');"
+                icon="fa-regular fa-delete-left" />
             </li>
           </ul>
     </div>
