@@ -8,6 +8,8 @@
   import Modal from './components/Modal.vue'
   import GameRoundEnded from './components/GameRoundEnded.vue'
   import GameDayEnded from './components/GameDayEnded.vue'
+  import HowToPlay from './components/HowToPlay.vue'
+  import Support from './components/Support.vue'
 
   let darkMode = window.matchMedia('(prefers-color-scheme: dark)').matches;
   let todaysDOY = new Date().getDOY();
@@ -46,6 +48,7 @@
           puzzlePosition: puzzleState.puzzlePosition,
           boardState: puzzleState.boardState,
           modalOpen: true,
+          currentModal: '',
           todaysAttempts: puzzleState.todaysAttempts,
           currentRound: puzzleState.currentRound,
           statistics: puzzleState.statistics
@@ -157,12 +160,24 @@
       GameArea,
       Modal,
       GameRoundEnded,
-      GameDayEnded
+      GameDayEnded,
+      HowToPlay,
+      Support
     },
     computed: {
       gameEnded() {
         return this.data.currentRound > 4 ? true : false;
       }
+    },
+    created() {
+      if(this.data.todaysAttempts && this.data.todaysAttempts['0'] && this.data.todaysAttempts['0'].answer != todaysPuzzle[0]) {
+        this.data.boardState = initialPuzzleState.boardState;
+        this.data.todaysAttempts = initialPuzzleState.todaysAttempts;
+        this.data.currentRound = initialPuzzleState.currentRound;
+        this.data.puzzlePosition = initialPuzzleState.puzzlePosition;
+        this.data.gameEnded = false;
+      }
+      console.log('on created');
     }
   }
 </script>
@@ -173,6 +188,9 @@
     :modalOpen="data.modalOpen"
 
     :class="data.modalOpen ? 'show' : ''">
+    <Support />
+    <HowToPlay 
+      v-if="data.currentModal === 'HowToPlay'"/>
     <GameDayEnded 
       v-if="gameEnded"
       :statistics="data.statistics"

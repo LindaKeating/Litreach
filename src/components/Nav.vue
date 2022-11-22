@@ -13,19 +13,15 @@
       <div class="container-fluid">
         <span
           :class="[data.darkMode ? 'text-light' : 'text-dark']"
-          class="navbar-brand mb-0 h1">Litreach</span>
-        <button 
-          class="navbar-toggler" 
-          type="button" 
-          data-bs-toggle="collapse" 
-          data-bs-target="#navbarToggleExternalContent" 
-          aria-controls="navbarToggleExternalContent" 
-          aria-expanded="false" 
-          aria-label="Toggle navigation">
-          <span
-            :class="[data.darkMode ? 'text-light' : 'text-dark']" 
-            class="navbar-toggler-icon"></span>
-        </button>
+          class="navbar-brand mb-0 h1">Litreach
+        </span>
+        <div class="btn-group" role="group" aria-label="Basic example">
+          <button type="button" class="btn btn-secondary"><font-awesome-icon icon="fa-solid fa-circle-e" /></button>
+          <button type="button" class="btn btn-secondary"><font-awesome-icon icon="fa-solid fa-envelope" /></button>
+          <button type="button" class="btn btn-secondary"><font-awesome-icon icon="fa-solid fa-chart-line" /></button>
+        </div>
       </div>
   </nav>
 </template>
+<style lang="scss" scoped>
+</style>
