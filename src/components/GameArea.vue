@@ -8,7 +8,8 @@ export default {
     currentGuess: String,
     boardState: Array,
     todaysAnswer: String,
-    currentRound: Number
+    currentRound: Number,
+    incorrectGuessRow: Number
   },
   data(){
     return {}
@@ -43,6 +44,11 @@ export default {
       if (this.boardState[row].charAt(position) === this.todaysAnswer.charAt(position)) {
         return 'correctLetter';
       }
+    },
+    wrongAnswer(row, position) {
+      if(this.incorrectGuessRow && this.incorrectGuessRow === row)  {
+        return 'shake';
+      }  
     }
   }
 }
@@ -57,7 +63,7 @@ export default {
               v-for="(letter, index) in answer"
               :data-position="index"
               :letter="getLetter(0, index)"
-              :class="letterStatus(0, index)"
+              :class="[letterStatus(0, index), wrongAnswer(0, index)]"
               :answer-length="answerLength"
               >{{ letter }}</Letter>
           </ul>
@@ -68,7 +74,7 @@ export default {
               v-for="(letter, index) in answer"
               :letter="getLetter(1, index)"
               :data-position="index"
-              :class="letterStatus(1, index)"
+              :class="[letterStatus(1, index), wrongAnswer(1, index)]"
               :answer-length="answerLength"
               >{{ letter }}</Letter>
           </ul>
@@ -79,7 +85,7 @@ export default {
               v-for="(letter, index) in answer"
               :letter="getLetter(2, index)"
               :data-position="index"
-              :class="letterStatus(2, index)"
+              :class="[letterStatus(2, index), wrongAnswer(2, index)]"
               :answer-length="answerLength"
               >{{ letter }}</Letter>
           </ul>
@@ -90,7 +96,7 @@ export default {
               v-for="(letter, index) in answer"
               :letter="getLetter(3, index)"
               :data-position="index"
-              :class="letterStatus(3, index)"
+              :class="[letterStatus(3, index), wrongAnswer(3, index)]"
               :answer-length="answerLength"
               >{{ letter }}</Letter>
           </ul>
@@ -101,7 +107,7 @@ export default {
               v-for="(letter, index) in answer"
               :letter="getLetter(4, index)"
               :data-position="index"
-              :class="letterStatus(4, index)"
+              :class="[letterStatus(4, index), wrongAnswer(4, index)]"
               :answer-length="answerLength"
               >{{ letter }}</Letter>
           </ul>

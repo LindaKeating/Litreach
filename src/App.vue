@@ -48,12 +48,13 @@
           currentGuess: '',
           puzzlePosition: puzzleState.puzzlePosition,
           boardState: puzzleState.boardState,
-          modalOpen: true,
+          modalOpen: false,
           currentModal: '',
           todaysAttempts: puzzleState.todaysAttempts,
           currentRound: puzzleState.currentRound,
           statistics: puzzleState.statistics,
-          lastPlayedDate: puzzleState.lastPlayedDate
+          lastPlayedDate: puzzleState.lastPlayedDate,
+          incorrectGuessRow: undefined
         }        
       }
     },
@@ -84,6 +85,7 @@
           this.updateLocalStoragePuzzleState();
           return this.data.modalOpen = true;
         } else {
+          this.data.incorrectGuessRow = this.data.puzzlePosition.row;
           this.data.boardState[this.data.puzzlePosition.row] = this.data.currentGuess;
           this.data.currentGuess = "";
           this.updatePuzzlePosition();
@@ -216,7 +218,9 @@
     :currentGuess="data.currentGuess"
     :answer="data.todaysPuzzle[data.currentRound]"
     :todaysAnswer="data.todaysPuzzle[data.currentRound]" 
-    :currentRound="data.currentRound"/> 
+    :currentRound="data.currentRound"
+    :incorrectGuessRow="data.incorrectGuessRow"
+    /> 
   <Keyboard 
     @deleteLastLetter="backspaceCurrentGuess"
     @addLetterToBoard="updateCurrentGuess"
