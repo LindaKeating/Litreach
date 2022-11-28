@@ -3,9 +3,13 @@
 export default {
     props: {
       letter: String,
-      puzzlePosition: Object
+      puzzlePosition: Object,
+      answerLength: Number
     },
     computed: {
+      tileWidth() {
+        return (80 / this.answerLength) + 'vw';
+      }
     },
     methods: {
       
@@ -14,7 +18,9 @@ export default {
 </script>
 
 <template >
-  <li class="GameLetter">{{ letter }}</li>
+  <li 
+    :style="{'width': tileWidth } "
+    class="GameLetter" >{{ letter }}</li>
 </template>
 <style scoped lang="scss">
 
@@ -33,7 +39,7 @@ export default {
     -moz-border-radius: 5px;
     -webkit-border-radius: 5px;
     margin: 0 5px 5px 0;
-    min-width: 8vw;
+   // min-width: 8vw;
   }
 
   @media (min-width: $grid-breakpoints-md){

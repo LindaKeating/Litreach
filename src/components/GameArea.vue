@@ -21,6 +21,11 @@ export default {
       this.$forceUpdate();
     }
   },
+  computed: {
+    answerLength() {
+      return this.answer.length
+    }
+  },
   components: {
     Letter
   },
@@ -53,6 +58,7 @@ export default {
               :data-position="index"
               :letter="getLetter(0, index)"
               :class="letterStatus(0, index)"
+              :answer-length="answerLength"
               >{{ letter }}</Letter>
           </ul>
           <ul class="answer-row"> 
@@ -63,6 +69,7 @@ export default {
               :letter="getLetter(1, index)"
               :data-position="index"
               :class="letterStatus(1, index)"
+              :answer-length="answerLength"
               >{{ letter }}</Letter>
           </ul>
           <ul class="answer-row">
@@ -73,6 +80,7 @@ export default {
               :letter="getLetter(2, index)"
               :data-position="index"
               :class="letterStatus(2, index)"
+              :answer-length="answerLength"
               >{{ letter }}</Letter>
           </ul>
           <ul class="answer-row">
@@ -83,6 +91,7 @@ export default {
               :letter="getLetter(3, index)"
               :data-position="index"
               :class="letterStatus(3, index)"
+              :answer-length="answerLength"
               >{{ letter }}</Letter>
           </ul>
           <ul class="answer-row">
@@ -93,6 +102,7 @@ export default {
               :letter="getLetter(4, index)"
               :data-position="index"
               :class="letterStatus(4, index)"
+              :answer-length="answerLength"
               >{{ letter }}</Letter>
           </ul>
           <div class="btn-group-container">
