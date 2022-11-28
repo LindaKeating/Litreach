@@ -124,20 +124,6 @@ export default {
     padding-left: 0 !important;
   }
 
-
-  .letter {
-    min-height: 6vh;
-    line-height: 6vh;
-    list-style: none;
-    text-align: center;
-    background: #fff;
-    border: 1px solid #f9f9f9;
-    -moz-border-radius: 5px;
-    -webkit-border-radius: 5px;
-    margin: 0 5px 5px 0;
-    min-width: 8vw;
-}
-
 .btn-group-container {
     text-align: center;
 }

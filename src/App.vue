@@ -143,8 +143,11 @@
         }
       },
       openModal() {
-        console.log('open Modal method fired');
-        return this.data.modalOpen = !this.data.modalOpen
+        return this.data.modalOpen = !this.data.modalOpen;
+      },
+      setCurrentModal(modal) {
+        this.data.modalOpen = !this.data.modalOpen;
+        return this.data.currentModal = modal;
       },
       updateTodaysAttemptsRecord() {
         this.data.todaysAttempts[this.data.currentRound] = {
@@ -191,19 +194,22 @@
     :modalOpen="data.modalOpen"
 
     :class="data.modalOpen ? 'show' : ''">
-    <Support />
+    <Support 
+      v-if="data.currentModal === 'Support'"/>
     <HowToPlay 
       v-if="data.currentModal === 'HowToPlay'"/>
     <GameDayEnded 
-      v-if="gameEnded"
+      v-if="gameEnded && data.currentModal === 'GameDayEnded'"
       :statistics="data.statistics"
       :todaysAttempt="data.todaysAttempts"/>
     <GameRoundEnded 
-      v-if="!gameEnded"
+      v-if="!gameEnded && data.currentModal === 'GameRoundEnded'"
       :todaysAttempts="data.todaysAttempts"
       :boardState="data.boardState"/>
   </Modal>
-  <Nav :data="data"/>
+  <Nav 
+    @setCurrentModal="setCurrentModal"
+    :data="data"/>
   <GameArea
     :board-state="data.boardState"
     :puzzlePosition="data.puzzlePosition"
