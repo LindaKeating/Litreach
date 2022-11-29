@@ -110,14 +110,7 @@ export default {
               :class="[letterStatus(4, index), wrongAnswer(4, index)]"
               :answer-length="answerLength"
               >{{ letter }}</Letter>
-          </ul>
-          <div class="btn-group-container">
-            <div class="btn-group btn-group-sm" role="group" aria-label="Basic example">
-              <button type="button" class="btn btn-outline-secondary">Mumhan</button>
-              <button type="button" class="btn btn-outline-secondary">Connacht</button>
-              <button type="button" class="btn btn-outline-secondary">Uladh</button>
-            </div>
-          </div>    
+          </ul> 
         </div>
 </template>
 <style scoped lang="scss">

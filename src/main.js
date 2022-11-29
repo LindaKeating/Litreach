@@ -2,6 +2,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import { createApp } from 'vue'
 import App from './App.vue';
 
+import Toaster from "@meforma/vue-toaster";
 
 import './assets/main.css';
 
@@ -33,6 +34,7 @@ import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
 
 
 createApp(App)
+  .use(Toaster)
   .component('font-awesome-icon', FontAwesomeIcon)
   .mount('#app');
 

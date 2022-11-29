@@ -1,6 +1,7 @@
 <script >
-  import { answers } from  '../src/answers.js';
+  import { answers, startTimes } from  '../src/answers.js';
   import '../src/dates.js';
+
 
   import Nav from './components/Nav.vue'
   import Keyboard from './components/Keyboard.vue'
@@ -10,10 +11,13 @@
   import GameDayEnded from './components/GameDayEnded.vue'
   import HowToPlay from './components/HowToPlay.vue'
   import Support from './components/Support.vue'
+  import Audio from './components/Audio.vue'
 
   let darkMode = window.matchMedia('(prefers-color-scheme: dark)').matches;
   let todaysDOY = new Date().getDOY();
   let todaysPuzzle = [answers[todaysDOY * 5], answers[(todaysDOY * 5) + 1], answers[(todaysDOY * 5) + 2], answers[(todaysDOY * 5) + 3], answers[(todaysDOY * 5) + 4]];
+  console.log(startTimes[todaysDOY * 5], 'startTime');
+  console.log(todaysDOY * 5, 'todays Start Index');
 
   let initialPuzzleState = {
     puzzlePosition: {
@@ -33,11 +37,6 @@
   // check first if the state is in local storage, use that, if not use the object defined above
   let puzzleState = localStorage.getItem("puzzleState") ? JSON.parse(localStorage.getItem("puzzleState")) : initialPuzzleState;
 
-  
-  /*
-  if (!localStorage.getItem("puzzleState")) {
-    localStorage.setItem("puzzleState", JSON.stringify(puzzleState));
-  }*/
 
   export default {
     data() {
@@ -84,18 +83,25 @@
           this.updateStatistics();
           this.updateLocalStoragePuzzleState();
           return this.data.modalOpen = true;
-        } else {
+        } else if (this.data.currentGuess.length === this.data.todaysPuzzle[currentRound].length){
+          this.$toast.error(`Mí ádh níl sin an litriú ceart`, {
+            position: 'top'
+          });
           this.data.incorrectGuessRow = this.data.puzzlePosition.row;
           this.data.boardState[this.data.puzzlePosition.row] = this.data.currentGuess;
           this.data.currentGuess = "";
           this.updatePuzzlePosition();
+          this.data.currentModal = "GameRoundEnded";
           if(this.data.puzzlePosition.row > 4) {
             this.updateStatistics();
             this.updateTodaysAttemptsRecord();
             this.moveToNextRound();
+            this.data.currentModal = "Statistics";
             this.data.modalOpen = true;
           }
           this.updateLocalStoragePuzzleState();
+        } else {
+          console.log('Not a correct answer or a completed answer')
         }
 
       },
@@ -170,7 +176,9 @@
       GameRoundEnded,
       GameDayEnded,
       HowToPlay,
-      Support
+      Support,
+      VueToastr,
+      Audio
     },
     computed: {
       gameEnded() {
@@ -178,6 +186,7 @@
       }
     },
     mounted() {
+
       if(!this.data.lastPlayedDate || this.data.lastPlayedDate !== todaysDOY) {
         this.data.boardState = initialPuzzleState.boardState;
         this.data.todaysAttempts = initialPuzzleState.todaysAttempts;
@@ -185,7 +194,6 @@
         this.data.puzzlePosition = initialPuzzleState.puzzlePosition;
         this.data.gameEnded = false;
       }
-      console.log('on created');
     }
   }
 </script>
@@ -221,6 +229,11 @@
     :currentRound="data.currentRound"
     :incorrectGuessRow="data.incorrectGuessRow"
     /> 
+  <Audio 
+    :start-time="'0:43.030'"
+    :end-time="'0:43.943'"
+    :file="'./Litreach-Leachtanch13.mp3'"
+  />
   <Keyboard 
     @deleteLastLetter="backspaceCurrentGuess"
     @addLetterToBoard="updateCurrentGuess"
