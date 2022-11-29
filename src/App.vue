@@ -1,5 +1,5 @@
 <script >
-  import { answers, startTimes } from  '../src/answers.js';
+  import { answers, ulsterStartTimes, ulsterDurations } from  '../src/answers.js';
   import '../src/dates.js';
 
 
@@ -16,8 +16,8 @@
   let darkMode = window.matchMedia('(prefers-color-scheme: dark)').matches;
   let todaysDOY = new Date().getDOY();
   let todaysPuzzle = [answers[todaysDOY * 5], answers[(todaysDOY * 5) + 1], answers[(todaysDOY * 5) + 2], answers[(todaysDOY * 5) + 3], answers[(todaysDOY * 5) + 4]];
-  console.log(startTimes[todaysDOY * 5], 'startTime');
-  console.log(todaysDOY * 5, 'todays Start Index');
+  let uladhStartTimes = [ulsterStartTimes[todaysDOY * 5], ulsterStartTimes[(todaysDOY * 5) + 1], ulsterStartTimes[(todaysDOY * 5) + 2], ulsterStartTimes[(todaysDOY * 5) + 3], ulsterStartTimes[(todaysDOY * 5) + 4]];
+  let uladhDurations = [ulsterDurations[todaysDOY * 5], ulsterDurations[(todaysDOY * 5) + 1], ulsterDurations[(todaysDOY * 5) + 2], ulsterDurations[(todaysDOY * 5) + 3], ulsterDurations[(todaysDOY * 5) + 4]];
 
   let initialPuzzleState = {
     puzzlePosition: {
@@ -53,7 +53,9 @@
           currentRound: puzzleState.currentRound,
           statistics: puzzleState.statistics,
           lastPlayedDate: puzzleState.lastPlayedDate,
-          incorrectGuessRow: undefined
+          incorrectGuessRow: undefined,
+          uladhStartTimes: uladhStartTimes,
+          uladhDurations: uladhDurations
         }        
       }
     },
@@ -230,8 +232,8 @@
     :incorrectGuessRow="data.incorrectGuessRow"
     /> 
   <Audio 
-    :start-time="'0:43.030'"
-    :end-time="'0:43.943'"
+    :start-time="data.uladhStartTimes[data.currentRound]"
+    :duration="data.uladhDurations[data.currentRound]"
     :file="'./Litreach-Leachtanch13.mp3'"
   />
   <Keyboard 
