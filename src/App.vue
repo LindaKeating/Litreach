@@ -230,12 +230,11 @@
     :todaysAnswer="data.todaysPuzzle[data.currentRound]" 
     :currentRound="data.currentRound"
     :incorrectGuessRow="data.incorrectGuessRow"
-    /> 
-  <Audio 
     :start-time="data.uladhStartTimes[data.currentRound]"
     :duration="data.uladhDurations[data.currentRound]"
     :file="'./Litreach-Leachtanch13.mp3'"
-  />
+    /> 
+
   <Keyboard 
     @deleteLastLetter="backspaceCurrentGuess"
     @addLetterToBoard="updateCurrentGuess"

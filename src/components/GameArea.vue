@@ -1,5 +1,6 @@
 <script>
 import Letter from '../components/GameLetter.vue'
+import Audio from '../components/Audio.vue'
 
 export default {
   props: {
@@ -9,7 +10,10 @@ export default {
     boardState: Array,
     todaysAnswer: String,
     currentRound: Number,
-    incorrectGuessRow: Number
+    incorrectGuessRow: Number,
+    startTime: String,
+    duration: String,
+    file: String
   },
   data(){
     return {}
@@ -28,7 +32,8 @@ export default {
     }
   },
   components: {
-    Letter
+    Letter,
+    Audio
   },
   methods: {
     getLetter(row, position) {
@@ -111,6 +116,11 @@ export default {
               :answer-length="answerLength"
               >{{ letter }}</Letter>
           </ul> 
+          <Audio 
+            :start-time="startTime"
+            :duration="duration"
+            :file="'./Litreach-Leachtanch13.mp3'"
+          />
         </div>
 </template>
 <style scoped lang="scss">

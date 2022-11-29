@@ -30,7 +30,7 @@
         }
       },
       doKeyUpEvent(e) {
-        e.stopImmediatePropagation();
+        e.preventDefault();
         if(e.key.toLowerCase() == 'enter'){
           this.$emit('submitWordAttempt');
         }

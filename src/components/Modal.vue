@@ -11,7 +11,8 @@
                   {{ heading }}
               </div>
               <button 
-              @click.prevent="close">Close</button>
+                class="btn btn-secondary"
+                @click.prevent="close">Druid</button>
             </div>
             <div class="modal-body">
                <slot>

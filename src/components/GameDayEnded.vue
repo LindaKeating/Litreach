@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="container">
     <apexchart
       width="100%"
       type="line"
@@ -7,16 +7,22 @@
       :options="chartOptions"
       :series="series"
     ></apexchart>
-    <p>An Chéad Litreach Eile</p>
-    <countdown 
-      :counting="true"
-      :time="time" 
-      v-slot="{ hours, minutes, seconds }">
-      {{ hours }} hours, {{ minutes }} minutes, {{ seconds }} seconds.
-    </countdown>
-    <button 
-      @click="copyToClipBoard"
-      class="btn">ROINN</button>
+    <div class="GameDayEnded-NextLetters">
+      <p class="text-center">An Chéad Litreach Eile</p>
+      <countdown 
+        :class="'text-center'"
+        :counting="true"
+        :time="time" 
+        v-slot="{ hours, minutes, seconds }">
+        {{ hours }} uair, {{ minutes }} bomaite, {{ seconds }} soicind.
+      </countdown>
+      <button 
+        @click="copyToClipBoard"
+        class="btn btn-secondary btn-block mt-3">ROINN</button>
+    </div>
+    
+    
+
 <!-- <span>Time Remaining：1 days, 23 hours, 59 minutes, 59 seconds.</span> -->
   </div>
 </template>
@@ -57,13 +63,14 @@
           let c = element.attempts.toString();
           shareString += convertAttemptsToStars(c);   
         });
-        console.log(shareString, 'shareString');
         navigator.permissions.query({name: "clipboard-write"}).then((result) => {
           if (result.state === "granted" || result.state === "prompt") {
             navigator.clipboard
             .writeText(shareString)
             .then(() => {
-              alert("successfully copied");
+              this.$toast.info(`Tá do torthaí cóipeálta chuig an clipboard `, {
+                position: 'top'
+              });
             })
             .catch(() => {
               alert("something went wrong");
@@ -86,8 +93,13 @@
           chart: {
             id: "vuechart-example",
             type: 'line',
-            background: '#000',
-            foreColor: '#000',
+            markers: {
+              size: 0,
+            },
+            grid: {
+              colors: ['#e5e5e5', 'transparent'],
+              opacity: 0.5
+            },
             toolbar: {
               show: false
             },
@@ -123,7 +135,13 @@
   }
 </script>
 <style scoped lang="scss">
-
+  .GameDayEnded {
+    &-NextLetters {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+  }
   .vue-apexcharts {
     overflow: scroll;
   }
