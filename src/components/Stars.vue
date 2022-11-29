@@ -1,6 +1,7 @@
 <template>
   <font-awesome-icon 
     v-for="index in 5"
+    :class="color(this.attempts, index)"
     :key="index"
     :icon="starType(this.attempts, index)" />
 </template>
@@ -17,11 +18,22 @@ export default {
   methods: {
     starType (number, index) {
       if ((5 - number) >= index) {
-        return "fa-sold fa-star"
+        return "fa-solid fa-star"
       } else {
         return "fa-regular fa-star"
+      }
+    },
+    color (number, index) {
+      if ((5 - number) >= index) {
+        return "yellow"
       }
     }
   }
 }
 </script>
+<style lang="scss" scoped>
+
+.yellow {
+  color: yellow;
+}
+</style>

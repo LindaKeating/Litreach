@@ -12,7 +12,7 @@
               </div>
               <button 
                 class="btn btn-secondary"
-                @click.prevent="close">Druid</button>
+                @click.prevent="close">x</button>
             </div>
             <div class="modal-body">
                <slot>

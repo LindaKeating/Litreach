@@ -84,6 +84,7 @@
           this.moveToNextRound();
           this.updateStatistics();
           this.updateLocalStoragePuzzleState();
+          this.data.currentModal = "GameRoundEnded";
           return this.data.modalOpen = true;
         } else if (this.data.currentGuess.length === this.data.todaysPuzzle[currentRound].length){
           this.$toast.error(`Mí ádh níl sin an litriú ceart`, {
@@ -204,7 +205,6 @@
   <Modal 
     @modalOpenState="openModal" 
     :modalOpen="data.modalOpen"
-
     :class="data.modalOpen ? 'show' : ''">
     <Support 
       v-if="data.currentModal === 'Support'"/>
@@ -215,9 +215,12 @@
       :statistics="data.statistics"
       :todaysAttempt="data.todaysAttempts"/>
     <GameRoundEnded 
+      @modalOpenState="openModal"
       v-if="!gameEnded && data.currentModal === 'GameRoundEnded'"
       :todaysAttempts="data.todaysAttempts"
-      :boardState="data.boardState"/>
+      :boardState="data.boardState"
+      :darkMode="data.darkMode"
+      />
   </Modal>
   <Nav 
     @setCurrentModal="setCurrentModal"

@@ -2,7 +2,7 @@
   import KeyboardLetter from '../components/KeyboardLetter.vue'
   export default {
     props: {
-      darkMode: Object
+      darkMode: Boolean
     },
     components: {
       KeyboardLetter
@@ -22,6 +22,7 @@
     },
     methods: {
       doKeyPressEvent(e) {
+        e.preventDefault();
         const allowedChars = ['a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z','á','é','í','ó','ú' ];
         let cmd = String.fromCharCode(e.keyCode).toLowerCase();
 
