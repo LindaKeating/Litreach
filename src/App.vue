@@ -243,7 +243,13 @@
     @addLetterToBoard="updateCurrentGuess"
     @submitWordAttempt="submitWordAttempt"
     :darkMode="data"
+    :currentRound="data.currentRound"
   />
+  <GameDayEnded 
+    v-if="gameEnded"
+    :statistics="data.statistics"
+    :todaysAttempt="data.todaysAttempts"/>
+   
 </template>
 
 <style scoped>

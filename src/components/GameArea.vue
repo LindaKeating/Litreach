@@ -117,6 +117,7 @@ export default {
               >{{ letter }}</Letter>
           </ul> 
           <Audio 
+            v-if="this.currentRound < 5"
             :start-time="startTime"
             :duration="duration"
             :file="'./Litreach-Leachtanch13.mp3'"

@@ -1,5 +1,5 @@
 <template>
-  <div class="container">
+  <div class="container GameDayEnded">
     <apexchart
       width="100%"
       type="line"
@@ -7,7 +7,7 @@
       :options="chartOptions"
       :series="series"
     ></apexchart>
-    <div class="GameDayEnded-NextLetters">
+    <div class="GameDayEnded-NextLetters d-grid gap-2 mt-4">
       <p class="text-center">An Chéad Litreach Eile</p>
       <countdown 
         :class="'text-center'"
@@ -136,6 +136,11 @@
 </script>
 <style scoped lang="scss">
   .GameDayEnded {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+
     &-NextLetters {
       display: flex;
       flex-wrap: wrap;

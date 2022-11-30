@@ -2,7 +2,8 @@
   import KeyboardLetter from '../components/KeyboardLetter.vue'
   export default {
     props: {
-      darkMode: Boolean
+      darkMode: Boolean,
+      currentRound: Number
     },
     components: {
       KeyboardLetter
@@ -45,7 +46,9 @@
 </script>
 
 <template>
-    <div class="keyboard">
+    <div 
+      v-if="this.currentRound < 5"
+      class="keyboard">
           <ul class="keyboard-row">
             <KeyboardLetter
               @click="this.$emit('addLetterToBoard', 'q');"
