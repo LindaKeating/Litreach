@@ -14,7 +14,9 @@
         :counting="true"
         :time="time" 
         v-slot="{ hours, minutes, seconds }">
-        {{ hours }} uair, {{ minutes }} bomaite, {{ seconds }} soicind.
+        <span class="GameDayEnded-Number">{{ hours }}<small class="GameDayEnded-Time">uair,</small></span> 
+        <span class="GameDayEnded-Number">{{ minutes }}<small class="GameDayEnded-Time">bomaite,</small> </span>
+        <span class="GameDayEnded-Number">{{ seconds }}<small class="GameDayEnded-Time">soicind.</small></span> 
       </countdown>
       <button 
         @click="copyToClipBoard"
@@ -140,6 +142,14 @@
     flex-direction: column;
     justify-content: center;
 
+
+    &-Number {
+      font-size: x-large;
+    }
+
+    &-Time {
+      white-space: pre;
+    }
 
     &-NextLetters {
       display: flex;

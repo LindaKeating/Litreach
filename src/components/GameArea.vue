@@ -127,6 +127,7 @@ export default {
 <style scoped lang="scss">
 
   @import "../assets/variables.scss";
+  @import "../assets/breakpoints.scss";
 
   .gameContainer {
       position: absolute;
@@ -147,6 +148,8 @@ export default {
 .btn-group-container {
     text-align: center;
 }
+
+
 
 @media (prefers-color-scheme: dark) {
 

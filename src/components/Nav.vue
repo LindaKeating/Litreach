@@ -12,7 +12,7 @@
 <template>
   <nav
     :class="[ data.darkMode ? 'bg-dark' : 'bg-light']"
-    class="navbar navbar-expand-lg">
+    class="Nav navbar navbar-expand-lg">
       <div class="container-fluid">
         <span
           :class="[data.darkMode ? 'text-light' : 'text-dark']"
@@ -22,20 +22,28 @@
           <button 
             @click="this.$emit('setCurrentModal', 'HowToPlay');"
             type="button" 
-            class="btn btn-secondary">
+            class="Nav-MenuBtn btn btn-secondary">
             <font-awesome-icon icon="fa-solid fa-circle-e" />
           </button>
           <button
             @click="this.$emit('setCurrentModal', 'Support');" 
             type="button" 
-            class="btn btn-secondary"><font-awesome-icon icon="fa-solid fa-envelope" /></button>
+            class="Nav-MenuBtn btn btn-secondary"><font-awesome-icon icon="fa-solid fa-envelope" /></button>
           <button 
             @click="this.$emit('setCurrentModal', 'GameDayEnded');"
             type="button" 
-            class="btn btn-secondary"><font-awesome-icon icon="fa-solid fa-chart-line" /></button>
+            class="Nav-MenuBtn btn btn-secondary"><font-awesome-icon icon="fa-solid fa-chart-line" /></button>
         </div>
       </div>
   </nav>
 </template>
 <style lang="scss" scoped>
+
+  @import '../assets/variables.scss';
+  .Nav {
+    &-MenuBtn {
+      background-color: $button-background-light;
+      border-color: $button-border-color;
+    }
+  }
 </style>

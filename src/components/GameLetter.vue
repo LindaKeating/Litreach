@@ -72,7 +72,7 @@ export default {
 
   @media (min-width: $grid-breakpoints-md){
     .GameLetter {
-      min-width: 50px;
+      width: 40px !important;
     }
   }
 </style>
