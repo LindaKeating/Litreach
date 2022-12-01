@@ -1,5 +1,5 @@
 <script >
-  import { answers, ulsterStartTimes, ulsterDurations } from  '../src/answers.js';
+  import { answers, ulsterStartTimes, ulsterDurations, definitions } from  '../src/answers.js';
   import '../src/dates.js';
 
 
@@ -15,9 +15,11 @@
 
   let darkMode = window.matchMedia('(prefers-color-scheme: dark)').matches;
   let todaysDOY = new Date().getDOY();
+  console.log(todaysDOY, 'todays day number');
   let todaysPuzzle = [answers[todaysDOY * 5], answers[(todaysDOY * 5) + 1], answers[(todaysDOY * 5) + 2], answers[(todaysDOY * 5) + 3], answers[(todaysDOY * 5) + 4]];
   let uladhStartTimes = [ulsterStartTimes[todaysDOY * 5], ulsterStartTimes[(todaysDOY * 5) + 1], ulsterStartTimes[(todaysDOY * 5) + 2], ulsterStartTimes[(todaysDOY * 5) + 3], ulsterStartTimes[(todaysDOY * 5) + 4]];
   let uladhDurations = [ulsterDurations[todaysDOY * 5], ulsterDurations[(todaysDOY * 5) + 1], ulsterDurations[(todaysDOY * 5) + 2], ulsterDurations[(todaysDOY * 5) + 3], ulsterDurations[(todaysDOY * 5) + 4]];
+  let todaysDefinitions = [definitions[todaysDOY * 5], definitions[(todaysDOY * 5) + 1], definitions[(todaysDOY * 5) + 2], definitions[(todaysDOY * 5) + 3], definitions[(todaysDOY * 5) + 4]];
 
   let initialPuzzleState = {
     puzzlePosition: {
@@ -55,7 +57,8 @@
           lastPlayedDate: puzzleState.lastPlayedDate,
           incorrectGuessRow: undefined,
           uladhStartTimes: uladhStartTimes,
-          uladhDurations: uladhDurations
+          uladhDurations: uladhDurations,
+          definitions: todaysDefinitions
         }        
       }
     },
@@ -236,13 +239,14 @@
     :start-time="data.uladhStartTimes[data.currentRound]"
     :duration="data.uladhDurations[data.currentRound]"
     :file="'./Litreach-Leachtanch13.mp3'"
+    :definitions="data.definitions"
     /> 
 
   <Keyboard 
     @deleteLastLetter="backspaceCurrentGuess"
     @addLetterToBoard="updateCurrentGuess"
     @submitWordAttempt="submitWordAttempt"
-    :darkMode="data"
+    :darkMode="data.darkMode"
     :currentRound="data.currentRound"
   />
   <GameDayEnded 

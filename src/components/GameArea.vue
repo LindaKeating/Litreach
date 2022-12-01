@@ -13,7 +13,8 @@ export default {
     incorrectGuessRow: Number,
     startTime: String,
     duration: String,
-    file: String
+    file: String,
+    definitions: Array
   },
   data(){
     return {}
@@ -124,6 +125,7 @@ export default {
         :duration="duration"
         :file="'./Litreach-Leachtanch13.mp3'"
       />
+      <p class="text-center"><i>{{ definitions[currentRound]}}</i></p>
   </div>
 </template>
 <style scoped lang="scss">
