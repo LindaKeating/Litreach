@@ -48,7 +48,7 @@
 <template>
     <div 
       v-if="this.currentRound < 5"
-      class="keyboard">
+      class="keyboard Keyboard">
           <ul class="keyboard-row">
             <KeyboardLetter
               @click="this.$emit('addLetterToBoard', 'q');"
@@ -135,6 +135,7 @@
           </ul>
           <ul class="keyboard-row">
             <KeyboardLetter
+              class="EnterKey"
               @click="this.$emit('submitWordAttempt');"
               @keyup.enter="this.$emit('EnterKey', 'CheckRow')"
               :letter="'TOMHAS'" />
@@ -165,16 +166,6 @@
 <style scoped lang="scss">
 @import "../assets/variables.scss";
 
-ul.keyboard-row,
-ul.answer-row {
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  margin-bottom: 2px !important;
-  padding-left: 0 !important;
-}
-
-.letter,
 .keyboard-letter {
     list-style: none;
     text-align: center;
@@ -184,15 +175,30 @@ ul.answer-row {
     -webkit-border-radius: 5px;
     margin: 0 5px 5px 0;
     min-width: 8vw;
+    height: 8vh;
+    min-height: 35px;
+    max-height: 40px;
+    line-height: 2.3;
 }
 
-.keyboard-letter {
-  list-style: none;
-  height: 8vh;
-  min-height: 35px;
-  max-height: 40px;
-  min-width: 8vw;
-  line-height: 2.3;
+ul.keyboard-row,
+ul.answer-row {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  margin-bottom: 2px !important;
+  padding-left: 0 !important;
+}
+
+.letter {
+    list-style: none;
+    text-align: center;
+    background: #fff;
+    border: 1px solid #f9f9f9;
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+    margin: 0 5px 5px 0;
+    min-width: 8vw;
 }
 
 .keyboard {
@@ -212,14 +218,11 @@ ul.answer-row {
 .keyboard .right-shift {
     width: 100px;
 }
-.lastitem {
-    margin-right: 0;
-}
 
 @media (prefers-color-scheme: dark) {
 
   .keyboard-letter {
-    background-color: $vt-c-black-soft;
+    background-color: $vt-c-indigo;
     border: 1px solid $vt-c-black-mute;
   }
 

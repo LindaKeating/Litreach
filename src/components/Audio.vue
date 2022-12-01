@@ -1,15 +1,18 @@
 <template>
-  <div class="btn-group-container">
+  <div class="Audio btn-group-container">
     <div class="btn-group btn-group-sm" role="group" aria-label="Basic example">
+      <div class="Audio-ListenIcon input-group-text" id="btnGroupAddon">
+        <font-awesome-icon icon="fa-solid fa-circle-play" />
+      </div>
       <button 
         @click="playAudio"
-        type="button" class="btn btn-outline-secondary">Mumhan</button>
+        type="button" class="Audio-Btn btn btn-outline-secondary">Mumhan</button>
       <button 
         @click="playAudio"
-        type="button" class="btn btn-outline-secondary">Connacht</button>
+        type="button" class="Audio-Btn btn btn-outline-secondary">Connacht</button>
       <button 
         @click="playAudio"
-        type="button" class="btn btn-outline-secondary">Uladh</button>
+        type="button" class="Audio-Btn btn btn-outline-secondary">Uladh</button>
     </div>
   </div>   
 </template>
@@ -60,3 +63,33 @@ export default {
   }
 }
 </script>
+<style lang="scss" scoped>
+
+  @import "../assets/breakpoints.scss";
+  @import "../assets/variables.scss";
+  .Audio {
+
+    margin-top: 3vh;
+
+    &-ListenIcon {
+      border-radius: 0;
+      border-top-left-radius: 0.375rem;
+      border-bottom-left-radius: 0.375rem;
+    }
+
+  }
+
+  @media (prefers-color-scheme: dark) {
+
+    .Audio-ListenIcon {
+      color: $vt-c-text-dark-2;
+    }
+
+    .Audio-ListenIcon,
+    .Audio-Btn {
+      background-color: $vt-c-indigo;
+      border: 1px solid $vt-c-black-mute;
+    }   
+
+}
+</style>

@@ -5,13 +5,16 @@
         <a :href="`mailto:linda.mary.keating@gmail.com?subject=Fadhb le Litreach&body=**** Seo iad mo shonraí width:${screenWidth} height:${screenHeight} userAgent:${userAgent} platform:${platform} vendor:${vendor} version: ${version}`"> ríomhphost a chur </a> chugainn. 
                Mínigh, chomh cruinn agus is féidir, caidé nach bhfuil ag obair duit agus déanfaidh muid ár ndícheall é a chóiriú chomh luath agus is féidir.
     </p>
-    <p>Your browser and system details will automatically be included in the email, but please do not delete them when sending the email</p>
-    <p>We will do our best to resolve any issue you have and answer any questions you have as soon as possible</p>
+    <p>{{ dictionary.SupportBrowser.ga }}</p>
+    <p>{{ dictionary.SupportHelpMsg.ga }}</p>
   </div>
 </template>
+
+
 <script>
-    const env = import.meta.env;
-    console.log(env);
+  import { dictionary } from '../dictionary';
+  const env = import.meta.env;
+
   export default {
     data() {
       return {
@@ -20,7 +23,8 @@
         vendor: navigator.vendor,
         screenWidth: window.screen.availWidth,
         screenHeight: window.screen.availHeight,
-        version: __APP_VERSION__
+        version: __APP_VERSION__,
+        dictionary: dictionary
       }
       
     }

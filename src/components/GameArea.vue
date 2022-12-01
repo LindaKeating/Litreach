@@ -61,7 +61,8 @@ export default {
 
 <template>
     <div class="gameContainer">
-          <ul class="answer-row">
+      <div>
+        <ul class="answer-row">
             <Letter 
               data-row=0
               :puzzle-position="puzzlePosition"         
@@ -116,13 +117,14 @@ export default {
               :answer-length="answerLength"
               >{{ letter }}</Letter>
           </ul> 
-          <Audio 
-            v-if="this.currentRound < 5"
-            :start-time="startTime"
-            :duration="duration"
-            :file="'./Litreach-Leachtanch13.mp3'"
-          />
-        </div>
+      </div>          
+      <Audio 
+        v-if="this.currentRound < 5"
+        :start-time="startTime"
+        :duration="duration"
+        :file="'./Litreach-Leachtanch13.mp3'"
+      />
+  </div>
 </template>
 <style scoped lang="scss">
 

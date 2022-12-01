@@ -25,9 +25,10 @@ export default {
 <style scoped lang="scss">
 
   @import "../assets/breakpoints.scss";
+  @import "../assets/variables.scss";
 
   .correctLetter {
-    background-color: green !important;
+    background-color: $success-background !important;
   }
 
   .GameLetter {
@@ -35,10 +36,11 @@ export default {
     line-height: 6vh;
     list-style: none;
     text-align: center;
-    border: 1px solid #f9f9f9;
+    border: 1px solid $vt-c-black-mute;
     -moz-border-radius: 5px;
     -webkit-border-radius: 5px;
     margin: 0 5px 5px 0;
+    background-color: $vt-c-indigo;
    // min-width: 8vw;
   }
 
