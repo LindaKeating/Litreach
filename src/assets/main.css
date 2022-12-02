@@ -21,3 +21,9 @@ a,
 @media (min-width: 1024px) {
 
 }
+
+@media (min-height: 667px) {
+  #app {
+    height: 95vh;
+  }
+}

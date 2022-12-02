@@ -61,7 +61,7 @@ export default {
 </script>
 
 <template>
-    <div class="gameContainer">
+    <div class="gameContainer GameArea">
       <div>
         <ul class="answer-row">
             <Letter 
@@ -162,6 +162,12 @@ export default {
     border: 1px solid $vt-c-black-mute;
   }
 
+}
+
+@media (min-height: $height-breakpoint-667) {
+  .gameContainer {
+    transform: translate(-50%, -30%);
+  }
 }
 
 </style>
