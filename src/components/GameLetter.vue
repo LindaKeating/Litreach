@@ -32,6 +32,9 @@ export default {
   }
 
   .GameLetter {
+    text-transform: uppercase;
+    font-size: larger;
+    font-weight: 700;
     min-height: 6vh;
     line-height: 6vh;
     list-style: none;
