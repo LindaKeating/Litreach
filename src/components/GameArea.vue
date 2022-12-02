@@ -125,7 +125,7 @@ export default {
         :duration="duration"
         :file="'./Litreach-Leachtanch13.mp3'"
       />
-      <p class="text-center"><i>{{ definitions[currentRound]}}</i></p>
+      <p class="text-center container"><i>{{ definitions[currentRound]}}</i></p>
   </div>
 </template>
 <style scoped lang="scss">

@@ -1679,6 +1679,7 @@ const definitions = [
 'áit foscaidh nó fothana',
 'áit foscaidh nó fothana',
 'áit foscaidh nó fothana',
+'áit foscaidh nó fothana',
 'ball múnlaithe miotail a scaoiltear as raidhfil nó as piostal',
 'teacht i láthair',
 'tnúth le rud éigin agus ag súil go dtiocfaidh sé',
