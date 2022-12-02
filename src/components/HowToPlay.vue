@@ -20,6 +20,12 @@
       :class="'col-1'"
       icon="fa-solid fa-circle-5" />
     <p class="col-11">{{dictionary.HowToPlayStepFive.ga}}</p>
+
+    <div class="HowToPlay-Sponser">
+      <img 
+        class="HowToPlay-LogoSponsor"
+        src="../assets/Foras_Logo.png" />
+    </div>
   </div>
 </template>
 <script>
@@ -35,8 +41,18 @@
 </script>
 <style lang="scss" scoped>
   .HowToPlay {
+    height: 80vh;
+    position: relative;
     display: flex;
     flex-wrap: wrap;
+
+    &-Sponsor {
+      width: 50vw;
+    }
+
+    &-LogoSponsor {
+      width: 100%;
+    }
 
     svg {
       padding-top: .5rem;
