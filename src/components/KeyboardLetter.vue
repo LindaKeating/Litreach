@@ -48,4 +48,11 @@
   }
 }
 
+@media (min-height: $height-breakpoint-667) {
+  .KeyboardLetter {
+    font-size: 22px;
+    line-height: 2.1;
+  }
+}
+
 </style>

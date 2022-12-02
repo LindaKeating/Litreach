@@ -166,8 +166,10 @@ export default {
 
 @media (min-height: $height-breakpoint-667) {
   .gameContainer {
-    transform: translate(-50%, -30%);
+    transform: translate(-50%, -32%);
   }
 }
+
+
 
 </style>

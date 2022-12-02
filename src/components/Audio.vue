@@ -69,7 +69,6 @@ export default {
   @import "../assets/variables.scss";
   .Audio {
 
-    margin-top: 3vh;
 
     &-ListenIcon {
       border-radius: 0;

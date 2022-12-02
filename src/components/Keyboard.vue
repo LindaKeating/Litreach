@@ -165,6 +165,7 @@
 </template>
 <style scoped lang="scss">
 @import "../assets/variables.scss";
+@import "../assets/breakpoints.scss";
 
 ul.keyboard-row,
 ul.answer-row {
@@ -218,4 +219,12 @@ ul.answer-row {
 
 }
 
+@media (min-height: $height-breakpoint-667) {
+  .keyboard-letter {
+    &.EnterKey {
+      font-size: 16px;
+    }
+    
+  }
+}
 </style>
