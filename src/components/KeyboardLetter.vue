@@ -18,7 +18,7 @@
     border: 1px solid #f9f9f9;
     -moz-border-radius: 5px;
     -webkit-border-radius: 5px;
-    margin: 0 5px 5px 0;
+    margin: 0 3px 3px 0;
     min-width: 8vw;
     height: 8vh;
     min-height: 35px;

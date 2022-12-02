@@ -1,6 +1,6 @@
 <template>
   <div class="Audio btn-group-container">
-    <div class="btn-group btn-group-sm" role="group" aria-label="Basic example">
+    <div class="btn-group btn-group-md" role="group" aria-label="Basic example">
       <div class="Audio-ListenIcon input-group-text" id="btnGroupAddon">
         <font-awesome-icon icon="fa-solid fa-circle-play" />
       </div>

@@ -8,7 +8,7 @@ export default {
     },
     computed: {
       tileWidth() {
-        return (80 / this.answerLength) + 'vw';
+        return (87 / this.answerLength) + 'vw';
       }
     },
     methods: {
