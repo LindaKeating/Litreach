@@ -6,7 +6,7 @@
   }
 </script>
 <template>
-  <li class="KeyboardLetter keyboard-letter">{{ letter }}</li>
+  <li class="KeyboardLetter keyboard-letter">{{ letter }}<slot></slot></li>
 </template>
 <style lang="scss" scoped>
 
@@ -36,6 +36,15 @@
 @media (min-width: $grid-breakpoints-md){
   .KeyboardLetter {
     min-width: 40px !important;
+  }
+}
+
+// iphone 5 
+@media (min-height: $height-breakpoint-568) {
+  .KeyboardLetter {
+    max-height: 50px;
+    font-size: 20px;
+    line-height: 2;
   }
 }
 

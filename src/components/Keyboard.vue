@@ -154,32 +154,17 @@
             <KeyboardLetter
               @click="this.$emit('addLetterToBoard', 'm');"
               :letter="'m'" />
-            <li
+            <KeyboardLetter
               class="keyboard-letter  lastitem">
               <font-awesome-icon 
                 @click="this.$emit('deleteLastLetter');"
                 icon="fa-regular fa-delete-left" />
-            </li>
+            </KeyboardLetter>
           </ul>
     </div>
 </template>
 <style scoped lang="scss">
 @import "../assets/variables.scss";
-
-.keyboard-letter {
-    list-style: none;
-    text-align: center;
-    background: #fff;
-    border: 1px solid #f9f9f9;
-    -moz-border-radius: 5px;
-    -webkit-border-radius: 5px;
-    margin: 0 5px 5px 0;
-    min-width: 8vw;
-    height: 8vh;
-    min-height: 35px;
-    max-height: 40px;
-    line-height: 2.3;
-}
 
 ul.keyboard-row,
 ul.answer-row {
@@ -224,6 +209,11 @@ ul.answer-row {
   .keyboard-letter {
     background-color: $vt-c-indigo;
     border: 1px solid $vt-c-black-mute;
+
+    &.EnterKey {
+      font-size: 14px;
+      line-height: 3;
+    }
   }
 
 }
