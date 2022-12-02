@@ -51,6 +51,23 @@
       class="keyboard Keyboard">
           <ul class="keyboard-row">
             <KeyboardLetter
+              @click="this.$emit('addLetterToBoard', 'á');"
+              :letter="'á'" />
+            <KeyboardLetter
+              @click="this.$emit('addLetterToBoard', 'é');"
+              :letter="'é'" />
+            <KeyboardLetter
+              @click="this.$emit('addLetterToBoard', 'ú');"
+              :letter="'ú'" />
+            <KeyboardLetter
+              @click="this.$emit('addLetterToBoard', 'í');"
+              :letter="'í'" />
+            <KeyboardLetter
+              @click="this.$emit('addLetterToBoard', 'ó');"
+              :letter="'ó'" />
+          </ul>
+          <ul class="keyboard-row">
+            <KeyboardLetter
               @click="this.$emit('addLetterToBoard', 'q');"
               :letter="'q'" />
             <KeyboardLetter
@@ -112,6 +129,11 @@
           </ul>
           <ul class="keyboard-row">
             <KeyboardLetter
+              class="EnterKey"
+              @click="this.$emit('submitWordAttempt');"
+              @keyup.enter="this.$emit('EnterKey', 'CheckRow')"
+              :letter="'TOMHAS'" />
+              <KeyboardLetter
               @click="this.$emit('addLetterToBoard', 'z');"
               :letter="'z'" />
             <KeyboardLetter
@@ -132,28 +154,6 @@
             <KeyboardLetter
               @click="this.$emit('addLetterToBoard', 'm');"
               :letter="'m'" />
-          </ul>
-          <ul class="keyboard-row">
-            <KeyboardLetter
-              class="EnterKey"
-              @click="this.$emit('submitWordAttempt');"
-              @keyup.enter="this.$emit('EnterKey', 'CheckRow')"
-              :letter="'TOMHAS'" />
-            <KeyboardLetter
-              @click="this.$emit('addLetterToBoard', 'á');"
-              :letter="'á'" />
-            <KeyboardLetter
-              @click="this.$emit('addLetterToBoard', 'é');"
-              :letter="'é'" />
-            <KeyboardLetter
-              @click="this.$emit('addLetterToBoard', 'ú');"
-              :letter="'ú'" />
-            <KeyboardLetter
-              @click="this.$emit('addLetterToBoard', 'í');"
-              :letter="'í'" />
-            <KeyboardLetter
-              @click="this.$emit('addLetterToBoard', 'ó');"
-              :letter="'ó'" />
             <li
               class="keyboard-letter  lastitem">
               <font-awesome-icon 
