@@ -41,9 +41,15 @@
 
   @import '../assets/variables.scss';
   .Nav {
-    &-MenuBtn {
+
+  }
+
+  @media (prefers-color-scheme: dark) {
+    .Nav {
+      &-MenuBtn {
       background-color: $button-background-light;
       border-color: $button-border-color;
+     }
     }
   }
 </style>

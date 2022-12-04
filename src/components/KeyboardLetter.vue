@@ -26,6 +26,8 @@
     min-height: 35px;
     max-height: 40px;
     line-height: 2.3;
+    text-transform: uppercase;
+    font-weight: 700;
 }
 
 .EnterKey {
@@ -54,6 +56,10 @@
   .KeyboardLetter {
     font-size: 22px;
     line-height: 2.1;
+
+    &.EnterKey {
+      line-height: 2.9;;
+    }
   }
 }
 

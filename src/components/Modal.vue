@@ -41,6 +41,8 @@
 </script>
 <style scoped lang="scss">
 
+@import "../assets/variables.scss";
+
 .fade-enter-active,
 .fade-leave-active {
   transition: opacity 0.5s ease;
@@ -53,14 +55,24 @@
 
 .Modal {
 
-  .modal-content {
-    background-color: black;
-  }
+
   
   &.Visible {
     display: block;
-    background-color: black;
+    background-color: $vt-c-white-mute;
   }
+}
 
+@media (prefers-color-scheme: dark) { 
+
+  .Modal {
+    .modal-content {
+      background-color: $vt-c-black;
+    }
+
+    &.Visible {
+      background-color: $vt-c-black;
+    }
+  }
 }
 </style>

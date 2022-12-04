@@ -48,13 +48,17 @@ export default {
 .GameRoundEnded {
   display: flex;
   flex-direction: column;
+}
 
-  &-DarkList {
-    background-color: #ffffff12;
-  }
+@media (prefers-color-scheme: dark) { 
+  .GameRoundEnded {
+    &-DarkList {
+      background-color: #ffffff12;
+    }
 
-  &-DarkText {
-    color: white;
+    &-DarkText {
+      color: white;
+    }
   }
 }
 </style>
