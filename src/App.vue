@@ -12,10 +12,10 @@
   import HowToPlay from './components/HowToPlay.vue'
   import Support from './components/Support.vue'
   import Audio from './components/Audio.vue'
+  import { dictionary } from './dictionary';
 
   let darkMode = window.matchMedia('(prefers-color-scheme: dark)').matches;
   let todaysDOY = new Date().getDOY();
-  console.log(todaysDOY, 'todays day number');
   let todaysPuzzle = [answers[todaysDOY * 5], answers[(todaysDOY * 5) + 1], answers[(todaysDOY * 5) + 2], answers[(todaysDOY * 5) + 3], answers[(todaysDOY * 5) + 4]];
   let uladhStartTimes = [ulsterStartTimes[todaysDOY * 5], ulsterStartTimes[(todaysDOY * 5) + 1], ulsterStartTimes[(todaysDOY * 5) + 2], ulsterStartTimes[(todaysDOY * 5) + 3], ulsterStartTimes[(todaysDOY * 5) + 4]];
   let uladhDurations = [ulsterDurations[todaysDOY * 5], ulsterDurations[(todaysDOY * 5) + 1], ulsterDurations[(todaysDOY * 5) + 2], ulsterDurations[(todaysDOY * 5) + 3], ulsterDurations[(todaysDOY * 5) + 4]];
@@ -58,7 +58,8 @@
           incorrectGuessRow: undefined,
           uladhStartTimes: uladhStartTimes,
           uladhDurations: uladhDurations,
-          definitions: todaysDefinitions
+          definitions: todaysDefinitions,
+          dictionary: dictionary
         }        
       }
     },
@@ -90,7 +91,7 @@
           this.data.currentModal = "GameRoundEnded";
           return this.data.modalOpen = true;
         } else if (this.data.currentGuess.length === this.data.todaysPuzzle[currentRound].length){
-          this.$toast.error(`Mí ádh níl sin an litriú ceart`, {
+          this.$toast.error(this.data.dictionary.AppToastWrongAnswer.ga, {
             position: 'top'
           });
           this.data.incorrectGuessRow = this.data.puzzlePosition.row;

@@ -64,7 +64,7 @@
   font-family: 'LatoLatin';
   font-style: normal;
   font-weight: 400;
-  src: url("../assets/LatoLatin-Regularr.woff");
+  src: url("@/assets/LatoLatin-Regular.woff");
 }
 
 

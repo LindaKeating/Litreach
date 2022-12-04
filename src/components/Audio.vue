@@ -1,24 +1,25 @@
 <template>
   <div class="Audio btn-group-container">
-    <div class="btn-group btn-group-md" role="group" aria-label="Basic example">
+    <div class="btn-group btn-group" role="group" aria-label="Basic example">
       <div class="Audio-ListenIcon input-group-text" id="btnGroupAddon">
         <font-awesome-icon icon="fa-solid fa-circle-play" />
       </div>
       <button 
         @click="playAudio"
-        type="button" class="Audio-Btn btn btn-outline-secondary">Mumhan</button>
+        type="button" class="Audio-Btn btn btn-outline-secondary">{{dictionary.AudioMunster.ga}}</button>
       <button 
         @click="playAudio"
-        type="button" class="Audio-Btn btn btn-outline-secondary">Connacht</button>
+        type="button" class="Audio-Btn btn btn-outline-secondary">{{dictionary.AudioConnacht.ga}}</button>
       <button 
         @click="playAudio"
-        type="button" class="Audio-Btn btn btn-outline-secondary">Uladh</button>
+        type="button" class="Audio-Btn btn btn-outline-secondary">{{dictionary.AudioMunster.ga}}</button>
     </div>
   </div>   
 </template>
 
 <script>
 import audioFile from '../assets/Litreach-Leathanach13.mp3';
+import { dictionary } from '../dictionary';
 export default {
   props: {
     startTime: String,
@@ -27,7 +28,8 @@ export default {
   },
   data() {
     return {
-      audioPlayer: undefined
+      audioPlayer: undefined,
+      dictionary: dictionary
     }
   },
   computed: {
@@ -69,6 +71,20 @@ export default {
   @import "../assets/variables.scss";
   .Audio {
 
+    margin-left: .5rem;
+
+    max-width: 100vw;
+    overflow-x: scroll;
+    -ms-overflow-style: none;  /* Internet Explorer 10+ */
+    scrollbar-width: none;  /* Firefox */
+
+    &::-webkit-scrollbar { 
+      display: none;  /* Safari and Chrome */
+    }
+
+    .Audio-Btn {
+      white-space: nowrap;
+    }
 
     &-ListenIcon {
       border-radius: 0;

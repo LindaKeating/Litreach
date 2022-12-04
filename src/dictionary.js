@@ -1,55 +1,55 @@
 const dictionary = {
   HowToPlayStepOne: {
     en: "Listen to the word in any of all the three dialects",
-    ga: "Éist leis an focal i trí canúint"
+    ga: "Éist leis an fhocal i gceann ar bith de na trí canúintí"
   }, 
   HowToPlayStepTwo: {
     en: "Try to write what you hear",
-    ga: "Déan iarracht scríobh cad é a cloisean tú"
+    ga: "Déan iarracht an focal a chluineann tú a litriú"
   },
   HowToPlayStepThree: {
     en: "You will get 5 lives to spell the word right.  With each attempt any letters that are in the correct position in the word will be marked as correct",
-    ga: "Gheobhaidh tú 5 deis leis an focal a litriú i gceart.  Le gach iarracht beidh na litreacha atá san áit ceart marcáilte"
+    ga: "Gheobhaidh tú 5 iarracht leis an fhocal a litriú i gceart. Le gach iarracht marcálfar na litreacha atá san áit cheart"
   },
   HowToPlayStepFour: {
     en: "There will be 5 different spelling challenges to play each day",
-    ga: "Beidh 5 dúshlán litriú gach lá"
+    ga: "Cuirfear 5 dhúshlán litrithe ar fáil gach lá"
   },
   HowToPlayStepFive: {
     en: "When the days game is over your game will be saved to your statistics",
-    ga: "Nuair atá cluiche an lae thart beidh do cluiche sabháilte go dtí do chuid staitisticí"
+    ga: "Nuair a chríochnaíonn tú an cluiche gach lá sábhálfar do thorthaí;"
   },
   Support: {
     en: "",
-    ga: ""
+    ga: "Tacaíocht"
   },
   SupportBrowser: {
     en: "Your browser and system details will automatically be included in the email, but please do not delete them when sending the email",
-    ga: "Beidh do sonraí brabhsálaí agus córas iniata go uathaimsearach leis an ríomhphoist.  Le do thoil ná scrios iad ón ríomhphoist nuair atá tú á sheoladh"
+    ga: "Seolfar ar aghaidh sonraí do bhrabhsálaí agus do chórais go huathoibrithe leis an ríomhphost. Le do thoil, ná scrios na sonraí ón ríomhphost nuair atá tú ásheoladh."
   },
   SupportHelpMsg: {
     en: "We will do our best to resolve any issue you have and answer any questions you have as soon as possible",
-    ga: "Déanfaidh muid ár ndícheall fadhbanna a réitiú, agus freagar do ceisteanna comh gasta agus is féidir"
+    ga: "Déanfaidh muid ár ndícheall aon fhadhb a réiteach agus do cheisteanna a fhreagairt chomh luath agus is féidir."
   },
   AudioMunster: {
     en: "Munster",
-    ga: "Mumhan"
+    ga: "An Mhumhain"
   },
   AudioConnacht: {
     en: "Connacht",
-    ga: "Chonnacht"
+    ga: "Connachta"
   },
   AudioUlster: {
     en: "Ulster",
-    ga: "Uladh"
+    ga: "Ulaidh"
   },
   GameDayEndedCopiedToClipboard: {
     en: "Your results have been copied to the clipboard",
-    ga: "Tá do torthaí cóipeálta chuig an clipboard"
+    ga: "Cóipeáladh do thorthaí sa ghearrthaisce"
   },
   GameDayEndedSomethingWentWrong: {
     en: "something went wrong",
-    ga: ""
+    ga: "Cliseadh ar rud éigin!"
   },
   GameDayEndedHours: {
     en: "hours",
@@ -69,11 +69,11 @@ const dictionary = {
   },
   GameRoundEndedNextRoundButton: {
     en: "Play next word",
-    ga: "Céad focal eile"
+    ga: "An chéad fhocal eile"
   },
   AppToastWrongAnswer: {
     en: "Unlucky, that is not the right spelling",
-    ga: "Mí ádh níl sin an litriú ceart"
+    ga: "Mí-ádh, níor litríodh i gceart é"
   }
   
 

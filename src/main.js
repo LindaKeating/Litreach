@@ -32,10 +32,12 @@ library.add(
   );
 
 import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
+import Popper from "vue3-popper";
 
 
 createApp(App)
   .use(Toaster)
+  .component("Popper", Popper)
   .component('font-awesome-icon', FontAwesomeIcon)
   .mount('#app');
 

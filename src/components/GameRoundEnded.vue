@@ -13,17 +13,23 @@
     </ul>
     <button 
       @click.prevent="close"
-      class="mt-3 btn btn-secondary">Céad focal eile</button>
+      class="mt-3 btn btn-secondary">{{dictionary.GameRoundEndedNextRoundButton.ga}}</button>
   </div>
 </template>
 <script>
-import Stars from './Stars.vue'
+import Stars from './Stars.vue';
+import { dictionary } from '../dictionary';
 export default {
   props : {
     boardState: Array,
     todaysAnswer: String,
     todaysAttempts: Array,
     darkMode: Boolean
+  },
+  data() {
+    return {
+      dictionary: dictionary
+    }
   },
   methods: {
     close() {

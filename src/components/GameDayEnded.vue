@@ -14,13 +14,13 @@
         :counting="true"
         :time="time" 
         v-slot="{ hours, minutes, seconds }">
-        <span class="GameDayEnded-Number">{{ hours }}<small class="GameDayEnded-Time">uair,</small></span> 
-        <span class="GameDayEnded-Number">{{ minutes }}<small class="GameDayEnded-Time">bomaite,</small> </span>
-        <span class="GameDayEnded-Number">{{ seconds }}<small class="GameDayEnded-Time">soicind.</small></span> 
+        <span class="GameDayEnded-Number">{{ hours }}<small class="GameDayEnded-Time">{{dictionary.GameDayEndedHours.ga}}</small></span> 
+        <span class="GameDayEnded-Number">{{ minutes }}<small class="GameDayEnded-Time">{{dictionary.GameDayEndedMinutes.ga}}</small> </span>
+        <span class="GameDayEnded-Number">{{ seconds }}<small class="GameDayEnded-Time">{{dictionary.GameDayEndedSeconds.ga}}</small></span> 
       </countdown>
       <button 
         @click="copyToClipBoard"
-        class="btn btn-secondary btn-block mt-3">ROINN</button>
+        class="btn btn-secondary btn-block mt-3">{{dictionary.GameDayEndedShareButton.ga}}</button>
     </div>
     
     
@@ -32,11 +32,17 @@
   import { convertAttemptsToStars } from '../clipboard.js';
   import VueApexCharts from "vue3-apexcharts";
   import VueCountdown from '@chenfengyuan/vue-countdown';
+  import { dictionary } from '../dictionary';
 
   export default {
     props: {
       statistics: Object,
       todaysAttempt: Array
+    },
+    data() {
+      return {
+        dictionary: dictionary
+      }
     },
     components: {
       apexchart: VueApexCharts,
