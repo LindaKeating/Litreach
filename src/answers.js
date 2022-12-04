@@ -2642,7 +2642,7 @@ const answers=[
 'Máirt',
 'bruach',
 'táirge',
-'tuariscigh', // deireach colum 3 leathanach 7
+'tuairiscigh', // deireach colum 3 leathanach 7
 'triall',
 'éagsúlacht',
 'sonrach',

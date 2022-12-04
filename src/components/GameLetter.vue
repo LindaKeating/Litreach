@@ -8,7 +8,7 @@ export default {
     },
     computed: {
       tileWidth() {
-        return (87 / this.answerLength) + 'vw';
+        return (84 / this.answerLength) + 'vw';
       }
     },
     methods: {
@@ -33,17 +33,17 @@ export default {
 
   .GameLetter {
     text-transform: uppercase;
-    font-size: larger;
+    font-size: 1.2rem;
     font-weight: 700;
     min-height: 6vh;
     line-height: 6vh;
     list-style: none;
     text-align: center;
     border: 1px solid $vt-c-black-mute;
-    -moz-border-radius: 5px;
-    -webkit-border-radius: 5px;
+    -moz-border-radius: 2px;
+    -webkit-border-radius: 2px;
     margin: 0 5px 5px 0;
-    background-color: $vt-c-indigo;
+    background-color: white;
    // min-width: 8vw;
   }
 
@@ -78,6 +78,26 @@ export default {
   @media (min-width: $grid-breakpoints-md){
     .GameLetter {
       width: 40px !important;
+    }
+  }
+
+  @media (prefers-color-scheme: dark) {
+    .GameLetter {
+      border: 1px solid $vt-c-black-mute;
+      background-color: $vt-c-indigo;
+    }
+
+  }
+
+  @media (min-height: $height-breakpoint-568) {
+    .GameLetter {
+      font-size: 1.3rem;
+    }
+  }
+
+  @media (min-height: $height-breakpoint-667) {
+    .GameLetter {
+      font-size: 1.4rem;
     }
   }
 </style>

@@ -30,6 +30,52 @@ const dictionary = {
   SupportHelpMsg: {
     en: "We will do our best to resolve any issue you have and answer any questions you have as soon as possible",
     ga: "Déanfaidh muid ár ndícheall fadhbanna a réitiú, agus freagar do ceisteanna comh gasta agus is féidir"
+  },
+  AudioMunster: {
+    en: "Munster",
+    ga: "Mumhan"
+  },
+  AudioConnacht: {
+    en: "Connacht",
+    ga: "Chonnacht"
+  },
+  AudioUlster: {
+    en: "Ulster",
+    ga: "Uladh"
+  },
+  GameDayEndedCopiedToClipboard: {
+    en: "Your results have been copied to the clipboard",
+    ga: "Tá do torthaí cóipeálta chuig an clipboard"
+  },
+  GameDayEndedSomethingWentWrong: {
+    en: "something went wrong",
+    ga: ""
+  },
+  GameDayEndedHours: {
+    en: "hours",
+    ga: "uair"
+  },
+  GameDayEndedMinutes: {
+    en: "minutes",
+    ga: "bomaite"
+  },
+  GameDayEndedSeconds: {
+    en: "seconds",
+    ga: "soicind"
+  },
+  GameDayEndedShareButton: {
+    en: "Share",
+    ga: "Roinn"
+  },
+  GameRoundEndedNextRoundButton: {
+    en: "Play next word",
+    ga: "Céad focal eile"
+  },
+  AppToastWrongAnswer: {
+    en: "Unlucky, that is not the right spelling",
+    ga: "Mí ádh níl sin an litriú ceart"
   }
+  
+
 }
 export { dictionary }

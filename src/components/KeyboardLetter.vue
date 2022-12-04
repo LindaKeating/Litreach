@@ -11,13 +11,15 @@
 <style lang="scss" scoped>
 
 @import "../assets/breakpoints.scss";
+@import "../assets/variables.scss";
+
 .KeyboardLetter {
     list-style: none;
     text-align: center;
     background: #fff;
-    border: 1px solid #f9f9f9;
-    -moz-border-radius: 5px;
-    -webkit-border-radius: 5px;
+    border: 1px solid $vt-c-black-mute;
+    -moz-border-radius: 2px;
+    -webkit-border-radius: 2px;
     margin: 0 3px 3px 0;
     min-width: 8vw;
     height: 8vh;
@@ -54,5 +56,12 @@
     line-height: 2.1;
   }
 }
+
+@media (prefers-color-scheme: dark) {
+    .GameLetter {
+      border: 1px solid $vt-c-black-mute;
+      background-color: $vt-c-indigo;
+    }
+  }
 
 </style>
