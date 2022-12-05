@@ -12,7 +12,7 @@
         type="button" class="Audio-Btn btn btn-outline-secondary">{{dictionary.AudioConnacht.ga}}</button>
       <button 
         @click="playAudio"
-        type="button" class="Audio-Btn btn btn-outline-secondary">{{dictionary.AudioMunster.ga}}</button>
+        type="button" class="Audio-Btn btn btn-outline-secondary">{{dictionary.AudioUlster.ga}}</button>
     </div>
   </div>   
 </template>

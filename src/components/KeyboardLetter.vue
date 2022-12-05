@@ -55,7 +55,7 @@
 @media (min-height: $height-breakpoint-667) {
   .KeyboardLetter {
     font-size: 22px;
-    line-height: 2.1;
+    line-height: 2.2;
 
     &.EnterKey {
       line-height: 2.9;;
