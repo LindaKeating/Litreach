@@ -58,13 +58,13 @@
               :letter="'é'" />
             <KeyboardLetter
               @click="this.$emit('addLetterToBoard', 'í');"
-              :letter="'ú'" />
-            <KeyboardLetter
-              @click="this.$emit('addLetterToBoard', 'ó');"
               :letter="'í'" />
             <KeyboardLetter
-              @click="this.$emit('addLetterToBoard', 'ú');"
+              @click="this.$emit('addLetterToBoard', 'ó');"
               :letter="'ó'" />
+            <KeyboardLetter
+              @click="this.$emit('addLetterToBoard', 'ú');"
+              :letter="'ú'" />
           </ul>
           <ul class="keyboard-row">
             <KeyboardLetter
