@@ -30,7 +30,6 @@
 </template>
 <script>
  import { dictionary } from '../dictionary';
- console.log(dictionary, dictionary);
  export default {
   data () {
     return {

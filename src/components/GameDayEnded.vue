@@ -8,19 +8,42 @@
       :series="series"
     ></apexchart>
     <div class="GameDayEnded-NextLetters d-grid gap-2 mt-4">
-      <p class="text-center">An Chéad Litreach Eile</p>
+      <p class="GameDayEnded-CeadLitreadhEile text-center">An Chéad Litreach Eile</p>
       <countdown 
         :class="'text-center'"
         :counting="true"
         :time="time" 
         v-slot="{ hours, minutes, seconds }">
-        <span class="GameDayEnded-Number">{{ hours }}<small class="GameDayEnded-Time">{{dictionary.GameDayEndedHours.ga}}</small></span> 
-        <span class="GameDayEnded-Number">{{ minutes }}<small class="GameDayEnded-Time">{{dictionary.GameDayEndedMinutes.ga}}</small> </span>
-        <span class="GameDayEnded-Number">{{ seconds }}<small class="GameDayEnded-Time">{{dictionary.GameDayEndedSeconds.ga}}</small></span> 
+        <div class="GameDayEnded-TimeContainer">
+          <div>
+          <div class="GameDayEnded-Number">
+            {{ hours }}<span>:</span>
+          </div>
+          <div class="GameDayEnded-Time">
+            uair
+          </div>
+        </div>
+        <div>
+          <div class="GameDayEnded-Number">
+            {{ minutes }}<span>:</span>
+          </div>
+          <div class="GameDayEnded-Time">
+            bomaite
+          </div>
+        </div>
+        <div>
+          <div class="GameDayEnded-Number">
+            {{ seconds }}
+          </div>
+          <div class="GameDayEnded-Time">
+            soicind
+          </div>
+        </div>
+        </div>
       </countdown>
       <button 
         @click="copyToClipBoard"
-        class="btn btn-secondary btn-block mt-3">{{dictionary.GameDayEndedShareButton.ga}}</button>
+        class="btn btn-secondary btn-block mt-3">Roinn</button>
     </div>
     
     
@@ -148,9 +171,19 @@
     flex-direction: column;
     justify-content: center;
 
+    &-TimeContainer {
+      display: flex;
+      justify-content: center;
+    }
+
+    &-CeadLitreadhEile {
+      margin-bottom: 0;
+    }
 
     &-Number {
-      font-size: x-large;
+      font-size: 2.5rem;
+      line-height: 2.5rem;
+      font-weight: 700;
     }
 
     &-Time {
