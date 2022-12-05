@@ -5,7 +5,7 @@
       type="line"
       height="auto"
       :options="chartOptions"
-      :series="series"
+      :series="this.series"
     ></apexchart>
     <div class="GameDayEnded-NextLetters d-grid gap-2 mt-4">
       <p class="GameDayEnded-CeadLitreadhEile text-center">An Chéad Litreach Eile</p>
@@ -124,42 +124,26 @@
           chart: {
             id: "vuechart-example",
             type: 'line',
-            markers: {
-              size: 0,
+            height: 350,
+            zoom: {
+              enabled: false
             },
-            grid: {
-              colors: ['#e5e5e5', 'transparent'],
-              opacity: 0.5
-            },
-            toolbar: {
-              show: false
-            },
-            sparkline: {
-              enabled: true,
-            }
-          },
-          dataLabels: {
-            enabled: false
-          },
-          stroke: {
-            curve: 'straight'
-          },
-          xaxis: {
-            categories: [1],
+            toolbar: { show: false }
           },
           grid: {
             row: {
-              colors: ['#f3f3f3', 'transparent'],
+              colors: ['#f3f3f3', 'transparent'], // takes an array which will be repeated on columns
               opacity: 0.5
             },
           },
-        },
-        series: [
-          {
-            name: "Litreach",
-            data: this.dailyAverages(),
+          xaxis: {
+            categories: ["1", "2", "3", "4", "5"],
           },
-        ],
+        },
+        series: [{
+          name: "Litreach",
+          data: this.dailyAverages()
+        }],
         time: diff
       };
     },
