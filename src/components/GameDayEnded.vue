@@ -88,6 +88,13 @@
         }
         return dailyAverages;
       },
+      dailyLabels() {
+        let dailyLabels = [];
+        for (const [key, value ] of Object.entries(this.statistics)) {
+          dailyLabels.push(key.toString());
+        }
+        return dailyLabels;
+      },
       copyToClipBoard() {
         let shareString = '#Litreach \x0A';
         this.todaysAttempt.forEach(function(element) {
@@ -137,7 +144,7 @@
             },
           },
           xaxis: {
-            categories: ["1", "2", "3", "4", "5"],
+            categories: this.dailyLabels(),
           },
         },
         series: [{
