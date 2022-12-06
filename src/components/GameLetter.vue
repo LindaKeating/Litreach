@@ -18,9 +18,11 @@ export default {
 </script>
 
 <template >
-  <li 
-    :style="{'width': tileWidth } "
-    class="GameLetter" >{{ letter }}</li>
+    <li 
+      :key="letter"
+      :style="{'width': tileWidth } "
+      :class="[{'animate__pulse': letter }]"
+      class="GameLetter" >{{ letter }}</li>
 </template>
 <style scoped lang="scss">
 
@@ -47,6 +49,7 @@ export default {
    // min-width: 8vw;
   }
 
+  // shake animations
   .shake {
     animation: shake 0.82s cubic-bezier(0.36, 0.07, 0.19, 0.97) both;
     transform: translate3d(0, 0, 0);
@@ -73,6 +76,30 @@ export default {
   60% {
     transform: translate3d(4px, 0, 0);
   }
+  }
+
+@keyframes pulse {
+  10%,
+  90% {
+    -webkit-transform: scale3d(1, 1, 1);
+    transform: scale3d(1, 1, 1);
+  }
+
+  20% {
+    -webkit-transform: scale3d(1.05, 1.05, 1.05);
+    transform: scale3d(1.05, 1.05, 1.05);
+  }
+
+  30%,
+  50%,
+  70%  {
+    -webkit-transform: scale3d(1, 1, 1);
+    transform: scale3d(1, 1, 1);
+  }
+}
+.animate__pulse {
+  animation: pulse 0.82s;
+  transform: translate3d(0,0,0);
 }
 
   @media (min-width: $grid-breakpoints-md){
