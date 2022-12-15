@@ -96,8 +96,8 @@
             this.setNextRoundPuzzlePosition();
             this.data.currentGuess = "";
             this.updateStatistics();
-            this.updateLocalStoragePuzzleState(); 
             this.moveToNextRound();
+            this.updateLocalStoragePuzzleState();  
             this.data.currentModal = "GameRoundEnded";
             this.data.modalOpen = true;
             }, (this.data.todaysPuzzle[currentRound].length + 1) * 250); 
