@@ -13,6 +13,12 @@ export default {
     incorrectGuessRow: Number,
     startTime: String,
     duration: String,
+    uladhStartTime: String,
+    uladhDuration: String,
+    connStartTime: String,
+    connDuration: String,
+    kStartTime: String,
+    kDuration: String,
     file: String,
     definitions: Array
   },
@@ -37,6 +43,9 @@ export default {
     Audio
   },
   methods: {
+    animationDelay(index) {
+      return  (index * 250) + "ms";
+    },
     getLetter(row, position) {
       if (this.boardState && this.boardState[row][position]) {
         return this.boardState[row][position];
@@ -46,9 +55,14 @@ export default {
         return ""
       }
     },
+    letterDelay(row, position) {
+
+    },
     letterStatus(row, position) {
       if (this.boardState[row].charAt(position) === this.todaysAnswer.charAt(position)) {
         return 'correctLetter';
+      } else if (this.boardState[row].charAt(position).length > 0) {
+        return 'incorrectLetter';
       }
     },
     wrongAnswer(row, position) {
@@ -70,8 +84,10 @@ export default {
               v-for="(letter, index) in answer"
               :data-position="index"
               :letter="getLetter(0, index)"
+              :style="[]"
               :class="[letterStatus(0, index), wrongAnswer(0, index)]"
               :answer-length="answerLength"
+              :animation-delay="animationDelay(index)"
               >{{ letter }}</Letter>
           </ul>
           <ul class="answer-row"> 
@@ -81,8 +97,10 @@ export default {
               v-for="(letter, index) in answer"
               :letter="getLetter(1, index)"
               :data-position="index"
+              :style="[]"
               :class="[letterStatus(1, index), wrongAnswer(1, index)]"
               :answer-length="answerLength"
+              :animation-delay="animationDelay(index)"
               >{{ letter }}</Letter>
           </ul>
           <ul class="answer-row">
@@ -92,8 +110,10 @@ export default {
               v-for="(letter, index) in answer"
               :letter="getLetter(2, index)"
               :data-position="index"
+              :style="[]"
               :class="[letterStatus(2, index), wrongAnswer(2, index)]"
               :answer-length="answerLength"
+              :animation-delay="animationDelay(index)"
               >{{ letter }}</Letter>
           </ul>
           <ul class="answer-row">
@@ -102,9 +122,11 @@ export default {
               :puzzle-position="puzzlePosition" 
               v-for="(letter, index) in answer"
               :letter="getLetter(3, index)"
+              :style="[]"
               :data-position="index"
               :class="[letterStatus(3, index), wrongAnswer(3, index)]"
               :answer-length="answerLength"
+              :animation-delay="animationDelay(index)"
               >{{ letter }}</Letter>
           </ul>
           <ul class="answer-row">
@@ -114,13 +136,21 @@ export default {
               v-for="(letter, index) in answer"
               :letter="getLetter(4, index)"
               :data-position="index"
+              :style="[]"
               :class="[letterStatus(4, index), wrongAnswer(4, index)]"
               :answer-length="answerLength"
+              :animation-delay="animationDelay(index)"
               >{{ letter }}</Letter>
           </ul> 
       </div>          
       <Audio 
         v-if="this.currentRound < 5"
+        :uladh-start-time="uladhStartTime"
+        :uladh-duration="uladhDuration"
+        :conn-start-time="connStartTime"
+        :conn-duration="connDuration"
+        :k-start-time="kStartTime"
+        :k-duration="kDuration"
         :start-time="startTime"
         :duration="duration"
         :file="'./Litreach-Leachtanch13.mp3'"

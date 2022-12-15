@@ -1,5 +1,5 @@
 <script >
-  import { answers, ulsterStartTimes, ulsterDurations, definitions } from  '../src/answers.js';
+  import { answers, ulsterStartTimes, ulsterDurations, definitions, connaghtStartTimes, connaghtDurations, kerryStartTimes, kerryDurations } from  '../src/answers.js';
   import '../src/dates.js';
 
 
@@ -19,6 +19,10 @@
   let todaysPuzzle = [answers[todaysDOY * 5], answers[(todaysDOY * 5) + 1], answers[(todaysDOY * 5) + 2], answers[(todaysDOY * 5) + 3], answers[(todaysDOY * 5) + 4]];
   let uladhStartTimes = [ulsterStartTimes[todaysDOY * 5], ulsterStartTimes[(todaysDOY * 5) + 1], ulsterStartTimes[(todaysDOY * 5) + 2], ulsterStartTimes[(todaysDOY * 5) + 3], ulsterStartTimes[(todaysDOY * 5) + 4]];
   let uladhDurations = [ulsterDurations[todaysDOY * 5], ulsterDurations[(todaysDOY * 5) + 1], ulsterDurations[(todaysDOY * 5) + 2], ulsterDurations[(todaysDOY * 5) + 3], ulsterDurations[(todaysDOY * 5) + 4]];
+  let connStartTimes = [connaghtStartTimes[todaysDOY * 5], connaghtStartTimes[(todaysDOY * 5) + 1], connaghtStartTimes[(todaysDOY * 5) + 2], connaghtStartTimes[(todaysDOY * 5) + 3], connaghtStartTimes[(todaysDOY * 5) + 4]];
+  let connDurations = [connaghtDurations[todaysDOY * 5], connaghtDurations[(todaysDOY * 5) + 1], connaghtDurations[(todaysDOY * 5) + 2], connaghtDurations[(todaysDOY * 5) + 3], connaghtDurations[(todaysDOY * 5) + 4]];
+  let kStartTimes = [kerryStartTimes[todaysDOY * 5], kerryStartTimes[(todaysDOY * 5) + 1], kerryStartTimes[(todaysDOY * 5) + 2], kerryStartTimes[(todaysDOY * 5) + 3], kerryStartTimes[(todaysDOY * 5) + 4]];
+  let kDurations = [kerryDurations[todaysDOY * 5], kerryDurations[(todaysDOY * 5) + 1], kerryDurations[(todaysDOY * 5) + 2], kerryDurations[(todaysDOY * 5) + 3], kerryDurations[(todaysDOY * 5) + 4]];
   let todaysDefinitions = [definitions[todaysDOY * 5], definitions[(todaysDOY * 5) + 1], definitions[(todaysDOY * 5) + 2], definitions[(todaysDOY * 5) + 3], definitions[(todaysDOY * 5) + 4]];
 
   let initialPuzzleState = {
@@ -58,6 +62,10 @@
           incorrectGuessRow: undefined,
           uladhStartTimes: uladhStartTimes,
           uladhDurations: uladhDurations,
+          connStartTimes: connStartTimes,
+          connDurations: connDurations,
+          kDurations: kDurations,
+          kStartTimes: kStartTimes,
           definitions: todaysDefinitions,
           dictionary: dictionary
         }        
@@ -82,18 +90,24 @@
         // right answer submitted
         if (this.data.currentGuess.toLowerCase() === this.data.todaysPuzzle[currentRound].toLowerCase()){
           // commit attempt to local storage
-          this.updateTodaysAttemptsRecord();
-          this.setNextRoundPuzzlePosition();
-          this.data.currentGuess = "";
-          this.moveToNextRound();
-          this.updateStatistics();
-          this.updateLocalStoragePuzzleState();
-          this.data.currentModal = "GameRoundEnded";
-          return this.data.modalOpen = true;
+          this.data.boardState[this.data.puzzlePosition.row] = this.data.currentGuess;
+          setTimeout(() => {
+            this.updateTodaysAttemptsRecord();
+            this.setNextRoundPuzzlePosition();
+            this.data.currentGuess = "";
+            this.updateStatistics();
+            this.updateLocalStoragePuzzleState(); 
+            this.moveToNextRound();
+            this.data.currentModal = "GameRoundEnded";
+            this.data.modalOpen = true;
+            }, (this.data.todaysPuzzle[currentRound].length + 1) * 250); 
         } else if (this.data.currentGuess.length === this.data.todaysPuzzle[currentRound].length){
-          this.$toast.error(this.data.dictionary.AppToastWrongAnswer.ga, {
-            position: 'top'
-          });
+          setTimeout(() => {
+            this.$toast.error(this.data.dictionary.AppToastWrongAnswer.ga, {
+              position: 'top'
+            });
+          }, (this.data.todaysPuzzle[currentRound].length + 1) * 250); 
+
           this.data.incorrectGuessRow = this.data.puzzlePosition.row;
           this.data.boardState[this.data.puzzlePosition.row] = this.data.currentGuess;
           this.data.currentGuess = "";
@@ -102,9 +116,11 @@
           if(this.data.puzzlePosition.row > 4) {
             this.updateStatistics();
             this.updateTodaysAttemptsRecord();
-            this.moveToNextRound();
-            this.data.currentModal = "Statistics";
-            this.data.modalOpen = true;
+            setTimeout(() => {
+              this.moveToNextRound();
+              this.data.currentModal = "Statistics";
+              this.data.modalOpen = true;
+            }, (this.data.todaysPuzzle[currentRound].length + 1) * 250); 
           }
           this.updateLocalStoragePuzzleState();
         } else {
@@ -239,6 +255,12 @@
     :incorrectGuessRow="data.incorrectGuessRow"
     :start-time="data.uladhStartTimes[data.currentRound]"
     :duration="data.uladhDurations[data.currentRound]"
+    :uladh-start-time="data.uladhStartTimes[data.currentRound]"
+    :uladh-duration="data.uladhDurations[data.currentRound]"
+    :conn-start-time="data.connStartTimes[data.currentRound]"
+    :conn-duration="data.connDurations[data.currentRound]"
+    :k-start-time="data.kStartTimes[data.currentRound]"
+    :k-duration="data.kDurations[data.currentRound]"
     :file="'./Litreach-Leachtanch13.mp3'"
     :definitions="data.definitions"
     /> 

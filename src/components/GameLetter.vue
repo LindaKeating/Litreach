@@ -4,7 +4,8 @@ export default {
     props: {
       letter: String,
       puzzlePosition: Object,
-      answerLength: Number
+      answerLength: Number,
+      animationDelay: String
     },
     computed: {
       tileWidth() {
@@ -20,7 +21,7 @@ export default {
 <template >
     <li 
       :key="letter"
-      :style="{'width': tileWidth } "
+      :style="[{'width': tileWidth }, {'animation-delay': animationDelay}]"
       :class="[{'animate__pulse': letter }]"
       class="GameLetter" >{{ letter }}</li>
 </template>
@@ -30,7 +31,43 @@ export default {
   @import "../assets/variables.scss";
 
   .correctLetter {
-    background-color: $success-background !important;
+    animation-name: correct !important;
+    animation-duration: 0.5s !important;
+    animation-timing-function: ease-in-out !important;
+    animation-fill-mode: forwards !important;
+    -webkit-animation-fill-mode: forwards !important;
+  }
+
+  .incorrectLetter {
+    animation-name: incorrect !important;
+    animation-duration: 0.5s !important;
+    animation-timing-function: ease-in-out !important;
+    animation-fill-mode: forwards !important;
+    -webkit-animation-fill-mode: forwards !important;
+  }
+
+  @keyframes correct {
+    99% {
+      transform: rotateY(180deg);
+    }
+    100% { 
+      background-color: rgb(148, 190, 122);
+    }
+  }
+
+  @keyframes incorrect {
+    99% {
+      transform: rotateY(180deg);
+    }
+    100% { 
+      background-color: rgb(214, 215, 214);
+    }
+  }
+
+  @keyframes rotate {
+    100% {
+      transform: rotateY(180deg);
+    }
   }
 
   .GameLetter {
@@ -46,7 +83,22 @@ export default {
     -webkit-border-radius: 2px;
     margin: 0 5px 5px 0;
     background-color: white;
+    box-sizing: border-box;
    // min-width: 8vw;
+  }
+
+
+
+  //rotate latter animation
+  .rotate {
+    animation: rotate linear 0.3s !important;
+
+  }
+
+  @keyframes rotate {
+    100% {
+      transform: rotateY(180deg);
+    }
   }
 
   // shake animations
@@ -78,7 +130,7 @@ export default {
   }
   }
 
-@keyframes pulse {
+  @keyframes pulse {
   10%,
   90% {
     -webkit-transform: scale3d(1, 1, 1);
@@ -95,12 +147,17 @@ export default {
   70%  {
     -webkit-transform: scale3d(1, 1, 1);
     transform: scale3d(1, 1, 1);
+    }
+  100% {
+    border-color: black;
   }
-}
-.animate__pulse {
-  animation: pulse 0.82s;
-  transform: translate3d(0,0,0);
-}
+  }
+  .animate__pulse {
+    animation: pulse 0.1s;
+    transform: translate3d(0,0,0);
+    animation-fill-mode: forwards;
+    -webkit-animation-fill-mode: forwards;
+  }
 
   @media (min-width: $grid-breakpoints-md){
     .GameLetter {
@@ -112,6 +169,10 @@ export default {
     .GameLetter {
       border: 1px solid $vt-c-black-mute;
       background-color: $vt-c-indigo;
+    }
+
+    .correctLetter {
+      background-color: $success-background !important;
     }
 
   }

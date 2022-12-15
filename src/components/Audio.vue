@@ -5,25 +5,34 @@
         <font-awesome-icon icon="fa-solid fa-circle-play" />
       </div>
       <button 
-        @click="playAudio"
+        @click="playMunster"
         type="button" class="Audio-Btn btn btn-outline-secondary">{{dictionary.AudioMunster.ga}}</button>
       <button 
-        @click="playAudio"
+        @click="playConnaght"
         type="button" class="Audio-Btn btn btn-outline-secondary">{{dictionary.AudioConnacht.ga}}</button>
       <button 
-        @click="playAudio"
+        @click="playUlster"
         type="button" class="Audio-Btn btn btn-outline-secondary">{{dictionary.AudioUlster.ga}}</button>
     </div>
   </div>   
 </template>
 
 <script>
-import audioFile from '../assets/Litreach-Leathanach13.mp3';
+import uladhAudioFile from '../assets/Litreach-Leathanach13.mp3';
+import connAudioFile from '../assets/Litreach-Connacht-Leathanach13.mp3';
+import ciarraiAudioFile from '../assets/Ciarrai_Leathanach_13c.mp3';
 import { dictionary } from '../dictionary';
+
 export default {
   props: {
     startTime: String,
     duration: String,
+    uladhStartTime: String,
+    uladhDuration: String,
+    connStartTime: String,
+    connDuration: String,
+    kStartTime: String,
+    kDuration: String,
     file: String
   },
   data() {
@@ -32,23 +41,62 @@ export default {
       dictionary: dictionary
     }
   },
-  computed: {
-    urlWithTimeRange() {
-      return audioFile + "#t=" + this.startTime + ',' + this.endTime
+  methods: {
+    urlWithTimeRange(fileName ){
+      return fileName + "#t=" + this.startTime + ',' + this.endTime
     },
-    startTimeSecsMillisecs() {
-      let minutes = parseFloat(this.startTime.substring(0, this.startTime.indexOf(':')));
-      let seconds = parseFloat(this.startTime.substring(this.startTime.indexOf(':') + 1, this.startTime.length));
+    durationAsMilliseconds(d) {
+      let minutes = parseFloat(d.substring(0, d.indexOf(':')));
+      let seconds = parseFloat(d.substring(d.indexOf(':') + 1, d.indexOf('.')));
+      let milliseconds = parseFloat(d.slice(-3));
+      return ((minutes * 60) * 1000) + (seconds * 1000) + milliseconds;
+    },
+    startTimeSecsMillisecs(startTime) {
+      console.log(startTime, 'startTime');
+      let minutes = parseFloat(startTime.substring(0, startTime.indexOf(':')));
+      let seconds = parseFloat(startTime.substring(startTime.indexOf(':') + 1, startTime.length));
       return (minutes * 60 ) + seconds;
     },
-    durationAsMilliseconds() {
-      let minutes = parseFloat(this.duration.substring(0, this.duration.indexOf(':')));
-      let seconds = parseFloat(this.duration.substring(this.duration.indexOf(':') + 1, this.duration.indexOf('.')));
-      let milliseconds = parseFloat(this.duration.slice(-3));
-      return ((minutes * 60) * 1000) + (seconds * 1000) + milliseconds;
-    }
-  },
-  methods: {
+    playMunster() {
+      console.log(ciarraiAudioFile, 'kerryAudioFile');
+      let audioPlayer = new Audio(this.urlWithTimeRange(ciarraiAudioFile));
+      let durationMilliseconds = this.durationAsMilliseconds(this.kDuration);
+      audioPlayer.currentTime = this.startTimeSecsMillisecs(this.kStartTime);
+      audioPlayer.play();
+      setInterval(function(){
+        
+        if(audioPlayer.currentTime > (durationMilliseconds / 1000)){
+          
+          audioPlayer.pause();
+        }
+      }, durationMilliseconds);
+    },
+    playConnaght() {
+      let audioPlayer = new Audio(this.urlWithTimeRange(connAudioFile));
+      let durationMilliseconds = this.durationAsMilliseconds(this.connDuration);
+      audioPlayer.currentTime = this.startTimeSecsMillisecs(this.connStartTime);
+      audioPlayer.play();
+      setInterval(function(){
+        
+        if(audioPlayer.currentTime > (durationMilliseconds / 1000)){
+          
+          audioPlayer.pause();
+        }
+      }, durationMilliseconds);
+    },
+    playUlster() {
+      let audioPlayer = new Audio(this.urlWithTimeRange(uladhAudioFile));
+      let durationMilliseconds = this.durationAsMilliseconds(this.uladhDuration);
+      audioPlayer.currentTime = this.startTimeSecsMillisecs(this.uladhStartTime);
+      audioPlayer.play();
+      setInterval(function(){
+        
+        if(audioPlayer.currentTime > (durationMilliseconds / 1000)){
+          
+          audioPlayer.pause();
+        }
+      }, durationMilliseconds);
+    },
     playAudio() {
       let audioPlayer = new Audio(this.urlWithTimeRange);
       let durationMilliseconds = this.durationAsMilliseconds;
