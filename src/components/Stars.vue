@@ -33,7 +33,10 @@ export default {
 </script>
 <style lang="scss" scoped>
 
+@import "../assets/variables.scss";
+
+
 .yellow {
-  color: yellow;
+  color: $stars-light-mode;
 }
 </style>

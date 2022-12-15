@@ -102,26 +102,45 @@
             this.data.modalOpen = true;
             }, (this.data.todaysPuzzle[currentRound].length + 1) * 250); 
         } else if (this.data.currentGuess.length === this.data.todaysPuzzle[currentRound].length){
+          // show the wrong answer toast after delay
           setTimeout(() => {
             this.$toast.error(this.data.dictionary.AppToastWrongAnswer.ga, {
               position: 'top'
             });
           }, (this.data.todaysPuzzle[currentRound].length + 1) * 250); 
 
+          // set which row is wrong
           this.data.incorrectGuessRow = this.data.puzzlePosition.row;
+
+          // set the board state
           this.data.boardState[this.data.puzzlePosition.row] = this.data.currentGuess;
+
+          // reset current guess for next round
           this.data.currentGuess = "";
+
+          // reset the puzzle position for next round
           this.updatePuzzlePosition();
-          this.data.currentModal = "GameRoundEnded";
-          if(this.data.puzzlePosition.row > 4) {
-            this.updateStatistics();
+          // round over but not game over
+          if (this.data.puzzlePosition.row === 5 && this.data.currentRound < 4) {
             this.updateTodaysAttemptsRecord();
             setTimeout(() => {
-              this.moveToNextRound();
-              this.data.currentModal = "Statistics";
+            this.data.currentModal = "GameRoundEnded";
+            this.data.modalOpen = true;
+            this.moveToNextRound();
+            }, (this.data.todaysPuzzle[currentRound].length + 1) * 250);
+          } 
+
+          // round over && game over
+          if (this.data.puzzlePosition.row === 5 && this.data.currentRound == 4) {
+            this.moveToNextRound();
+            this.updateStatistics();
+            this.updateTodaysAttemptsRecord();
+            setTimeout(() => { 
+              this.data.currentModal = "GameDayEnded";
               this.data.modalOpen = true;
             }, (this.data.todaysPuzzle[currentRound].length + 1) * 250); 
-          }
+          } 
+
           this.updateLocalStoragePuzzleState();
         } else {
           console.log('Not a correct answer or a completed answer')
