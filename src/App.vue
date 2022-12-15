@@ -225,6 +225,7 @@
   <Modal 
     @modalOpenState="openModal" 
     :modalOpen="data.modalOpen"
+    :currentModal="data.currentModal"
     :class="data.modalOpen ? 'show' : ''">
     <Support 
       v-if="data.currentModal === 'Support'"/>

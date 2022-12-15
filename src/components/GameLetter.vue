@@ -23,7 +23,7 @@ export default {
       :key="letter"
       :style="[{'width': tileWidth }, {'animation-delay': animationDelay}]"
       :class="[{'animate__pulse': letter }]"
-      class="GameLetter" >{{ letter }}</li>
+      class="GameLetter" ><span>{{ letter }}</span></li>
 </template>
 <style scoped lang="scss">
 
@@ -36,6 +36,10 @@ export default {
     animation-timing-function: ease-in-out !important;
     animation-fill-mode: forwards !important;
     -webkit-animation-fill-mode: forwards !important;
+
+    span {
+      -webkit-backface-visibility: hidden;
+    }
   }
 
   .incorrectLetter {
@@ -44,6 +48,10 @@ export default {
     animation-timing-function: ease-in-out !important;
     animation-fill-mode: forwards !important;
     -webkit-animation-fill-mode: forwards !important;
+
+    span {
+      -webkit-backface-visibility: hidden;
+    }
   }
 
   @keyframes correct {

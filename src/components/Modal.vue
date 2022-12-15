@@ -8,7 +8,7 @@
           <div class="modal-content">
             <div class="modal-header">
               <div class="modal-title">
-                  {{ heading }}
+                  <h4>{{ this.title }}</h4>
               </div>
               <button 
                 class="btn btn-secondary"
@@ -30,7 +30,29 @@
     name: 'Modal',
     props: {
       "modalOpen": Boolean,
-      "heading": String
+      "heading": String,
+      "currentModal": String,
+    },
+    computed: {
+      title() {
+        const expr = this.currentModal;
+        switch (expr) {
+          case 'Support':
+            return 'Tacaíocht';
+            break;
+          case 'HowToPlay':
+            return 'Conas Imirt';
+            break;
+          case 'GameDayEnded':
+            return 'Torthaí';
+            break;
+          case 'GameRoundEnded':
+            return 'Babhta thart';
+            break;
+          default:
+            return '';
+        }
+      }
     },
     methods: {
       close() {
