@@ -179,6 +179,18 @@ export default {
     }
 
     @keyframes correct {
+      98% {
+        transform: rotateY(90deg);
+      }
+      99% {
+        transform: rotateY(90deg);
+      }
+      100% { 
+        background-color: $success-background;
+      }
+    }
+
+    @keyframes incorrect {
     98% {
       transform: rotateY(90deg);
     }
@@ -186,9 +198,9 @@ export default {
       transform: rotateY(90deg);
     }
     100% { 
-      background-color: $success-background !important;
+      background-color: rgb(108, 111, 108) !important ;
     }
-  }
+    }
 
   }
 
