@@ -13,6 +13,11 @@
       <button 
         @click="playUlster"
         type="button" class="Audio-Btn btn btn-outline-secondary">{{dictionary.AudioUlster.ga}}</button>
+        <audio
+          id="munsterAudio"
+          preload="auto"
+          src="./Ciarrai_Leathanach_13c.mp3"
+        ></audio>
     </div>
   </div>   
 </template>
@@ -34,11 +39,13 @@ export default {
     kStartTime: String,
     kDuration: String,
     file: String
+
   },
   data() {
     return {
       audioPlayer: undefined,
-      dictionary: dictionary
+      dictionary: dictionary,
+      ulsterSoundFile: '../assets/Litreach-Leathanach13.mp3'
     }
   },
   methods: {
@@ -52,15 +59,16 @@ export default {
       return ((minutes * 60) * 1000) + (seconds * 1000) + milliseconds;
     },
     startTimeSecsMillisecs(startTime) {
-      console.log(startTime, 'startTime');
       let minutes = parseFloat(startTime.substring(0, startTime.indexOf(':')));
       let seconds = parseFloat(startTime.substring(startTime.indexOf(':') + 1, startTime.length));
       return (minutes * 60 ) + seconds;
     },
     playMunster() {
-      console.log(ciarraiAudioFile, 'kerryAudioFile');
-      let audioPlayer = new Audio(this.urlWithTimeRange(ciarraiAudioFile));
+      let audioPlayer = document.getElementById('munsterAudio');
+      //let audioPlayer = new Audio(this.urlWithTimeRange(ciarraiAudioFile));
       let durationMilliseconds = this.durationAsMilliseconds(this.kDuration);
+      console.log(durationMilliseconds, 'duration Milliseconds');
+      console.log(this.startTimeSecsMillisecs(this.kStartTime), 'startTimeMilliseconds');
       audioPlayer.currentTime = this.startTimeSecsMillisecs(this.kStartTime);
       audioPlayer.play();
       setInterval(function(){
@@ -76,6 +84,7 @@ export default {
       let durationMilliseconds = this.durationAsMilliseconds(this.connDuration);
       audioPlayer.currentTime = this.startTimeSecsMillisecs(this.connStartTime);
       audioPlayer.play();
+
       setInterval(function(){
         
         if(audioPlayer.currentTime > (durationMilliseconds / 1000)){
