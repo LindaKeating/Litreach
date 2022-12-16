@@ -45,7 +45,9 @@ export default {
     return {
       audioPlayer: undefined,
       dictionary: dictionary,
-      ulsterSoundFile: '../assets/Litreach-Leathanach13.mp3'
+      ulsterSoundFile: '../assets/Litreach-Leathanach13.mp3',
+      munsterAudioContext: undefined,
+      munsterAudioBuff: undefined
     }
   },
   methods: {
@@ -66,7 +68,11 @@ export default {
     playMunster() {
       let startTime = this.startTimeSecsMillisecs(this.kStartTime);
       let duration = this.durationAsMilliseconds(this.kDuration) / 1000;
-      (async () => {
+      const source = this.munsterAudioContext.createBufferSource();
+      source.buffer = this.munsterAudioBuff;
+      source.connect(this.munsterAudioContext.destination);
+      source.start(0, startTime, duration)
+     /* (async () => {
         const ctx = new (window.AudioContext || window.webkitAudioContext)();
         // Using a different file because biblicaltext.com
         // doesn't allow cross-origin requests
@@ -77,7 +83,7 @@ export default {
         source.buffer = audio_buf;
         source.connect(ctx.destination);
         source.start(0, startTime, duration);
-      })(startTime, duration);
+      })(startTime, duration);*/
 
 
      /* let audioPlayer = new Audio(this.urlWithTimeRange(ciarraiAudioFile));
@@ -132,6 +138,17 @@ export default {
         }
       }, durationMilliseconds);
     }
+  },
+  mounted() {
+    (async () => {
+        this.munsterAudioContext = new (window.AudioContext || window.webkitAudioContext)();
+        // Using a different file because biblicaltext.com
+        // doesn't allow cross-origin requests
+        const data_buf = await fetch("./Ciarrai_Leathanach_13c.mp3")
+          .then( resp => resp.arrayBuffer());
+        this.munsterAudioBuff = await this.munsterAudioContext.decodeAudioData(data_buf);
+       // source.start(0, startTime, duration);
+      })(this.munsterAudioContext, this.munsterAudioBuff);
   }
 }
 </script>
