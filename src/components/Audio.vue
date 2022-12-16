@@ -65,19 +65,28 @@ export default {
     },
     playMunster() {
       let audioPlayer = document.getElementById('munsterAudio');
+
+
+      
       //let audioPlayer = new Audio(this.urlWithTimeRange(ciarraiAudioFile));
       let durationMilliseconds = this.durationAsMilliseconds(this.kDuration);
-      console.log(durationMilliseconds, 'duration Milliseconds');
-      console.log(this.startTimeSecsMillisecs(this.kStartTime), 'startTimeMilliseconds');
       audioPlayer.currentTime = this.startTimeSecsMillisecs(this.kStartTime);
+      let endTime = audioPlayer.currentTime + (durationMilliseconds / 1000);
+      audioPlayer.ontimeupdate = function () {
+        console.log('timeupdate - current Time', audioPlayer.currentTime);
+        console.log('timeupdate - duration as milliseconds', durationMilliseconds );
+        if (audioPlayer.currentTime > endTime) {
+          audioPlayer.pause();
+        }
+      }
       audioPlayer.play();
-      setInterval(function(){
+     /* setInterval(function(){
         
-        if(audioPlayer.currentTime > (durationMilliseconds / 1000)){
+        if(audioPlayer.currentTime  > (durationMilliseconds / 1000)){
           
           audioPlayer.pause();
         }
-      }, durationMilliseconds);
+      }, durationMilliseconds); */
     },
     playConnaght() {
       let audioPlayer = new Audio(this.urlWithTimeRange(connAudioFile));
