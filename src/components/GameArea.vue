@@ -153,6 +153,7 @@ export default {
         :k-duration="kDuration"
         :start-time="startTime"
         :duration="duration"
+        :definition="definitions[currentRound]"
         :file="'./Litreach-Leachtanch13.mp3'"
       />
       <p class="text-center container"><i>{{ definitions[currentRound]}}</i></p>

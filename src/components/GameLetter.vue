@@ -178,9 +178,17 @@ export default {
       background-color: $vt-c-indigo;
     }
 
-    .correctLetter {
+    @keyframes correct {
+    98% {
+      transform: rotateY(90deg);
+    }
+    99% {
+      transform: rotateY(90deg);
+    }
+    100% { 
       background-color: $success-background !important;
     }
+  }
 
   }
 

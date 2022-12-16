@@ -13,11 +13,6 @@
       <button 
         @click="playUlster"
         type="button" class="Audio-Btn btn btn-outline-secondary">{{dictionary.AudioUlster.ga}}</button>
-        <audio
-          id="munsterAudio"
-          preload="auto"
-          src="./Ciarrai_Leathanach_13c.mp3"
-        ></audio>
     </div>
   </div>   
 </template>
@@ -38,8 +33,8 @@ export default {
     connDuration: String,
     kStartTime: String,
     kDuration: String,
-    file: String
-
+    file: String,
+    definition: String
   },
   data() {
     return {
