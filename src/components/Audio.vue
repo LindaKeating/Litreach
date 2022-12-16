@@ -64,20 +64,33 @@ export default {
       return (minutes * 60 ) + seconds;
     },
     playMunster() {
-      let audioPlayer = document.getElementById('munsterAudio');
-      //let audioPlayer = new Audio(this.urlWithTimeRange(ciarraiAudioFile));
+      let startTime = this.startTimeSecsMillisecs(this.kStartTime);
+      let duration = this.durationAsMilliseconds(this.kDuration) / 1000;
+      (async () => {
+        const ctx = new (window.AudioContext || window.webkitAudioContext)();
+        // Using a different file because biblicaltext.com
+        // doesn't allow cross-origin requests
+        const data_buf = await fetch("./Ciarrai_Leathanach_13c.mp3")
+          .then( resp => resp.arrayBuffer());
+        const audio_buf = await ctx.decodeAudioData(data_buf);
+        const source = ctx.createBufferSource();
+        source.buffer = audio_buf;
+        source.connect(ctx.destination);
+        source.start(0, startTime, duration);
+      })(startTime, duration);
+
+
+     /* let audioPlayer = new Audio(this.urlWithTimeRange(ciarraiAudioFile));
       let durationMilliseconds = this.durationAsMilliseconds(this.kDuration);
       audioPlayer.currentTime = this.startTimeSecsMillisecs(this.kStartTime);
       let endTime = audioPlayer.currentTime + (durationMilliseconds / 1000);
       audioPlayer.play();
       setInterval(function(){
-        
         if(audioPlayer.currentTime  > (durationMilliseconds / 1000)){
           
           audioPlayer.pause();
-          audioPlayer.load();
         }
-      }, durationMilliseconds); 
+      }, durationMilliseconds); */
     },
     playConnaght() {
       let audioPlayer = new Audio(this.urlWithTimeRange(connAudioFile));
