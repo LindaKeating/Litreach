@@ -47,7 +47,11 @@ export default {
       dictionary: dictionary,
       ulsterSoundFile: '../assets/Litreach-Leathanach13.mp3',
       munsterAudioContext: undefined,
-      munsterAudioBuff: undefined
+      munsterAudioBuff: undefined,
+      ulsterAudioContext: undefined,
+      ulsterAudioBuff: undefined,
+      connaughtAudioContext: undefined,
+      connaughtAudioBuff: undefined
     }
   },
   methods: {
@@ -72,83 +76,45 @@ export default {
       source.buffer = this.munsterAudioBuff;
       source.connect(this.munsterAudioContext.destination);
       source.start(0, startTime, duration)
-     /* (async () => {
-        const ctx = new (window.AudioContext || window.webkitAudioContext)();
-        // Using a different file because biblicaltext.com
-        // doesn't allow cross-origin requests
-        const data_buf = await fetch("./Ciarrai_Leathanach_13c.mp3")
-          .then( resp => resp.arrayBuffer());
-        const audio_buf = await ctx.decodeAudioData(data_buf);
-        const source = ctx.createBufferSource();
-        source.buffer = audio_buf;
-        source.connect(ctx.destination);
-        source.start(0, startTime, duration);
-      })(startTime, duration);*/
-
-
-     /* let audioPlayer = new Audio(this.urlWithTimeRange(ciarraiAudioFile));
-      let durationMilliseconds = this.durationAsMilliseconds(this.kDuration);
-      audioPlayer.currentTime = this.startTimeSecsMillisecs(this.kStartTime);
-      let endTime = audioPlayer.currentTime + (durationMilliseconds / 1000);
-      audioPlayer.play();
-      setInterval(function(){
-        if(audioPlayer.currentTime  > (durationMilliseconds / 1000)){
-          
-          audioPlayer.pause();
-        }
-      }, durationMilliseconds); */
     },
     playConnaght() {
-      let audioPlayer = new Audio(this.urlWithTimeRange(connAudioFile));
-      let durationMilliseconds = this.durationAsMilliseconds(this.connDuration);
-      audioPlayer.currentTime = this.startTimeSecsMillisecs(this.connStartTime);
-      audioPlayer.play();
-
-      setInterval(function(){
-        
-        if(audioPlayer.currentTime > (durationMilliseconds / 1000)){
-          
-          audioPlayer.pause();
-        }
-      }, durationMilliseconds);
+      let startTime = this.startTimeSecsMillisecs(this.connStartTime);
+      let duration = this.durationAsMilliseconds(this.connDuration) / 1000;
+      const source = this.connaughtAudioContext.createBufferSource();
+      source.buffer = this.connaughtAudioBuff;
+      source.connect(this.connaughtAudioContext.destination);
+      source.start(0, startTime, duration);
     },
     playUlster() {
-      let audioPlayer = new Audio(this.urlWithTimeRange(uladhAudioFile));
-      let durationMilliseconds = this.durationAsMilliseconds(this.uladhDuration);
-      audioPlayer.currentTime = this.startTimeSecsMillisecs(this.uladhStartTime);
-      audioPlayer.play();
-      setInterval(function(){
-        
-        if(audioPlayer.currentTime > (durationMilliseconds / 1000)){
-          
-          audioPlayer.pause();
-        }
-      }, durationMilliseconds);
-    },
-    playAudio() {
-      let audioPlayer = new Audio(this.urlWithTimeRange);
-      let durationMilliseconds = this.durationAsMilliseconds;
-      audioPlayer.currentTime = this.startTimeSecsMillisecs;
-      audioPlayer.play();
-      setInterval(function(){
-        
-        if(audioPlayer.currentTime > (durationMilliseconds / 1000)){
-          
-          audioPlayer.pause();
-        }
-      }, durationMilliseconds);
+      let startTime = this.startTimeSecsMillisecs(this.uladhStartTime);
+      let duration = this.durationAsMilliseconds(this.uladhDuration) / 1000;
+      const source = this.ulsterAudioContext.createBufferSource();
+      source.buffer = this.ulsterAudioBuff;
+      source.connect(this.ulsterAudioContext.destination);
+      source.start(0, startTime, duration);
     }
   },
   mounted() {
     (async () => {
         this.munsterAudioContext = new (window.AudioContext || window.webkitAudioContext)();
-        // Using a different file because biblicaltext.com
-        // doesn't allow cross-origin requests
         const data_buf = await fetch("./Ciarrai_Leathanach_13c.mp3")
           .then( resp => resp.arrayBuffer());
         this.munsterAudioBuff = await this.munsterAudioContext.decodeAudioData(data_buf);
-       // source.start(0, startTime, duration);
       })(this.munsterAudioContext, this.munsterAudioBuff);
+
+    (async () => {
+      this.connaughtAudioContext= new (window.AudioContext || window.webkitAudioContext)();
+        const buffer = await fetch("./Litreach-Connacht-Leathanach13.mp3")
+          .then( resp => resp.arrayBuffer());
+          this.connaughtAudioBuff = await this.connaughtAudioContext.decodeAudioData(buffer);
+    })(this.connaughtAudioContext, this.connaughtAudioBuff);
+
+    (async () => {
+      this.ulsterAudioContext= new (window.AudioContext || window.webkitAudioContext)();
+        const buffer = await fetch("./Litreach-Leathanach13.mp3")
+          .then( resp => resp.arrayBuffer());
+          this.ulsterAudioBuff = await this.ulsterAudioContext.decodeAudioData(buffer);
+    })(this.ulsterAudioContext, this.ulsterAudioBuff);
   }
 }
 </script>
