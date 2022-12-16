@@ -36,10 +36,6 @@ export default {
     animation-timing-function: ease-in-out !important;
     animation-fill-mode: forwards !important;
     -webkit-animation-fill-mode: forwards !important;
-
-    span {
-      -webkit-backface-visibility: hidden;
-    }
   }
 
   .incorrectLetter {
@@ -49,14 +45,14 @@ export default {
     animation-fill-mode: forwards !important;
     -webkit-animation-fill-mode: forwards !important;
 
-    span {
-      -webkit-backface-visibility: hidden;
-    }
   }
 
   @keyframes correct {
+    98% {
+      transform: rotateY(90deg);
+    }
     99% {
-      transform: rotateY(180deg);
+      transform: rotateY(90deg);
     }
     100% { 
       background-color: rgb(148, 190, 122);
@@ -64,8 +60,11 @@ export default {
   }
 
   @keyframes incorrect {
+    98% {
+      transform: rotateY(90deg);
+    }
     99% {
-      transform: rotateY(180deg);
+      transform: rotateY(90deg);
     }
     100% { 
       background-color: rgb(214, 215, 214);
