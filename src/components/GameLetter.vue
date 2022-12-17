@@ -71,12 +71,6 @@ export default {
     }
   }
 
-  @keyframes rotate {
-    100% {
-      transform: rotateY(180deg);
-    }
-  }
-
   .GameLetter {
     text-transform: uppercase;
     font-size: 1.2rem;
@@ -92,20 +86,6 @@ export default {
     background-color: white;
     box-sizing: border-box;
    // min-width: 8vw;
-  }
-
-
-
-  //rotate latter animation
-  .rotate {
-    animation: rotate linear 0.3s !important;
-
-  }
-
-  @keyframes rotate {
-    100% {
-      transform: rotateY(180deg);
-    }
   }
 
   // shake animations
@@ -138,29 +118,29 @@ export default {
   }
 
   @keyframes pulse {
-  10%,
-  90% {
-    -webkit-transform: scale3d(1, 1, 1);
-    transform: scale3d(1, 1, 1);
-  }
-
-  20% {
-    -webkit-transform: scale3d(1.05, 1.05, 1.05);
-    transform: scale3d(1.05, 1.05, 1.05);
-  }
-
-  30%,
-  50%,
-  70%  {
-    -webkit-transform: scale3d(1, 1, 1);
-    transform: scale3d(1, 1, 1);
+    10%,
+    90% {
+      -webkit-transform: scale3d(1, 1, 1);
+      transform: scale3d(1, 1, 1);
     }
-  100% {
-    border-color: black;
-  }
+
+    20% {
+      -webkit-transform: scale3d(1.05, 1.05, 1.05);
+      transform: scale3d(1.05, 1.05, 1.05);
+    }
+
+    30%,
+    50%,
+    70%  {
+      -webkit-transform: scale3d(1, 1, 1);
+      transform: scale3d(1, 1, 1);
+      }
+    100% {
+      border-color: black;
+    }
   }
   .animate__pulse {
-    animation: pulse 0.1s;
+    animation: pulse 0.2s;
     transform: translate3d(0,0,0);
     animation-fill-mode: forwards;
     -webkit-animation-fill-mode: forwards;
@@ -178,6 +158,18 @@ export default {
       background-color: $vt-c-indigo;
     }
 
+    @keyframes pulse {
+
+    50% {
+      -webkit-transform: scale3d(1.10, 1.10, 1.10);
+      transform: scale3d(1.10, 1.10, 1.10);
+    }
+
+    100% {
+      border-color: $vt-c-text-dark-2;
+    }
+  }
+
     @keyframes correct {
       98% {
         transform: rotateY(90deg);
@@ -191,17 +183,20 @@ export default {
     }
 
     @keyframes incorrect {
-    98% {
-      transform: rotateY(90deg);
+      0% {
+        border-color: $vt-c-text-dark-2;
+      }
+      98% {
+        transform: rotateY(90deg);
+      }
+      99% {
+        transform: rotateY(90deg);
+      }
+      100% { 
+        background-color: $vt-c-divider-dark-2;
+        border-color: $vt-c-text-dark-2;
+      }
     }
-    99% {
-      transform: rotateY(90deg);
-    }
-    100% { 
-      background-color: rgb(108, 111, 108) !important ;
-    }
-    }
-
   }
 
   @media (min-height: $height-breakpoint-568) {

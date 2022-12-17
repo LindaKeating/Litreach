@@ -67,7 +67,8 @@
           kDurations: kDurations,
           kStartTimes: kStartTimes,
           definitions: todaysDefinitions,
-          dictionary: dictionary
+          dictionary: dictionary,
+          tileTimeouts: false
         }        
       }
     },
@@ -90,6 +91,7 @@
         // right answer submitted
         if (this.data.currentGuess.toLowerCase() === this.data.todaysPuzzle[currentRound].toLowerCase()){
           // commit attempt to local storage
+          this.data.tileTimeouts = true;
           this.data.boardState[this.data.puzzlePosition.row] = this.data.currentGuess;
           setTimeout(() => {
             this.updateTodaysAttemptsRecord();
@@ -100,10 +102,13 @@
             this.updateLocalStoragePuzzleState();  
             this.data.currentModal = "GameRoundEnded";
             this.data.modalOpen = true;
+            this.data.tileTimeouts = false;
             }, (this.data.todaysPuzzle[currentRound].length + 1) * 250); 
         } else if (this.data.currentGuess.length === this.data.todaysPuzzle[currentRound].length){
           // show the wrong answer toast after delay
+          this.data.tileTimeouts = true;
           setTimeout(() => {
+            this.data.tileTimeouts = false;
             this.$toast.error(this.data.dictionary.AppToastWrongAnswer.ga, {
               position: 'top'
             });
@@ -264,6 +269,8 @@
   </Modal>
   <Nav 
     @setCurrentModal="setCurrentModal"
+    :definition="data.definitions[data.currentRound]"
+    :game-ended="gameEnded"
     :data="data"/>
   <GameArea
     :board-state="data.boardState"
@@ -283,6 +290,7 @@
     :k-duration="data.kDurations[data.currentRound]"
     :file="'./Litreach-Leachtanch13.mp3'"
     :definitions="data.definitions"
+    :tile-timeouts="data.tileTimeouts"
     /> 
 
   <Keyboard 
@@ -291,6 +299,7 @@
     @submitWordAttempt="submitWordAttempt"
     :darkMode="data.darkMode"
     :currentRound="data.currentRound"
+    :definition="data.definitions[data.currentRound]"
   />
   <GameDayEnded 
     v-if="gameEnded"

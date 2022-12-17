@@ -1,7 +1,9 @@
 <script>
   export default {
     props: {
-      data: Object
+      data: Object,
+      definition: String,
+      gameEnded: Boolean
     },
     emits: {
       setCurrentModal() { return true}
@@ -19,6 +21,14 @@
           class="navbar-brand mb-0 h1">Litreach
         </span>
         <div class="btn-group" role="group" aria-label="Basic example">
+          <Popper
+            v-if="definition && !gameEnded"
+            arrow
+            :content="definition">
+            <button class="Nav-MenuBtn btn btn-secondary Nav-Definition">
+              <font-awesome-icon icon="fa-solid fa-lightbulb-exclamation-on" />
+            </button>
+            </Popper>
           <button 
             @click="this.$emit('setCurrentModal', 'HowToPlay');"
             type="button" 
@@ -41,6 +51,10 @@
 
   @import '../assets/variables.scss';
   .Nav {
+
+    &-Definition {
+      color: $stars-light-mode;
+    }
 
   }
 

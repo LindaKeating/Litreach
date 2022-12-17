@@ -3,7 +3,8 @@
   export default {
     props: {
       darkMode: Boolean,
-      currentRound: Number
+      currentRound: Number,
+      definition: String
     },
     components: {
       KeyboardLetter

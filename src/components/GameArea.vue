@@ -20,7 +20,8 @@ export default {
     kStartTime: String,
     kDuration: String,
     file: String,
-    definitions: Array
+    definitions: Array,
+    tileTimeouts: Boolean
   },
   data(){
     return {}
@@ -87,7 +88,7 @@ export default {
               :style="[]"
               :class="[letterStatus(0, index), wrongAnswer(0, index)]"
               :answer-length="answerLength"
-              :animation-delay="animationDelay(index)"
+              :animation-delay="tileTimeouts ? animationDelay(index) : ''"
               >{{ letter }}</Letter>
           </ul>
           <ul class="answer-row"> 
@@ -100,7 +101,7 @@ export default {
               :style="[]"
               :class="[letterStatus(1, index), wrongAnswer(1, index)]"
               :answer-length="answerLength"
-              :animation-delay="animationDelay(index)"
+              :animation-delay="tileTimeouts ? animationDelay(index) : ''"
               >{{ letter }}</Letter>
           </ul>
           <ul class="answer-row">
@@ -113,7 +114,7 @@ export default {
               :style="[]"
               :class="[letterStatus(2, index), wrongAnswer(2, index)]"
               :answer-length="answerLength"
-              :animation-delay="animationDelay(index)"
+              :animation-delay="tileTimeouts ? animationDelay(index) : ''"
               >{{ letter }}</Letter>
           </ul>
           <ul class="answer-row">
@@ -126,7 +127,7 @@ export default {
               :data-position="index"
               :class="[letterStatus(3, index), wrongAnswer(3, index)]"
               :answer-length="answerLength"
-              :animation-delay="animationDelay(index)"
+              :animation-delay="tileTimeouts ? animationDelay(index) : ''"
               >{{ letter }}</Letter>
           </ul>
           <ul class="answer-row">
@@ -153,10 +154,8 @@ export default {
         :k-duration="kDuration"
         :start-time="startTime"
         :duration="duration"
-        :definition="definitions[currentRound]"
         :file="'./Litreach-Leachtanch13.mp3'"
       />
-      <p class="text-center container"><i>{{ definitions[currentRound]}}</i></p>
   </div>
 </template>
 <style scoped lang="scss">

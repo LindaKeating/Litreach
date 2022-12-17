@@ -1,18 +1,22 @@
 <template>
   <div class="Audio btn-group-container">
     <div class="btn-group btn-group" role="group" aria-label="Basic example">
-      <div class="Audio-ListenIcon input-group-text" id="btnGroupAddon">
-        <font-awesome-icon icon="fa-solid fa-circle-play" />
-      </div>
       <button 
         @click="playMunster"
-        type="button" class="Audio-Btn btn btn-outline-secondary">{{dictionary.AudioMunster.ga}}</button>
+        type="button" class="Audio-Btn btn btn-outline-secondary">
+        <font-awesome-icon icon="fa-solid fa-waveform-lines" />
+        {{dictionary.AudioMunster.ga}}
+      </button>
       <button 
         @click="playConnaght"
-        type="button" class="Audio-Btn btn btn-outline-secondary">{{dictionary.AudioConnacht.ga}}</button>
+        type="button" class="Audio-Btn btn btn-outline-secondary">
+        <font-awesome-icon icon="fa-solid fa-waveform-lines" />
+        {{dictionary.AudioConnacht.ga}}</button>
       <button 
         @click="playUlster"
-        type="button" class="Audio-Btn btn btn-outline-secondary">{{dictionary.AudioUlster.ga}}</button>
+        type="button" class="Audio-Btn btn btn-outline-secondary">
+        <font-awesome-icon icon="fa-solid fa-waveform-lines" />
+        {{dictionary.AudioUlster.ga}}</button>
     </div>
   </div>   
 </template>
@@ -33,8 +37,7 @@ export default {
     connDuration: String,
     kStartTime: String,
     kDuration: String,
-    file: String,
-    definition: String
+    file: String
   },
   data() {
     return {
@@ -46,7 +49,8 @@ export default {
       ulsterAudioContext: undefined,
       ulsterAudioBuff: undefined,
       connaughtAudioContext: undefined,
-      connaughtAudioBuff: undefined
+      connaughtAudioBuff: undefined,
+      showPopper: true
     }
   },
   methods: {
