@@ -289,7 +289,7 @@
     :k-start-time="data.kStartTimes[data.currentRound]"
     :k-duration="data.kDurations[data.currentRound]"
     :file="'./Litreach-Leachtanch13.mp3'"
-    :definitions="data.definitions"
+    :definition="data.definitions[data.currentRound]"
     :tile-timeouts="data.tileTimeouts"
     /> 
 

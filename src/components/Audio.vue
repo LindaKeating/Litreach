@@ -1,22 +1,40 @@
 <template>
   <div class="Audio btn-group-container">
-    <div class="btn-group btn-group" role="group" aria-label="Basic example">
+    <div class="Audio-SoundButtons">
+      <div class="btn-group btn-group" role="group" aria-label="Basic example">
       <button 
-        @click="playMunster"
-        type="button" class="Audio-Btn btn btn-outline-secondary">
+        @click="playUlster"
+        type="button" class="Audio-Btn btn btn-outline-secondary btn-lg ">
         <font-awesome-icon icon="fa-solid fa-waveform-lines" />
-        {{dictionary.AudioMunster.ga}}
+        {{dictionary.AudioUlster.ga}} 
       </button>
       <button 
         @click="playConnaght"
-        type="button" class="Audio-Btn btn btn-outline-secondary">
+        type="button" class="Audio-Btn btn btn-outline-secondary btn-lg ">
         <font-awesome-icon icon="fa-solid fa-waveform-lines" />
         {{dictionary.AudioConnacht.ga}}</button>
       <button 
-        @click="playUlster"
-        type="button" class="Audio-Btn btn btn-outline-secondary">
+        @click="playMunster"
+        type="button" class="Audio-Btn btn btn-outline-secondary btn-lg ">
         <font-awesome-icon icon="fa-solid fa-waveform-lines" />
-        {{dictionary.AudioUlster.ga}}</button>
+        {{dictionary.AudioMunster.ga}}</button>
+    </div>
+    </div>
+    
+    <div class="btn-group mt-2" >
+      <button 
+        @click="togglePlayBackSpeed()"
+        :class="!this.playBackSpeedNormal ? 'active': ''"
+        class="btn btn-outline-secondary">0.75</button>
+      <button 
+        @click="togglePlayBackSpeed()"
+        :class="this.playBackSpeedNormal ? 'active': ''"
+        class="btn btn-outline-secondary">Normal</button>
+      <Popper arrow placement="top" :content="definition">
+        <button class="btn btn-outline-secondary Audio-HintButton">
+          <font-awesome-icon icon="fa-solid fa-lightbulb-exclamation-on" />
+        </button>
+      </Popper>
     </div>
   </div>   
 </template>
@@ -37,7 +55,8 @@ export default {
     connDuration: String,
     kStartTime: String,
     kDuration: String,
-    file: String
+    file: String,
+    definition: String
   },
   data() {
     return {
@@ -50,10 +69,14 @@ export default {
       ulsterAudioBuff: undefined,
       connaughtAudioContext: undefined,
       connaughtAudioBuff: undefined,
-      showPopper: true
+      showPopper: true,
+      playBackSpeedNormal: true
     }
   },
   methods: {
+    togglePlayBackSpeed() {
+      return this.playBackSpeedNormal = !this.playBackSpeedNormal;
+    },
     urlWithTimeRange(fileName ){
       return fileName + "#t=" + this.startTime + ',' + this.endTime
     },
@@ -72,6 +95,7 @@ export default {
       let startTime = this.startTimeSecsMillisecs(this.kStartTime);
       let duration = this.durationAsMilliseconds(this.kDuration) / 1000;
       const source = this.munsterAudioContext.createBufferSource();
+      source.playbackRate.value = this.playBackSpeedNormal ? 1 : .85;
       source.buffer = this.munsterAudioBuff;
       source.connect(this.munsterAudioContext.destination);
       source.start(0, startTime, duration)
@@ -81,6 +105,7 @@ export default {
       let duration = this.durationAsMilliseconds(this.connDuration) / 1000;
       const source = this.connaughtAudioContext.createBufferSource();
       source.buffer = this.connaughtAudioBuff;
+      source.playbackRate.value = this.playBackSpeedNormal ? 1 : .85;
       source.connect(this.connaughtAudioContext.destination);
       source.start(0, startTime, duration);
     },
@@ -89,6 +114,7 @@ export default {
       let duration = this.durationAsMilliseconds(this.uladhDuration) / 1000;
       const source = this.ulsterAudioContext.createBufferSource();
       source.buffer = this.ulsterAudioBuff;
+      source.playbackRate.value = this.playBackSpeedNormal ? 1 : .85;
       source.connect(this.ulsterAudioContext.destination);
       source.start(0, startTime, duration);
     }
@@ -125,13 +151,21 @@ export default {
 
     margin-left: .5rem;
 
-    max-width: 100vw;
-    overflow-x: scroll;
-    -ms-overflow-style: none;  /* Internet Explorer 10+ */
-    scrollbar-width: none;  /* Firefox */
+    &-HintButton {
+      border-top-left-radius: 0;
+      border-bottom-left-radius: 0;
+      color: $stars-light-mode;
+    }
+
+    &-SoundButtons {
+      max-width: 100vw;
+      overflow-x: scroll;
+      -ms-overflow-style: none;  /* Internet Explorer 10+ */
+      scrollbar-width: none;  /* Firefox */
 
     &::-webkit-scrollbar { 
       display: none;  /* Safari and Chrome */
+    }
     }
 
     .Audio-Btn {

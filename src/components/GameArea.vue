@@ -20,7 +20,7 @@ export default {
     kStartTime: String,
     kDuration: String,
     file: String,
-    definitions: Array,
+    definition: String,
     tileTimeouts: Boolean
   },
   data(){
@@ -154,6 +154,7 @@ export default {
         :k-duration="kDuration"
         :start-time="startTime"
         :duration="duration"
+        :definition="definition"
         :file="'./Litreach-Leachtanch13.mp3'"
       />
   </div>
