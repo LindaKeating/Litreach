@@ -6,7 +6,7 @@
   }
 </script>
 <template>
-  <li class="KeyboardLetter keyboard-letter">{{ letter }}<slot></slot></li>
+  <button li class="KeyboardLetter keyboard-letter">{{ letter }}<slot></slot></button>
 </template>
 <style lang="scss" scoped>
 
@@ -14,6 +14,9 @@
 @import "../assets/variables.scss";
 
 .KeyboardLetter {
+    display: flex;
+    justify-content: center;
+    align-items: center;
     list-style: none;
     text-align: center;
     background: #fff;
@@ -22,15 +25,15 @@
     -webkit-border-radius: 2px;
     margin: 0 3px 3px 0;
     min-width: 8vw;
-    height: 8vh;
+    height: 11vh;
     min-height: 35px;
     max-height: 40px;
-    line-height: 2.3;
     text-transform: uppercase;
     font-weight: 700;
 }
 
 .EnterKey {
+  font-size: 15px;
   padding-left: 1vw;
   padding-right: 1vw;
 }

@@ -49,8 +49,8 @@
 <template>
     <div 
       v-if="this.currentRound < 5"
-      class="keyboard Keyboard">
-          <ul class="keyboard-row">
+      class="keyboard Keyboard mt-2">
+          <ul class="keyboard-row text-dark">
             <KeyboardLetter
               @click="this.$emit('addLetterToBoard', 'á');"
               :letter="'á'" />
@@ -189,10 +189,10 @@ ul.answer-row {
 }
 
 .keyboard {
-    position: absolute;
-    bottom: 0;
-    left: 0; 
-    right: 0; 
+  //  position: absolute;
+  //  bottom: 0;
+  //  left: 0; 
+  //  right: 0; 
     margin-left: auto; 
     margin-right: auto; 
     width: 100vw; /* Need a specific value to work */

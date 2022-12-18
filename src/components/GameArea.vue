@@ -164,13 +164,13 @@ export default {
   @import "../assets/variables.scss";
   @import "../assets/breakpoints.scss";
 
-  .gameContainer {
+ /* .gameContainer {
       position: absolute;
       top: 26%;
       left: 50%;
       margin-right: -50%;
       transform: translate(-50%, -27%);
-  }
+  }*/
 
   ul.answer-row {
     display: flex;
@@ -196,9 +196,9 @@ export default {
 }
 
 @media (min-height: $height-breakpoint-667) {
-  .gameContainer {
+ /* .gameContainer {
     transform: translate(-50%, -32%);
-  }
+  }*/
 }
 
 

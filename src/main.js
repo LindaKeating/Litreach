@@ -10,7 +10,7 @@ import './assets/main.css';
 import { library } from "@fortawesome/fontawesome-svg-core";
 import { fas, faPhone , faStar, faChartLine, faEnvelope, faCirclePlay } from "@fortawesome/free-solid-svg-icons";
 import { far, faStar as farStar } from "@fortawesome/free-regular-svg-icons";
-import { faCircleE , faWaveformLines, faLightbulbExclamationOn} from "@fortawesome/pro-solid-svg-icons";
+import { faCircleE , faWaveformLines, faLightbulbExclamationOn, faGaugeLow, faGauge } from "@fortawesome/pro-solid-svg-icons";
 import { faCircle1, faCircle2, faCircle3, faCircle4, faCircle5 } from "@fortawesome/pro-solid-svg-icons";
 import { faDeleteLeft } from "@fortawesome/pro-regular-svg-icons";
 
@@ -31,7 +31,9 @@ library.add(
   faDeleteLeft,
   faCirclePlay,
   faWaveformLines,
-  faLightbulbExclamationOn
+  faLightbulbExclamationOn,
+  faGaugeLow,
+  faGauge
   );
 
 import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";

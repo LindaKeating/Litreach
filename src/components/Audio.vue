@@ -25,14 +25,15 @@
       <button 
         @click="togglePlayBackSpeed()"
         :class="!this.playBackSpeedNormal ? 'active': ''"
-        class="btn btn-outline-secondary">0.85</button>
+        class="btn btn-outline-secondary btn-sm"><font-awesome-icon icon="fa-solid fa-gauge-low" /> 0.85x </button>
       <button 
         @click="togglePlayBackSpeed()"
         :class="this.playBackSpeedNormal ? 'active': ''"
-        class="btn btn-outline-secondary">Gnáth luas</button>
+        class="btn btn-outline-secondary btn-sm"><font-awesome-icon icon="fa-solid fa-gauge" /> Gnáthluas</button>
       <Popper arrow placement="top" :content="definition">
         <button class="btn btn-outline-secondary Audio-HintButton">
           <font-awesome-icon icon="fa-solid fa-lightbulb-exclamation-on" />
+          Sainmhíniú
         </button>
       </Popper>
     </div>
