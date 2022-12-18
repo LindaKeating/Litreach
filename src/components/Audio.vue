@@ -25,11 +25,11 @@
       <button 
         @click="togglePlayBackSpeed()"
         :class="!this.playBackSpeedNormal ? 'active': ''"
-        class="btn btn-outline-secondary">0.75</button>
+        class="btn btn-outline-secondary">0.85</button>
       <button 
         @click="togglePlayBackSpeed()"
         :class="this.playBackSpeedNormal ? 'active': ''"
-        class="btn btn-outline-secondary">Normal</button>
+        class="btn btn-outline-secondary">Gnáth luas</button>
       <Popper arrow placement="top" :content="definition">
         <button class="btn btn-outline-secondary Audio-HintButton">
           <font-awesome-icon icon="fa-solid fa-lightbulb-exclamation-on" />
