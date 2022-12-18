@@ -67,6 +67,10 @@
 }
 
 @media (prefers-color-scheme: dark) {
+
+  .KeyboardLetter {
+    color: var(--color-text);
+  }
     .GameLetter {
       border: 1px solid $vt-c-black-mute;
       background-color: $vt-c-indigo;
