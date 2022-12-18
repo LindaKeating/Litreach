@@ -76,7 +76,7 @@ export default {
 </script>
 
 <template>
-    <div class="gameContainer GameArea">
+    <div class="gameContainer GameArea margin-top">
       <div>
         <ul class="answer-row">
             <Letter 

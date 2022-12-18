@@ -1,5 +1,5 @@
 <template>
-  <div class="Audio btn-group-container">
+  <div class="Audio btn-group-container margin-top">
     <div class="Audio-SoundButtons">
       <div class="btn-group btn-group" role="group" aria-label="Basic example">
       <button 
@@ -21,7 +21,7 @@
     </div>
     </div>
     
-    <div class="btn-group mt-2" >
+    <div class="btn-group margin-top" >
       <button 
         @click="togglePlayBackSpeed()"
         :class="!this.playBackSpeedNormal ? 'active': ''"

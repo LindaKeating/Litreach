@@ -80,3 +80,7 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
+
+.margin-top {
+  margin-top: 2vh;
+}

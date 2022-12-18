@@ -49,7 +49,7 @@
 <template>
     <div 
       v-if="this.currentRound < 5"
-      class="keyboard Keyboard mt-2">
+      class="keyboard Keyboard margin-top">
           <ul class="keyboard-row text-dark">
             <KeyboardLetter
               @click="this.$emit('addLetterToBoard', 'á');"
