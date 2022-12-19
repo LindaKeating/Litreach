@@ -24,7 +24,7 @@
     -moz-border-radius: 2px;
     -webkit-border-radius: 2px;
     margin: 0 3px 3px 0;
-    min-width: 8vw;
+    min-width: 7vw;
     height: 11vh;
     min-height: 35px;
     max-height: 40px;
@@ -42,7 +42,6 @@
 
 @media (min-width: $grid-breakpoints-md){
   .KeyboardLetter {
-    min-width: 40px !important;
   }
 }
 
@@ -50,20 +49,10 @@
 @media (min-height: $height-breakpoint-568) {
   .KeyboardLetter {
     max-height: 50px;
-    font-size: 20px;
-    line-height: 2;
   }
 }
 
 @media (min-height: $height-breakpoint-667) {
-  .KeyboardLetter {
-    font-size: 22px;
-    line-height: 2.2;
-
-    &.EnterKey {
-      line-height: 2.9;;
-    }
-  }
 }
 
 @media (prefers-color-scheme: dark) {
