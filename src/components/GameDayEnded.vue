@@ -101,20 +101,14 @@
           let c = element.attempts.toString();
           shareString += convertAttemptsToStars(c);   
         });
-        navigator.permissions.query({name: "clipboard-write"}).then((result) => {
-          if (result.state === "granted" || result.state === "prompt") {
-            navigator.clipboard
-            .writeText(shareString)
-            .then(() => {
-              this.$toast.info(`Tá do torthaí cóipeálta chuig an clipboard `, {
-                position: 'top'
-              });
-            })
-            .catch(() => {
-              alert("something went wrong");
-            });
-          }
-        }); 
+
+        navigator.clipboard.writeText(shareString).then((result) => {
+          this.$toast.info(`Tá do torthaí cóipeálta chuig an clipboard `, {
+            position: 'top'
+          }, function () {
+            console.log('heuston there was a problem')
+          })
+        })
       }
     },
     data: function() {
