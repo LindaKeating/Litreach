@@ -34,7 +34,6 @@
 }
 
 .EnterKey {
-  font-size: 15px;
   padding-left: 1vw;
   padding-right: 1vw;
 }

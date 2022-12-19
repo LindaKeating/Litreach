@@ -211,21 +211,12 @@ ul.answer-row {
   .keyboard-letter {
     background-color: $vt-c-indigo;
     border: 1px solid $vt-c-black-mute;
-
-    &.EnterKey {
-      font-size: 14px;
-      line-height: 3;
-    }
   }
 
 }
 
 @media (min-height: $height-breakpoint-667) {
   .keyboard-letter {
-    &.EnterKey {
-      font-size: 16px;
-    }
-    
   }
 }
 </style>
