@@ -30,6 +30,7 @@
     max-height: 40px;
     text-transform: uppercase;
     font-weight: 700;
+    font-size: 17px;
 }
 
 .EnterKey {
