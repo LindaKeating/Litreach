@@ -261,7 +261,8 @@
       :todaysAttempt="data.todaysAttempts"/>
     <GameRoundEnded 
       @modalOpenState="openModal"
-      v-if="!gameEnded && data.currentModal === 'GameRoundEnded'"
+      v-if="data.currentModal === 'GameRoundEnded'"
+      :dark-mode="data.darkMode"
       :todaysAttempts="data.todaysAttempts"
       :boardState="data.boardState"
       :darkMode="data.darkMode"
