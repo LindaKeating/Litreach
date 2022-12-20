@@ -160,6 +160,10 @@
           theme: {
             mode: this.darkMode ? 'dark': 'light',
             palette: 'palette10',
+          },
+          yaxis: {
+            max: 100,
+            forceNiceScale: true,
           }
         },
         series: [{
