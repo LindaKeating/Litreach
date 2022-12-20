@@ -24,7 +24,7 @@
     -moz-border-radius: 2px;
     -webkit-border-radius: 2px;
     margin: 0 3px 3px 0;
-    min-width: 7vw;
+    width: 7vw;
     min-height: 58px;
     text-transform: uppercase;
     font-weight: 700;
@@ -34,6 +34,7 @@
 .EnterKey {
   padding-left: 1vw;
   padding-right: 1vw;
+  width: auto;
 }
 
 
