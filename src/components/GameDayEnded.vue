@@ -166,6 +166,7 @@
           name: "Litreach",
           data: this.dailyAverages()
         }],
+        time: diff
       };
     },
   }
