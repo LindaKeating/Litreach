@@ -25,9 +25,7 @@
     -webkit-border-radius: 2px;
     margin: 0 3px 3px 0;
     min-width: 7vw;
-    height: 11vh;
-    min-height: 35px;
-    max-height: 40px;
+    min-height: 58px;
     text-transform: uppercase;
     font-weight: 700;
     font-size: 12px;
@@ -52,7 +50,12 @@
   }
 }
 
-@media (min-height: $height-breakpoint-667) {
+@media (min-width: $width-breakpoint-iphone4-5-SE) {
+
+  .KeyboardLetter {
+    margin: 0 5px 5px 0;
+    font-size: 15px;
+  }
 }
 
 @media (prefers-color-scheme: dark) {
@@ -60,7 +63,8 @@
   .KeyboardLetter {
     color: var(--color-text);
   }
-    .GameLetter {
+  
+  .GameLetter {
       border: 1px solid $vt-c-black-mute;
       background-color: $vt-c-indigo;
     }
