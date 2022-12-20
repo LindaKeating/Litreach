@@ -60,7 +60,9 @@
   export default {
     props: {
       statistics: Object,
-      todaysAttempt: Array
+      todaysAttempt: Array,
+      height: String,
+      darkMode: Boolean
     },
     data() {
       return {
@@ -84,14 +86,14 @@
             }  
           }
           let sumOfDayAttempts = dayAttempts.reduce((a, b) => a + b, 0);
-          dailyAverages.push(sumOfDayAttempts / 5);
+          dailyAverages.push(sumOfDayAttempts / 5 );
         }
         return dailyAverages;
       },
       dailyLabels() {
         let dailyLabels = [];
         for (const [key, value ] of Object.entries(this.statistics)) {
-          dailyLabels.push(key.toString());
+          dailyLabels.push('Lá: ' + key.toString());
         }
         return dailyLabels;
       },
@@ -125,27 +127,45 @@
           chart: {
             id: "vuechart-example",
             type: 'line',
-            height: 350,
+            height: this.height,
+            width: '100%;',
             zoom: {
               enabled: false
             },
             toolbar: { show: false }
           },
+          colors: ['#ffd400'],
           grid: {
-            row: {
-              colors: ['#f3f3f3', 'transparent'], // takes an array which will be repeated on columns
-              opacity: 0.5
-            },
+            show: false
           },
           xaxis: {
             categories: this.dailyLabels(),
           },
+          yaxis: {
+            title: 'daily %'
+          },
+          tooltip: {
+            y: {
+              title: {
+                formatter: (seriesName) => '%',
+              }
+            },
+            x: {
+              show: false
+            }
+          },
+          legend: {
+            show: false
+          },
+          theme: {
+            mode: this.darkMode ? 'dark': 'light',
+            palette: 'palette10',
+          }
         },
         series: [{
           name: "Litreach",
           data: this.dailyAverages()
         }],
-        time: diff
       };
     },
   }

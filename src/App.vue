@@ -302,13 +302,22 @@
     :definition="data.definitions[data.currentRound]"
   />
   <GameDayEnded 
-    v-if="gameEnded"
+    class="App-GameDayEnded"
+    v-if="gameEnded || data.currentModal === 'GameDayEnded'"
+    :darkMode="data.darkMode"
+    :height="'400px'"
     :statistics="data.statistics"
     :todaysAttempt="data.todaysAttempts"/>
    
 </template>
 
-<style scoped>
+<style scoped lang="scss">
+
+.App{
+  &-GameDayEnded {
+    max-width: 500px;
+  }
+}
 header {
   line-height: 1.5;
 }
