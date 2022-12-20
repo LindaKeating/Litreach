@@ -24,11 +24,12 @@
     -moz-border-radius: 2px;
     -webkit-border-radius: 2px;
     margin: 0 3px 3px 0;
-    width: 7vw;
+    width: 6vw;
     min-height: 58px;
     text-transform: uppercase;
     font-weight: 700;
     font-size: 12px;
+    border-radius: 3px;
 }
 
 .EnterKey {
