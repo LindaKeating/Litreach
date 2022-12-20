@@ -256,16 +256,17 @@
     <HowToPlay 
       v-if="data.currentModal === 'HowToPlay'"/>
     <GameDayEnded 
-      v-if="gameEnded && data.currentModal === 'GameDayEnded'"
+      v-if="data.currentModal === 'GameDayEnded'"
       :statistics="data.statistics"
-      :todaysAttempt="data.todaysAttempts"/>
+      :todaysAttempt="data.todaysAttempts"
+      :darkMode="data.darkMode"/>
     <GameRoundEnded 
       @modalOpenState="openModal"
       v-if="data.currentModal === 'GameRoundEnded'"
       :dark-mode="data.darkMode"
       :todaysAttempts="data.todaysAttempts"
       :boardState="data.boardState"
-      :darkMode="data.darkMode"
+
       />
   </Modal>
   <Nav 
