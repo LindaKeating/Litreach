@@ -17,31 +17,29 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    list-style: none;
-    text-align: center;
     background: #fff;
     border: 1px solid $vt-c-black-mute;
-    -moz-border-radius: 2px;
-    -webkit-border-radius: 2px;
+    -moz-border-radius: 3px;
+    -webkit-border-radius: 3px;
     margin: 0 3px 3px 0;
-    width: 6vw;
+    width: 16px;
     min-height: 58px;
     text-transform: uppercase;
     font-weight: 700;
     font-size: 12px;
-    border-radius: 3px;
 }
 
 .EnterKey {
   padding-left: 1vw;
   padding-right: 1vw;
-  width: auto;
+  width: auto !important;
 }
 
 
 
 @media (min-width: $grid-breakpoints-md){
   .KeyboardLetter {
+
   }
 }
 
@@ -54,9 +52,12 @@
 
 @media (min-width: $width-breakpoint-iphone4-5-SE) {
 
+}
+
+@media (min-width: $width-breakpoint-iphone6) {
   .KeyboardLetter {
+    width: 7vw;
     margin: 0 5px 5px 0;
-    font-size: 15px;
   }
 }
 
