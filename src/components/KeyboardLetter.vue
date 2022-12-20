@@ -33,6 +33,7 @@
   padding-left: 1vw;
   padding-right: 1vw;
   width: auto !important;
+  max-width: 70px !important;
 }
 
 
@@ -56,7 +57,8 @@
 
 @media (min-width: $width-breakpoint-iphone6) {
   .KeyboardLetter {
-    width: 7vw;
+    width: 8vw;
+    max-width: 40px;
     margin: 0 5px 5px 0;
   }
 }
