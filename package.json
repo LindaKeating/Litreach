@@ -21,6 +21,7 @@
     "bootstrap": "^5.2.2",
     "stylus": "^0.59.0",
     "stylus-loader": "^3.0.2",
+    "tone": "^14.7.77",
     "vue": "^3.2.45",
     "vue3-apexcharts": "^1.4.1",
     "vue3-popper": "^1.5.0"

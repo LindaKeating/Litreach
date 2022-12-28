@@ -73,6 +73,12 @@
       }
     },
     methods: {
+      delay(ms) {
+        const startPoint = new Date().getTime();
+        while (new Date().getTime() - startPoint <= ms) {
+          /* wait */
+        }
+      },
       updateCurrentGuess (letter) {
         let currentRound = this.data.currentRound;
         if (this.data.currentGuess.length < this.data.todaysPuzzle[currentRound].length) {
@@ -231,6 +237,9 @@
       gameEnded() {
         return this.data.currentRound > 4 ? true : false;
       }
+    },
+    beforeMount() {
+      this.delay(1000);
     },
     mounted() {
 

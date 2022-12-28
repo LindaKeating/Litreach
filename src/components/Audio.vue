@@ -45,6 +45,8 @@ import uladhAudioFile from '../assets/Litreach-Leathanach13.mp3';
 import connAudioFile from '../assets/Litreach-Connacht-Leathanach13.mp3';
 import ciarraiAudioFile from '../assets/Ciarrai_Leathanach_13c.mp3';
 import { dictionary } from '../dictionary';
+import * as Tone from 'tone';
+import { ToneWithContext } from 'tone/build/esm/core/context/ToneWithContext';
 
 export default {
   props: {
@@ -95,28 +97,40 @@ export default {
     playMunster() {
       let startTime = this.startTimeSecsMillisecs(this.kStartTime);
       let duration = this.durationAsMilliseconds(this.kDuration) / 1000;
-      const source = this.munsterAudioContext.createBufferSource();
-      source.playbackRate.value = this.playBackSpeedNormal ? 1 : .85;
-      source.buffer = this.munsterAudioBuff;
-      source.connect(this.munsterAudioContext.destination);
+      const shift = new Tone.PitchShift().toDestination();
+      const source = new Tone.Player(this.munsterAudioBuff).connect(shift);
+     // const source = this.munsterAudioContext.createBufferSource();
+      source.playbackRate = this.playBackSpeedNormal ? 1 : 0.70710678;
+     // source.buffer = this.munsterAudioBuff;
+      this.playBackSpeedNormal ? shift.pitch = 0 : shift.pitch = 6;
+     // source.connect(this.munsterAudioContext.destination);
       source.start(0, startTime, duration)
     },
     playConnaght() {
       let startTime = this.startTimeSecsMillisecs(this.connStartTime);
       let duration = this.durationAsMilliseconds(this.connDuration) / 1000;
-      const source = this.connaughtAudioContext.createBufferSource();
-      source.buffer = this.connaughtAudioBuff;
-      source.playbackRate.value = this.playBackSpeedNormal ? 1 : .85;
-      source.connect(this.connaughtAudioContext.destination);
+      const shift = new Tone.PitchShift().toDestination();
+      const source = new Tone.Player(this.connaughtAudioBuff).connect(shift);
+     // const source = this.connaughtAudioContext.createBufferSource();
+     // source.buffer = this.connaughtAudioBuff;
+      source.playbackRate = this.playBackSpeedNormal ? 1 : 0.70710678;
+      this.playBackSpeedNormal ? shift.pitch = 0 : shift.pitch = 6;
       source.start(0, startTime, duration);
     },
     playUlster() {
       let startTime = this.startTimeSecsMillisecs(this.uladhStartTime);
       let duration = this.durationAsMilliseconds(this.uladhDuration) / 1000;
-      const source = this.ulsterAudioContext.createBufferSource();
-      source.buffer = this.ulsterAudioBuff;
-      source.playbackRate.value = this.playBackSpeedNormal ? 1 : .85;
-      source.connect(this.ulsterAudioContext.destination);
+      //const source = this.ulsterAudioContext.createBufferSource();
+      const shift = new Tone.PitchShift().toDestination();
+      let source = new Tone.Player(this.ulsterAudioBuff).connect(shift);
+      
+
+      //source.buffer = this.ulsterAudioBuff;
+      source.playbackRate = this.playBackSpeedNormal ? 1 : 0.70710678;
+     // let shift = this.playBackSpeedNormal ? new Tone.PitchShift(0) : new Tone.PitchShift(3);
+     // source.connect(this.ulsterAudioContext.destination);
+    //  source.connect(shift);
+      this.playBackSpeedNormal ? shift.pitch = 0 : shift.pitch = 6;
       source.start(0, startTime, duration);
     }
   },
