@@ -41,7 +41,7 @@
 </template>
 
 <script>
-import uladhAudioFile from '../assets/Litreach-Leathanach13.mp3';
+import uladhAudioFile from '../assets/Leathanach1-Normalised.mp3';
 import connAudioFile from '../assets/Litreach-Connacht-Leathanach13.mp3';
 import ciarraiAudioFile from '../assets/Ciarrai_Leathanach_13c.mp3';
 import { dictionary } from '../dictionary';
@@ -65,7 +65,7 @@ export default {
     return {
       audioPlayer: undefined,
       dictionary: dictionary,
-      ulsterSoundFile: '../assets/Litreach-Leathanach13.mp3',
+      ulsterSoundFile: '../assets/Leathanach1-Normalised.mp3',
       munsterAudioContext: undefined,
       munsterAudioBuff: undefined,
       ulsterAudioContext: undefined,
@@ -121,8 +121,9 @@ export default {
       let startTime = this.startTimeSecsMillisecs(this.uladhStartTime);
       let duration = this.durationAsMilliseconds(this.uladhDuration) / 1000;
       //const source = this.ulsterAudioContext.createBufferSource();
-      const shift = new Tone.PitchShift().toDestination();
-      let source = new Tone.Player(this.ulsterAudioBuff).connect(shift);
+      const shiftPitch = this.playBackSpeedNormal ? 0 : 6;
+      const shift = new Tone.PitchShift({pitch: shiftPitch}).toDestination();
+      let source = new Tone.Player(this.ulsterAudioBuff);
       
 
       //source.buffer = this.ulsterAudioBuff;
@@ -130,7 +131,9 @@ export default {
      // let shift = this.playBackSpeedNormal ? new Tone.PitchShift(0) : new Tone.PitchShift(3);
      // source.connect(this.ulsterAudioContext.destination);
     //  source.connect(shift);
-      this.playBackSpeedNormal ? shift.pitch = 0 : shift.pitch = 6;
+     // this.playBackSpeedNormal ? shift.pitch = 0 : shift.pitch = 6;
+      source.disconnect();
+      source.connect(shift);
       source.start(0, startTime, duration);
     }
   },
@@ -144,14 +147,14 @@ export default {
 
     (async () => {
       this.connaughtAudioContext= new (window.AudioContext || window.webkitAudioContext)();
-        const buffer = await fetch("./Litreach-Connacht-Leathanach13.mp3")
+        const buffer = await fetch("./Connacht-Leathanach1.mp3")
           .then( resp => resp.arrayBuffer());
           this.connaughtAudioBuff = await this.connaughtAudioContext.decodeAudioData(buffer);
     })(this.connaughtAudioContext, this.connaughtAudioBuff);
 
     (async () => {
       this.ulsterAudioContext= new (window.AudioContext || window.webkitAudioContext)();
-        const buffer = await fetch("./Litreach-Leathanach13.mp3")
+        const buffer = await fetch("./Leathanach1-Normalised.mp3")
           .then( resp => resp.arrayBuffer());
           this.ulsterAudioBuff = await this.ulsterAudioContext.decodeAudioData(buffer);
     })(this.ulsterAudioContext, this.ulsterAudioBuff);

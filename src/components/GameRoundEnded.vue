@@ -8,6 +8,7 @@
         <h5 
           :class="{ 'GameRoundEnded-DarkText': this.darkMode }"
           class="mb-1 GameRoundEnded-Text">{{ attempt.answer }}</h5>
+        <small class="GameRoundEnded-Definition">{{ attempt.definition }}</small>
         <Stars :attempts="attempt.attempts"/>
       </li>
     </ul>
@@ -50,10 +51,16 @@ export default {
 }
 </script>
 <style lang="scss" scoped>
+@import "../assets/variables.scss";
 
 .GameRoundEnded {
   display: flex;
   flex-direction: column;
+
+  &-Definition {
+      display: block;
+      color: $vt-c-text-dark-2;
+  }
 }
 
 @media (prefers-color-scheme: dark) { 
@@ -65,6 +72,7 @@ export default {
     &-DarkText {
       color: white;
     }
+
   }
 }
 </style>

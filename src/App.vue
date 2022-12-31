@@ -213,7 +213,8 @@
       updateTodaysAttemptsRecord() {
         this.data.todaysAttempts[this.data.currentRound] = {
           answer: this.data.todaysPuzzle[this.data.currentRound],
-          attempts: this.data.puzzlePosition.row
+          attempts: this.data.puzzlePosition.row,
+          definition: this.data.definitions[this.data.currentRound]
         }
       },
       updateStatistics() {
