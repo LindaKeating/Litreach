@@ -8,7 +8,7 @@
         <h5 
           :class="{ 'GameRoundEnded-DarkText': this.darkMode }"
           class="mb-1 GameRoundEnded-Text">{{ attempt.answer }}</h5>
-        <small class="GameRoundEnded-Definition">{{ attempt.definition }}</small>
+        <small class="GameRoundEnded-Definition"><i>{{ attempt.definition }}</i></small>
         <Stars :attempts="attempt.attempts"/>
       </li>
     </ul>

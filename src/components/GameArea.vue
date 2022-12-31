@@ -77,7 +77,7 @@ export default {
 
 <template>
     <div class="gameContainer GameArea margin-top">
-      <div>
+      <div class="GameArea-Rows">
         <ul class="answer-row">
             <Letter 
               data-row=0
@@ -199,6 +199,22 @@ export default {
  /* .gameContainer {
     transform: translate(-50%, -32%);
   }*/
+}
+
+// iphone 5
+@media (max-height: $height-breakpoint-568) {
+  .GameArea-Rows {
+    max-height: 80px;
+    overflow-y: auto;
+  }
+}
+
+// iphone 4
+@media (max-height: $height-breakpoint-480) {
+  .GameArea-Rows {
+    max-height: 65px;
+    overflow-y: auto;
+  }
 }
 
 

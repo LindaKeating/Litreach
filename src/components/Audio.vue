@@ -140,7 +140,7 @@ export default {
   mounted() {
     (async () => {
         this.munsterAudioContext = new (window.AudioContext || window.webkitAudioContext)();
-        const data_buf = await fetch("./Ciarrai_Leathanach_13c.mp3")
+        const data_buf = await fetch("./Kerry-Leathanach1.mp3")
           .then( resp => resp.arrayBuffer());
         this.munsterAudioBuff = await this.munsterAudioContext.decodeAudioData(data_buf);
       })(this.munsterAudioContext, this.munsterAudioBuff);
