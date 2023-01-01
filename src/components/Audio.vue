@@ -73,6 +73,19 @@ export default {
     }
   },
   methods: {
+    playWebAudioApi(startTime, duration, audioContext, buffer) {
+      const source = audioContext.createBufferSource();
+      source.buffer = buffer;
+      source.playbackRate.value = this.playBackSpeedNormal ? 1 : .85;
+      source.connect(audioContext.destination);
+      source.start(0, startTime, duration);
+    },
+    playHtmlAudio(url, startTime, endTime) {
+      const audio = new Audio(url + '#t=' + startTime + ',' + endTime);
+     // const audio = new Audio('./Leathanach1-Normalised.mp3' + '#t=' + 4.016 + ',' + 4.609);
+      audio.playbackRate = .75;
+      audio.play();
+    },
     togglePlayBackSpeed() {
       return this.playBackSpeedNormal = !this.playBackSpeedNormal;
     },
@@ -85,6 +98,10 @@ export default {
       let milliseconds = parseFloat(d.slice(-3));
       return ((minutes * 60) * 1000) + (seconds * 1000) + milliseconds;
     },
+    endTimeSecsMillisecs(startTime, duration) {
+      console.log((startTime + duration) - 0.1)
+      return startTime + duration - 0.2;
+    },
     startTimeSecsMillisecs(startTime) {
       let minutes = parseFloat(startTime.substring(0, startTime.indexOf(':')));
       let seconds = parseFloat(startTime.substring(startTime.indexOf(':') + 1, startTime.length));
@@ -93,31 +110,37 @@ export default {
     playMunster() {
       let startTime = this.startTimeSecsMillisecs(this.kStartTime);
       let duration = this.durationAsMilliseconds(this.kDuration) / 1000;
-      const shift = new Tone.PitchShift().toDestination();
+      let endTime = this.endTimeSecsMillisecs(startTime, duration);
+      this.playBackSpeedNormal ? this.playWebAudioApi(startTime, duration, this.munsterAudioContext, this.munsterAudioBuff) : this.playHtmlAudio('./Kerry-Leathanach1.mp3', startTime, endTime);;
+     /* const shift = new Tone.PitchShift().toDestination();
       const source = new Tone.Player(this.munsterAudioBuff).connect(shift);
       source.playbackRate = this.playBackSpeedNormal ? 1 : 0.70710678;
       this.playBackSpeedNormal ? shift.pitch = 0 : shift.pitch = 6;
-      source.start(0, startTime, duration)
+      source.start(0, startTime, duration) */
     },
     playConnaght() {
       let startTime = this.startTimeSecsMillisecs(this.connStartTime);
       let duration = this.durationAsMilliseconds(this.connDuration) / 1000;
-      const source = this.connaughtAudioContext.createBufferSource();
-      source.buffer = this.connaughtAudioBuff;
-      source.playbackRate.value = this.playBackSpeedNormal ? 1 : .85;
-      source.connect(this.connaughtAudioContext.destination);
-      source.start(0, startTime, duration);
+      let endTime = this.endTimeSecsMillisecs(startTime, duration);
+     // const source = this.connaughtAudioContext.createBufferSource();
+     // source.buffer = this.connaughtAudioBuff;
+      //source.playbackRate.value = this.playBackSpeedNormal ? 1 : .85;
+      this.playBackSpeedNormal ? this.playWebAudioApi(startTime, duration, this.connaughtAudioContext, this.connaughtAudioBuff) : this.playHtmlAudio('./Connacht-Leathanach1.mp3', startTime, endTime);
+     // source.connect(this.connaughtAudioContext.destination);
+    //  source.start(0, startTime, duration);
     },
     playUlster() {
       let startTime = this.startTimeSecsMillisecs(this.uladhStartTime);
       let duration = this.durationAsMilliseconds(this.uladhDuration) / 1000;
-      const shiftPitch = this.playBackSpeedNormal ? 0 : 6;
+      let endTime = this.endTimeSecsMillisecs(startTime, duration);
+      this.playBackSpeedNormal ? this.playWebAudioApi(startTime, duration, this.ulsterAudioContext, this.ulsterAudioBuff) : this.playHtmlAudio('./Leathanach1-Normalised.mp3', startTime, endTime);
+      /*const shiftPitch = this.playBackSpeedNormal ? 0 : 6;
       const shift = new Tone.PitchShift({pitch: shiftPitch}).toDestination();
       let source = new Tone.Player(this.ulsterAudioBuff);
       source.playbackRate = this.playBackSpeedNormal ? 1 : 0.70710678;
       source.disconnect();
       source.connect(shift);
-      source.start(0, startTime, duration);
+      source.start(0, startTime, duration);*/
     }
   },
   mounted() {
