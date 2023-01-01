@@ -25,7 +25,7 @@
       <button 
         @click="togglePlayBackSpeed()"
         :class="!this.playBackSpeedNormal ? 'active': ''"
-        class="btn btn-outline-secondary btn-sm"><font-awesome-icon icon="fa-solid fa-gauge-low" /> 0.85x </button>
+        class="btn btn-outline-secondary btn-sm"><font-awesome-icon icon="fa-solid fa-gauge-low" /> 0.75x </button>
       <button 
         @click="togglePlayBackSpeed()"
         :class="this.playBackSpeedNormal ? 'active': ''"
@@ -100,7 +100,7 @@ export default {
     },
     endTimeSecsMillisecs(startTime, duration) {
       console.log((startTime + duration) - 0.1)
-      return startTime + duration - 0.2;
+      return startTime + duration - 0.3;
     },
     startTimeSecsMillisecs(startTime) {
       let minutes = parseFloat(startTime.substring(0, startTime.indexOf(':')));
