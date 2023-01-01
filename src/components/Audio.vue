@@ -102,10 +102,10 @@ export default {
     playConnaght() {
       let startTime = this.startTimeSecsMillisecs(this.connStartTime);
       let duration = this.durationAsMilliseconds(this.connDuration) / 1000;
-      const shift = new Tone.PitchShift().toDestination();
-      const source = new Tone.Player(this.connaughtAudioBuff).connect(shift);
-      source.playbackRate = this.playBackSpeedNormal ? 1 : 0.70710678;
-      this.playBackSpeedNormal ? shift.pitch = 0 : shift.pitch = 6;
+      const source = this.connaughtAudioContext.createBufferSource();
+      source.buffer = this.connaughtAudioBuff;
+      source.playbackRate.value = this.playBackSpeedNormal ? 1 : .85;
+      source.connect(this.connaughtAudioContext.destination);
       source.start(0, startTime, duration);
     },
     playUlster() {
