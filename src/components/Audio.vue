@@ -100,7 +100,7 @@ export default {
     },
     endTimeSecsMillisecs(startTime, duration) {
       console.log((startTime + duration) - 0.1)
-      return startTime + duration - 0.3;
+      return startTime + duration - 0.2;
     },
     startTimeSecsMillisecs(startTime) {
       let minutes = parseFloat(startTime.substring(0, startTime.indexOf(':')));

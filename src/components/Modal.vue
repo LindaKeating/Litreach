@@ -41,7 +41,7 @@
             return 'Tacaíocht';
             break;
           case 'HowToPlay':
-            return 'Conas Imirt';
+            return 'Treoracha';
             break;
           case 'GameDayEnded':
             return 'Torthaí';

@@ -105,7 +105,7 @@
         });
 
         navigator.clipboard.writeText(shareString).then((result) => {
-          this.$toast.info(`Tá do torthaí cóipeálta chuig an clipboard `, {
+          this.$toast.info(`Tá na torthaí cóipeáilta chuig an ghearrthaisce `, {
             position: 'top'
           }, function () {
             console.log('heuston there was a problem')
