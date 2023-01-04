@@ -69,12 +69,6 @@
           </ul>
           <ul class="keyboard-row">
             <KeyboardLetter
-              @click="this.$emit('addLetterToBoard', 'q');"
-              :letter="'q'" />
-            <KeyboardLetter
-              @click="this.$emit('addLetterToBoard', 'w');"
-              :letter="'w'" />
-            <KeyboardLetter
               @click="this.$emit('addLetterToBoard', 'e');"
               :letter="'e'" />
             <KeyboardLetter
@@ -83,9 +77,6 @@
             <KeyboardLetter
               @click="this.$emit('addLetterToBoard', 't');"
               :letter="'t'" />
-            <KeyboardLetter
-              @click="this.$emit('addLetterToBoard', 'y');"
-              :letter="'y'" />
             <KeyboardLetter
               @click="this.$emit('addLetterToBoard', 'u');"
               :letter="'u'" />
@@ -119,12 +110,6 @@
               @click="this.$emit('addLetterToBoard', 'h');"
               :letter="'h'" />
             <KeyboardLetter
-              @click="this.$emit('addLetterToBoard', 'j');"
-              :letter="'j'" />
-            <KeyboardLetter
-              @click="this.$emit('addLetterToBoard', 'k');"
-              :letter="'k'" />
-            <KeyboardLetter
               @click="this.$emit('addLetterToBoard', 'l');"
               :letter="'l'" />
           </ul>
@@ -133,13 +118,7 @@
               class="EnterKey"
               @click="this.$emit('submitWordAttempt');"
               @keyup.enter="this.$emit('EnterKey', 'CheckRow')"
-              :letter="'TOMHAS'" />
-              <KeyboardLetter
-              @click="this.$emit('addLetterToBoard', 'z');"
-              :letter="'z'" />
-            <KeyboardLetter
-              @click="this.$emit('addLetterToBoard', 'x');"
-              :letter="'x'" />
+              :letter="'LITRIGH'" />
             <KeyboardLetter
               @click="this.$emit('addLetterToBoard', 'c');"
               :letter="'c'" />

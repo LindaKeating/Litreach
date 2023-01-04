@@ -43,6 +43,7 @@
       </countdown>
       <button 
         @click="copyToClipBoard"
+        title="Cóipeáil chuig an gearrthaisce"
         class="btn btn-secondary btn-block mt-3">Roinn</button>
     </div>
     
@@ -105,7 +106,7 @@
         });
 
         navigator.clipboard.writeText(shareString).then((result) => {
-          this.$toast.info(`Tá na torthaí cóipeáilta chuig an ghearrthaisce `, {
+          this.$toast.info(`Tá na torthaí cóipeáilte chuig an ghearrthaisce `, {
             position: 'top'
           }, function () {
             console.log('heuston there was a problem')

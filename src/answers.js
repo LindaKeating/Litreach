@@ -1,5 +1,5 @@
 const definitions = [
-'bronnadh, soláthar ',
+'bronnadh, soláthar',
 'an fad ama a bhaineann sé as an domhan dul timpeall na gréine',
 'ceadaithe ',
 'ón áit amuigh go dtí an áit istigh',

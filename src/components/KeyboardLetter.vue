@@ -27,6 +27,7 @@
     text-transform: uppercase;
     font-weight: 700;
     font-size: 12px;
+    touch-action: manipulation;
 }
 
 .EnterKey {
@@ -34,6 +35,7 @@
   padding-right: 1vw;
   width: auto !important;
   max-width: 70px !important;
+  color: #ffd400 !important;
 }
 
 

@@ -11,7 +11,6 @@
   import GameDayEnded from './components/GameDayEnded.vue'
   import HowToPlay from './components/HowToPlay.vue'
   import Support from './components/Support.vue'
-  import Audio from './components/Audio.vue'
   import { dictionary } from './dictionary';
 
   let darkMode = window.matchMedia('(prefers-color-scheme: dark)').matches;
@@ -73,12 +72,6 @@
       }
     },
     methods: {
-      delay(ms) {
-        const startPoint = new Date().getTime();
-        while (new Date().getTime() - startPoint <= ms) {
-          /* wait */
-        }
-      },
       updateCurrentGuess (letter) {
         let currentRound = this.data.currentRound;
         if (this.data.currentGuess.length < this.data.todaysPuzzle[currentRound].length) {
@@ -118,7 +111,7 @@
             this.$toast.error(this.data.dictionary.AppToastWrongAnswer.ga, {
               position: 'top'
             });
-          }, (this.data.todaysPuzzle[currentRound].length + 1) * 250); 
+          }, ((this.data.todaysPuzzle[currentRound].length + 1) * 250) + 1000); 
 
           // set which row is wrong
           this.data.incorrectGuessRow = this.data.puzzlePosition.row;
@@ -231,19 +224,14 @@
       GameDayEnded,
       HowToPlay,
       Support,
-      VueToastr,
-      Audio
+      VueToastr
     },
     computed: {
       gameEnded() {
         return this.data.currentRound > 4 ? true : false;
       }
     },
-    beforeMount() {
-      this.delay(1000);
-    },
     mounted() {
-
       if(!this.data.lastPlayedDate || this.data.lastPlayedDate !== todaysDOY) {
         this.data.boardState = initialPuzzleState.boardState;
         this.data.todaysAttempts = initialPuzzleState.todaysAttempts;

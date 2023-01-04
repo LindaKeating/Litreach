@@ -12,6 +12,7 @@
               </div>
               <button 
                 class="btn btn-secondary"
+                title="Dún"
                 @click.prevent="close">x</button>
             </div>
             <div class="modal-body">

@@ -25,11 +25,11 @@ const dictionary = {
   },
   SupportBrowser: {
     en: "Your browser and system details will automatically be included in the email, but please do not delete them when sending the email",
-    ga: "Seolfar ar aghaidh sonraí do bhrabhsálaí agus do chórais go huathoibrithe leis an ríomhphost. Le do thoil, ná scrios na sonraí ón ríomhphost nuair atá tú ásheoladh."
+    ga: "Má úsáideann tú an nasc thuas, seolfar sonraí do bhrabhsálaí agus do chórais chugainn leis an ríomhphost, rud a chuideoidh linn an fhadhb a réiteach - ná scrios na sonraí seo ón ríomhphost nuair atá tú á sheoladh, le do thoil."
   },
   SupportHelpMsg: {
     en: "We will do our best to resolve any issue you have and answer any questions you have as soon as possible",
-    ga: "Déanfaidh muid ár ndícheall aon fhadhb a réiteach agus do cheisteanna a fhreagairt chomh luath agus is féidir."
+    ga: "Déanfaidh muid ár ndícheall aon fhadhb a réiteach agus ceisteanna a fhreagairt chomh luath agus is féidir."
   },
   AudioMunster: {
     en: "Munster",
@@ -73,7 +73,7 @@ const dictionary = {
   },
   AppToastWrongAnswer: {
     en: "Unlucky, that is not the right spelling",
-    ga: "Mí-ádh, níor litríodh i gceart é"
+    ga: "Mí-ádh, Triail arís é!"
   }
   
 

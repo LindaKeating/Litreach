@@ -23,17 +23,20 @@
         <div class="btn-group" role="group" aria-label="Basic example">
           <button 
             @click="this.$emit('setCurrentModal', 'HowToPlay');"
-            type="button" 
+            type="button"
+            title="Treoracha"
             class="Nav-MenuBtn btn btn-secondary">
-            <font-awesome-icon icon="fa-solid fa-circle-e" />
+            <font-awesome-icon icon="fa-regular fa-circle-question" />
           </button>
           <button
             @click="this.$emit('setCurrentModal', 'Support');" 
             type="button" 
+            title="Tacaíocht"
             class="Nav-MenuBtn btn btn-secondary"><font-awesome-icon icon="fa-solid fa-envelope" /></button>
           <button 
             @click="this.$emit('setCurrentModal', 'GameDayEnded');"
             type="button" 
+            title="Torthaí"
             class="Nav-MenuBtn btn btn-secondary"><font-awesome-icon icon="fa-solid fa-chart-line" /></button>
         </div>
       </div>

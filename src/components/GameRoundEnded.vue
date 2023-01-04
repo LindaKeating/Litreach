@@ -14,6 +14,7 @@
     </ul>
     <button 
       @click.prevent="close"
+      title="Ar aghaidh"
       class="mt-3 btn btn-secondary">{{dictionary.GameRoundEndedNextRoundButton.ga}}</button>
   </div>
 </template>

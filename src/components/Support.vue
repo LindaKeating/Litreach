@@ -1,9 +1,10 @@
 <template>
   <div class="Support">
     <p className="SettingModal-paragraph">             
-      Tabhair le fios dúinn, le do thoil, má thugann tú faoi deara aon rud nach bhfuil ag obair i gceart, trí
-        <a :href="`mailto:linda.mary.keating@gmail.com?subject=Fadhb le Litreach&body=**** Seo iad mo shonraí width:${screenWidth} height:${screenHeight} userAgent:${userAgent} platform:${platform} vendor:${vendor} version: ${version}`"> ríomhphost a chur </a> chugainn. 
-               Mínigh, chomh cruinn agus is féidir, caidé nach bhfuil ag obair duit agus déanfaidh muid ár ndícheall é a chóiriú chomh luath agus is féidir.
+      Má thugann tú faoi deara rud ar bith faoin chluiche seo nach bhfuil ag obair i gceart, bheadh
+muid buíoch dá gcuirfeá ar an eolas muid trí
+        <a :href="`mailto:linda.mary.keating@gmail.com?subject=Fadhb le Litreach&body=**** Seo iad mo shonraí width:${screenWidth} height:${screenHeight} userAgent:${userAgent} platform:${platform} vendor:${vendor} version: ${version}`"> ríomhphost a sheoladh </a> chugainn. 
+               Mínigh an fhadhb, chomh cruinn agus is féidir, agus déanfaidh muid ár ndícheall é a chóiriú chomh luath agus is féidir linn.
     </p>
     <p>{{ dictionary.SupportBrowser.ga }}</p>
     <p>{{ dictionary.SupportHelpMsg.ga }}</p>

@@ -30,8 +30,11 @@
         @click="togglePlayBackSpeed()"
         :class="this.playBackSpeedNormal ? 'active': ''"
         class="btn btn-outline-secondary btn-sm"><font-awesome-icon icon="fa-solid fa-gauge" /> Gnáthluas</button>
-      <Popper arrow placement="top" :content="definition">
-        <button class="btn btn-outline-secondary Audio-HintButton">
+      <Popper arrow placement="top" 
+          :content="definition"
+          :show="showPopper">
+        <button class="btn btn-outline-secondary Audio-HintButton"
+          @click="togglePopper">
           <font-awesome-icon icon="fa-solid fa-lightbulb-exclamation-on" />
           Sainmhíniú
         </button>
@@ -42,8 +45,6 @@
 
 <script>
 import { dictionary } from '../dictionary';
-import * as Tone from 'tone';
-import { ToneWithContext } from 'tone/build/esm/core/context/ToneWithContext';
 
 export default {
   props: {
@@ -69,10 +70,14 @@ export default {
       connaughtAudioContext: undefined,
       connaughtAudioBuff: undefined,
       showPopper: true,
-      playBackSpeedNormal: true
+      playBackSpeedNormal: true,
+      showPopper: false
     }
   },
   methods: {
+    togglePopper() {
+      return this.showPopper = !this.showPopper;
+    },
     playWebAudioApi(startTime, duration, audioContext, buffer) {
       const source = audioContext.createBufferSource();
       source.buffer = buffer;
@@ -82,7 +87,6 @@ export default {
     },
     playHtmlAudio(url, startTime, endTime) {
       const audio = new Audio(url + '#t=' + startTime + ',' + endTime);
-     // const audio = new Audio('./Leathanach1-Normalised.mp3' + '#t=' + 4.016 + ',' + 4.609);
       audio.playbackRate = .75;
       audio.play();
     },
@@ -112,45 +116,28 @@ export default {
       let duration = this.durationAsMilliseconds(this.kDuration) / 1000;
       let endTime = this.endTimeSecsMillisecs(startTime, duration);
       this.playBackSpeedNormal ? this.playWebAudioApi(startTime, duration, this.munsterAudioContext, this.munsterAudioBuff) : this.playHtmlAudio('./Kerry-Leathanach1.mp3', startTime, endTime);;
-     /* const shift = new Tone.PitchShift().toDestination();
-      const source = new Tone.Player(this.munsterAudioBuff).connect(shift);
-      source.playbackRate = this.playBackSpeedNormal ? 1 : 0.70710678;
-      this.playBackSpeedNormal ? shift.pitch = 0 : shift.pitch = 6;
-      source.start(0, startTime, duration) */
     },
     playConnaght() {
       let startTime = this.startTimeSecsMillisecs(this.connStartTime);
       let duration = this.durationAsMilliseconds(this.connDuration) / 1000;
       let endTime = this.endTimeSecsMillisecs(startTime, duration);
-     // const source = this.connaughtAudioContext.createBufferSource();
-     // source.buffer = this.connaughtAudioBuff;
-      //source.playbackRate.value = this.playBackSpeedNormal ? 1 : .85;
       this.playBackSpeedNormal ? this.playWebAudioApi(startTime, duration, this.connaughtAudioContext, this.connaughtAudioBuff) : this.playHtmlAudio('./Connacht-Leathanach1.mp3', startTime, endTime);
-     // source.connect(this.connaughtAudioContext.destination);
-    //  source.start(0, startTime, duration);
     },
     playUlster() {
       let startTime = this.startTimeSecsMillisecs(this.uladhStartTime);
       let duration = this.durationAsMilliseconds(this.uladhDuration) / 1000;
       let endTime = this.endTimeSecsMillisecs(startTime, duration);
       this.playBackSpeedNormal ? this.playWebAudioApi(startTime, duration, this.ulsterAudioContext, this.ulsterAudioBuff) : this.playHtmlAudio('./Leathanach1-Normalised.mp3', startTime, endTime);
-      /*const shiftPitch = this.playBackSpeedNormal ? 0 : 6;
-      const shift = new Tone.PitchShift({pitch: shiftPitch}).toDestination();
-      let source = new Tone.Player(this.ulsterAudioBuff);
-      source.playbackRate = this.playBackSpeedNormal ? 1 : 0.70710678;
-      source.disconnect();
-      source.connect(shift);
-      source.start(0, startTime, duration);*/
     }
   },
   mounted() {
-    (async () => {
+ (async () => {
         this.munsterAudioContext = new (window.AudioContext || window.webkitAudioContext)();
         const data_buf = await fetch("./Kerry-Leathanach1.mp3")
           .then( resp => resp.arrayBuffer());
         this.munsterAudioBuff = await this.munsterAudioContext.decodeAudioData(data_buf);
       })(this.munsterAudioContext, this.munsterAudioBuff);
-
+ 
     (async () => {
       this.connaughtAudioContext= new (window.AudioContext || window.webkitAudioContext)();
         const buffer = await fetch("./Connacht-Leathanach1.mp3")
