@@ -3,7 +3,7 @@
     <div class="Audio-SoundButtons">
       <div class="btn-group btn-group" role="group" aria-label="Basic example">
       <button 
-        title=Éist leis an leagan Ultach"
+        title="Éist leis an leagan Ultach"
         @click="playUlster"
         type="button" class="Audio-Btn btn btn-outline-secondary btn-lg ">
         <font-awesome-icon icon="fa-solid fa-waveform-lines" />
