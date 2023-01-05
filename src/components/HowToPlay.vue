@@ -22,7 +22,11 @@
     <p class="col-11 ps-2 mb-5">{{dictionary.HowToPlayStepFive.ga}}</p>
 
     <hr/>
-    <p></p>
+    <small class="col-11 mb-5 HowToPlay-Acknowledgements">
+      Buíochas le Clodagh Ní Ghallchóir, Caitríona Ní Dhomhnaill agus Sláine Ní Chathalláin as na focail a léamh amach.
+      Buíochas leis an fhoireann uilig i Stiúideo Raidió na Life agus le Donal Hennessy i Stiúideo Mhic an Daill.
+      Buíochas le Gráinne Ní Scolláin in Foras na Gaeilge agus le hEoghan Mac Giolla Bhríde as a chomhairle.
+    </small>
     <div class="HowToPlay-Sponser">
       <img 
         class="HowToPlay-LogoSponsor"
@@ -32,6 +36,7 @@
 </template>
 <script>
  import { dictionary } from '../dictionary';
+
  export default {
   data () {
     return {
@@ -41,11 +46,17 @@
  }
 </script>
 <style lang="scss" scoped>
+@import "../assets/variables.scss";
   .HowToPlay {
     height: 80vh;
     position: relative;
     display: flex;
     flex-wrap: wrap;
+
+    &-Acknowledgements {
+      font-size: .75em;
+      color: $vt-c-text-dark-2;
+    }
 
     &-Sponsor {
       width: 50vw;

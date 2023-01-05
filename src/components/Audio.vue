@@ -21,15 +21,7 @@
     </div>
     </div>
     
-    <div class="btn-group margin-top" >
-      <button 
-        @click="togglePlayBackSpeed()"
-        :class="!this.playBackSpeedNormal ? 'active': ''"
-        class="btn btn-outline-secondary btn-sm"><font-awesome-icon icon="fa-solid fa-gauge-low" /> 0.75x </button>
-      <button 
-        @click="togglePlayBackSpeed()"
-        :class="this.playBackSpeedNormal ? 'active': ''"
-        class="btn btn-outline-secondary btn-sm"><font-awesome-icon icon="fa-solid fa-gauge" /> Gnáthluas</button>
+    <div class="margin-top" >
       <Popper arrow placement="top" 
           :content="definition"
           :show="showPopper">
@@ -163,8 +155,6 @@ export default {
     margin-left: .5rem;
 
     &-HintButton {
-      border-top-left-radius: 0;
-      border-bottom-left-radius: 0;
       color: $stars-light-mode;
     }
 
