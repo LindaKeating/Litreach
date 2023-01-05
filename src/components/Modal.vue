@@ -48,7 +48,7 @@
             return 'Torthaí';
             break;
           case 'GameRoundEnded':
-            return 'Babhta thart';
+            return 'Deireadh an bhabhta';
             break;
           default:
             return '';

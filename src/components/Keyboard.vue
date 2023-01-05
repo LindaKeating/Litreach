@@ -115,6 +115,7 @@
           </ul>
           <ul class="keyboard-row">
             <KeyboardLetter
+              title="seol do fhreagra"
               class="EnterKey"
               @click="this.$emit('submitWordAttempt');"
               @keyup.enter="this.$emit('EnterKey', 'CheckRow')"

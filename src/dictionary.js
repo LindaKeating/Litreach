@@ -73,7 +73,7 @@ const dictionary = {
   },
   AppToastWrongAnswer: {
     en: "Unlucky, that is not the right spelling",
-    ga: "Mí-ádh, Triail arís é!"
+    ga: "Mí-ádh! Triail arís é."
   }
   
 

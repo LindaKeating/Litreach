@@ -3,17 +3,20 @@
     <div class="Audio-SoundButtons">
       <div class="btn-group btn-group" role="group" aria-label="Basic example">
       <button 
+        title="éist leis an leagan Ultach"
         @click="playUlster"
         type="button" class="Audio-Btn btn btn-outline-secondary btn-lg ">
         <font-awesome-icon icon="fa-solid fa-waveform-lines" />
         {{dictionary.AudioUlster.ga}} 
       </button>
       <button 
+        title="éist leis an leagan Chonnachtach"
         @click="playConnaght"
         type="button" class="Audio-Btn btn btn-outline-secondary btn-lg ">
         <font-awesome-icon icon="fa-solid fa-waveform-lines" />
         {{dictionary.AudioConnacht.ga}}</button>
       <button 
+        title="éist leis an leagan Mhuimhneach"
         @click="playMunster"
         type="button" class="Audio-Btn btn btn-outline-secondary btn-lg ">
         <font-awesome-icon icon="fa-solid fa-waveform-lines" />
@@ -25,7 +28,9 @@
       <Popper arrow placement="top" 
           :content="definition"
           :show="showPopper">
-        <button class="btn btn-outline-secondary Audio-HintButton"
+        <button 
+          title="féach sainmhíniú den fhocal"
+          class="btn btn-outline-secondary Audio-HintButton"
           @click="togglePopper">
           <font-awesome-icon icon="fa-solid fa-lightbulb-exclamation-on" />
           Sainmhíniú
