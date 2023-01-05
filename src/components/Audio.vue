@@ -29,7 +29,7 @@
           :content="definition"
           :show="showPopper">
         <button 
-          title="Féach ar sainmhíniú den fhocal"
+          title="Féach ar shainmhíniú den fhocal"
           class="btn btn-outline-secondary Audio-HintButton"
           @click="togglePopper">
           <font-awesome-icon icon="fa-solid fa-lightbulb-exclamation-on" />
