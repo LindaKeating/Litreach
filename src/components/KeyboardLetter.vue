@@ -35,7 +35,7 @@
   padding-right: 1vw;
   width: auto !important;
   max-width: 70px !important;
-  color: #ffd400 !important;
+  
 }
 
 
@@ -66,6 +66,10 @@
 }
 
 @media (prefers-color-scheme: dark) {
+
+  .EnterKey {
+    color: #ffd400 !important;
+  }
 
   .KeyboardLetter {
     color: var(--color-text);

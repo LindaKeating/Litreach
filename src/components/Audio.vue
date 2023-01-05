@@ -159,7 +159,7 @@ export default {
     margin-left: .5rem;
 
     &-HintButton {
-      color: $stars-light-mode;
+      
     }
 
     &-SoundButtons {
@@ -186,6 +186,10 @@ export default {
   }
 
   @media (prefers-color-scheme: dark) {
+
+    .Audio-Btn {
+      color: $stars-light-mode;
+    }
 
     .Audio-ListenIcon {
       color: $vt-c-text-dark-2;
