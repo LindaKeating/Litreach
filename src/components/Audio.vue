@@ -26,8 +26,7 @@
     
     <div class="margin-top" >
       <Popper arrow placement="top" 
-          :content="definition"
-          :show="showPopper">
+          :content="definition">
         <button 
           title="Féach ar shainmhíniú den fhocal"
           class="btn btn-outline-secondary Audio-HintButton"

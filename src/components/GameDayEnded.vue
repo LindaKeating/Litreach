@@ -99,7 +99,7 @@
         return dailyLabels;
       },
       copyToClipBoard() {
-        let shareString = '#Litreach ' + new Date().getDOY(); + ' \x0A';
+        let shareString = '#Litreach #' + new Date().getDOY() + ' \x0A';
         this.todaysAttempt.forEach(function(element) {
           let c = element.attempts.toString();
           shareString += convertAttemptsToStars(c);   

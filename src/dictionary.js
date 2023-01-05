@@ -17,7 +17,7 @@ const dictionary = {
   },
   HowToPlayStepFive: {
     en: "When the days game is over your game will be saved to your statistics",
-    ga: "Nuair a chríochnaíonn tú an cluiche gach lá sábhálfar do thorthaí;"
+    ga: "Ar chríochnú an chluiche duit, sábhálfar do thorthaí ar do ghléas imeartha."
   },
   Support: {
     en: "",
@@ -29,7 +29,7 @@ const dictionary = {
   },
   SupportHelpMsg: {
     en: "We will do our best to resolve any issue you have and answer any questions you have as soon as possible",
-    ga: "Déanfaidh muid ár ndícheall aon fhadhb a réiteach agus ceisteanna a fhreagairt chomh luath agus is féidir."
+    ga: "Déanfaidh muid ár ndícheall aon fhadhb a réiteach agus ceisteanna a fhreagairt chomh luath agus is féidir. Bainigí sult!"
   },
   AudioMunster: {
     en: "Munster",
