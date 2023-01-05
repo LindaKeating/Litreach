@@ -136,6 +136,7 @@
               @click="this.$emit('addLetterToBoard', 'm');"
               :letter="'m'" />
             <KeyboardLetter
+              title="Scrios"
               class="keyboard-letter  lastitem">
               <font-awesome-icon 
                 @click="this.$emit('deleteLastLetter');"
