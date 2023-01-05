@@ -12,6 +12,14 @@ a,
   transition: 0.4s;
 }
 
+.c-toast--error {
+  background-color: rgba(208, 146, 146, 0.982) !important;
+}
+
+.c-toast--info {
+  background-color: rgba(146, 169, 208, 0.982) !important;
+}
+
 @media (hover: hover) {
   a:hover {
     background-color: hsla(160, 100%, 37%, 0.2);
