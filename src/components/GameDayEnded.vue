@@ -104,6 +104,7 @@
           let c = element.attempts.toString();
           shareString += convertAttemptsToStars(c);   
         });
+        shareString += "https://litreach.ie";
 
         navigator.clipboard.writeText(shareString).then((result) => {
           this.$toast.info(`Tá na torthaí cóipeáilte chuig an ghearrthaisce `, {

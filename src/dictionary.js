@@ -9,7 +9,7 @@ const dictionary = {
   },
   HowToPlayStepThree: {
     en: "You will get 5 lives to spell the word right.  With each attempt any letters that are in the correct position in the word will be marked as correct",
-    ga: "Gheobhaidh tú 5 iarracht leis an fhocal a litriú i gceart. Le gach iarracht marcálfar na litreacha atá san áit cheart"
+    ga: "Gheobhaidh tú 5 iarracht leis an fhocal a litriú i gceart. I ndiaidh gach iarracht lasfar na litreacha cearta le dath glas."
   },
   HowToPlayStepFour: {
     en: "There will be 5 different spelling challenges to play each day",
