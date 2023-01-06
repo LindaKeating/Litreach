@@ -43,7 +43,7 @@
       </countdown>
       <button 
         @click="copyToClipBoard"
-        title="Cóipeáil chuig an gearrthaisce"
+        title="Cóipeáil chuig an ghearrthaisce"
         class="btn btn-secondary btn-block mt-3">Roinn</button>
     </div>
     

@@ -14,6 +14,14 @@ import { faCircleE , faWaveformLines, faLightbulbExclamationOn, faGaugeLow, faGa
 import { faCircle1, faCircle2, faCircle3, faCircle4, faCircle5 } from "@fortawesome/pro-solid-svg-icons";
 import { faDeleteLeft } from "@fortawesome/pro-regular-svg-icons";
 
+import { registerSW } from 'virtual:pwa-register'
+
+const updateSW = registerSW({
+  onNeedRefresh() {},
+  onOfflineReady() {},
+});
+
+
 library.add(
   fas,
   far,
