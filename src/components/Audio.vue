@@ -99,7 +99,6 @@ export default {
       return ((minutes * 60) * 1000) + (seconds * 1000) + milliseconds;
     },
     endTimeSecsMillisecs(startTime, duration) {
-      console.log((startTime + duration) - 0.1)
       return startTime + duration - 0.2;
     },
     startTimeSecsMillisecs(startTime) {
