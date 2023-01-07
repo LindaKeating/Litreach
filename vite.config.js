@@ -22,6 +22,9 @@ export default defineConfig({
       manifest: {
         name: 'Litreach',
         short_name: 'Cluiche Litrithe',
+        start_url: "/",
+        display: "standalone",
+        lang: "ga",
         description: 'Cluiche litrithe ina mbíonn ar an imreoir 5 fhocal a litriú gach lá. Cluintear na focail a rá sna 3 canúintí agus bíonn 5 iarracht agat an focal a litriú i gceart.',
         theme_color: '#ffffff',
         icons: [
@@ -32,10 +35,25 @@ export default defineConfig({
             "purpose": "any maskable"
           },
           {
+            src: 'pwa-192x192.png',
+            sizes: '192x192',
+            type: 'image/png',
+            "purpose": "any"
+          },
+          {
             src: 'pwa-512x512.png',
             sizes: '512x512',
             type: 'image/png'
           }
+        ],
+        dir: "ltr",
+        orientation: "portrait",
+        display_override: [
+          "standalone"
+        ],
+        categories: [
+          "education",
+          "games"
         ]
       }
     })

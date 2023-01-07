@@ -35,7 +35,7 @@ const definitions = [
 'úsáid, seirbhís; gnó, diúité, obair ',
 'bí ar siúl, tit amach',
 'cuimsigh',
-'ud a líonann spás agus is féidir a láimhseáil nó a fheiceáil',
+'rud a líonann spás agus is féidir a láimhseáil nó a fheiceáil',
 'breathnaigh',
 'bóthar nó slí',
 'duine beag óg',
