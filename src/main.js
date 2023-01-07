@@ -17,8 +17,8 @@ import { faDeleteLeft } from "@fortawesome/pro-regular-svg-icons";
 import { registerSW } from 'virtual:pwa-register'
 
 const updateSW = registerSW({
-  onNeedRefresh() {},
-  onOfflineReady() {},
+  onNeedRefresh() { console.log('need refresh')},
+  onOfflineReady() { console.log('offline ready')},
 });
 
 
