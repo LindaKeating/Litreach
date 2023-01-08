@@ -1,25 +1,33 @@
 <template>
   <div class="HowToPlay"> 
-    <font-awesome-icon 
-      :class="'col-1'"
-      icon="fa-solid fa-circle-1" />
-    <p class="col-11 ps-2">{{dictionary.HowToPlayStepOne.ga}}</p>
-    <font-awesome-icon 
-      :class="'col-1'"
-      icon="fa-solid fa-circle-2" />
-    <p class="col-11 ps-2">{{dictionary.HowToPlayStepTwo.ga}}</p>
-    <font-awesome-icon
-      :class="'col-1'"
-      icon="fa-solid fa-circle-3" />
-    <p class="col-11 ps-2">{{dictionary.HowToPlayStepThree.ga}}</p>
-    <font-awesome-icon 
-      :class="'col-1'"
-      icon="fa-solid fa-circle-4" />
-    <p class="col-11 ps-2">{{dictionary.HowToPlayStepFour.ga}}</p>
-    <font-awesome-icon 
-      :class="'col-1'"
-      icon="fa-solid fa-circle-5" />
-    <p class="col-11 ps-2 mb-5">{{dictionary.HowToPlayStepFive.ga}}</p>
+    <div class="HowToPlay-Instructions">
+      <font-awesome-icon 
+        :class="'col-1'"
+        icon="fa-solid fa-circle-1" />
+      <p class="col-11 ps-2">{{dictionary.HowToPlayStepOne.ga}}</p>
+      <font-awesome-icon 
+        :class="'col-1'"
+        icon="fa-solid fa-circle-2" />
+      <p class="col-11 ps-2">{{dictionary.HowToPlayStepTwo.ga}}</p>
+      <font-awesome-icon
+        :class="'col-1'"
+        icon="fa-solid fa-circle-3" />
+      <p class="col-11 ps-2">{{dictionary.HowToPlayStepThree.ga}}</p>
+      <font-awesome-icon 
+        :class="'col-1'"
+        icon="fa-solid fa-circle-4" />
+      <p class="col-11 ps-2">{{dictionary.HowToPlayStepFour.ga}}</p>
+      <font-awesome-icon 
+        :class="'col-1'"
+        icon="fa-solid fa-circle-5" />
+      <p class="col-11 ps-2 mb-5">{{dictionary.HowToPlayStepFive.ga}}</p>
+    </div>
+   
+
+      <button 
+      @click="playNow"
+      class="btn btn-secondary HowToPlay-PlayButton">Imir Anois</button>
+    
 
     <hr/>
     <h6>Buíochas</h6>
@@ -29,10 +37,10 @@
       Buíochas le Gráinne Ní Scolláin in Foras na Gaeilge agus le hEoghan Mac Giolla Bhríde as a chomhairle.
       <p class="signature"> Linda Keating
         <small>Dearthóir agus forbróir gréasáin</small>
-      </p>
-      
-      
+      </p> 
     </small>
+
+    <hr/>
    
     <div class="HowToPlay-Sponser">
       <img 
@@ -49,6 +57,12 @@
     return {
       dictionary: dictionary
     }
+  },
+  methods: {
+    playNow() {
+      this.$emit("setPlayedBefore", !this.modalOpen);
+      this.$emit("modal-open-state", false);
+    }
   }
  }
 </script>
@@ -56,9 +70,18 @@
 @import "../assets/variables.scss";
   .HowToPlay {
     height: 80vh;
-    position: relative;
-    display: flex;
-    flex-wrap: wrap;
+
+    &-Instructions {
+      position: relative;
+      display: flex;
+      flex-wrap: wrap;
+    }
+
+    &-PlayButton {
+      display: flex;
+      justify-content: center;
+      width: 100%;
+    }
 
     .signature {
       padding-top: 1rem;

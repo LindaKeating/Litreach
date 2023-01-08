@@ -36,7 +36,8 @@
 
     },
     gameEnded: false,
-    lastPlayedDate: undefined
+    lastPlayedDate: undefined,
+    playedBefore: false
   }
 
   // check first if the state is in local storage, use that, if not use the object defined above
@@ -67,11 +68,16 @@
           kStartTimes: kStartTimes,
           definitions: todaysDefinitions,
           dictionary: dictionary,
-          tileTimeouts: false
+          tileTimeouts: false,
+          playedBefore: puzzleState.playedBefore
         }        
       }
     },
     methods: {
+      setPlayedBefore (){
+        this.data.playedBefore = true;
+        return this.updateLocalStoragePuzzleState();
+      },
       updateCurrentGuess (letter) {
         let currentRound = this.data.currentRound;
         if (this.data.currentGuess.length < this.data.todaysPuzzle[currentRound].length) {
@@ -183,7 +189,8 @@
           'todaysAttempts': this.data.todaysAttempts,
           'currentRound': this.data.currentRound,
           'statistics': this.data.statistics,
-          'lastPlayedDate': todaysDOY
+          'lastPlayedDate': todaysDOY,
+          'playedBefore': this.data.playedBefore
         }
         localStorage.setItem("puzzleState", JSON.stringify(puzzleState))
       },
@@ -239,6 +246,11 @@
         this.data.puzzlePosition = initialPuzzleState.puzzlePosition;
         this.data.gameEnded = false;
       }
+
+      if (!this.data.playedBefore) {
+        this.data.modalOpen = true;
+        this.data.currentModal = 'HowToPlay'
+      }
     }
   }
 </script>
@@ -250,8 +262,11 @@
     :currentModal="data.currentModal"
     :class="data.modalOpen ? 'show' : ''">
     <Support 
+      
       v-if="data.currentModal === 'Support'"/>
-    <HowToPlay 
+    <HowToPlay
+      @modalOpenState="openModal" 
+      @setPlayedBefore="setPlayedBefore"
       v-if="data.currentModal === 'HowToPlay'"/>
     <GameDayEnded 
       v-if="data.currentModal === 'GameDayEnded'"
