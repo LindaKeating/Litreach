@@ -8,7 +8,7 @@
       :series="this.series"
     ></apexchart>
     <div class="GameDayEnded-NextLetters d-grid gap-2 mt-4">
-      <p class="GameDayEnded-CeadLitreadhEile text-center">An Chéad Litreach Eile</p>
+      <p class="GameDayEnded-CeadLitreadhEile text-center">An Chéad LITREACH Eile</p>
       <countdown 
         :class="'text-center'"
         :counting="true"
