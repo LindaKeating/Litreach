@@ -43,7 +43,7 @@ const definitions = [
 'miotal geal luachmhar ar féidir snas breá a chur air chun earraí agus ornáidí luachmhara a dhéanamh',
 'chomh maith',
 'grúpa daoine a cheaptar chun tír a rialú',
-'téigh ag breathnú ar',
+'téigh de chois',
 'cuir tús le',
 'taobh thiar de',
 'fear a bhfuil clann aige; duine dár sinsear',
