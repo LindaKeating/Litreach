@@ -104,7 +104,7 @@
             this.data.currentGuess = "";
             this.updateStatistics();
             this.moveToNextRound();
-            this.updateLocalStoragePuzzleState();  
+            this.updateLocalStoragePuzzleState(); 
             this.data.currentModal = "GameRoundEnded";
             this.data.modalOpen = true;
             this.data.tileTimeouts = false;
@@ -130,6 +130,7 @@
 
           // reset the puzzle position for next round
           this.updatePuzzlePosition();
+
           // round over but not game over
           if (this.data.puzzlePosition.row === 5 && this.data.currentRound < 4) {
             this.updateTodaysAttemptsRecord();
@@ -260,6 +261,7 @@
     @modalOpenState="openModal" 
     :modalOpen="data.modalOpen"
     :currentModal="data.currentModal"
+    :currentRound="data.currentRound"
     :class="data.modalOpen ? 'show' : ''">
     <Support 
       
@@ -275,6 +277,7 @@
       :darkMode="data.darkMode"/>
     <GameRoundEnded 
       @modalOpenState="openModal"
+      :currentRound="data.currentRound"
       v-if="data.currentModal === 'GameRoundEnded'"
       :dark-mode="data.darkMode"
       :todaysAttempts="data.todaysAttempts"

@@ -33,6 +33,7 @@
       "modalOpen": Boolean,
       "heading": String,
       "currentModal": String,
+      "currentRound": Number
     },
     computed: {
       title() {
@@ -48,7 +49,7 @@
             return 'Torthaí';
             break;
           case 'GameRoundEnded':
-            return 'Deireadh an bhabhta';
+            return this.currentRound < 5 ? 'Deireadh an Bhabhta' : 'Deireadh an Chluiche';
             break;
           default:
             return '';

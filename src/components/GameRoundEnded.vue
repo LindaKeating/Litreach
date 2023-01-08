@@ -13,9 +13,15 @@
       </li>
     </ul>
     <button 
+      v-if="this.currentRound < 5"
       @click.prevent="close"
       title="Ar aghaidh"
       class="mt-3 btn btn-secondary">{{dictionary.GameRoundEndedNextRoundButton.ga}}</button>
+    <button v-else
+      @click.prevent="close"
+      title="Féach ar na torthaí"
+      class="mt-3 btn btn-secondary">Féach ar na Torthaí
+    </button>
   </div>
 </template>
 <script>
@@ -26,7 +32,8 @@ export default {
     boardState: Array,
     todaysAnswer: String,
     todaysAttempts: Array,
-    darkMode: Boolean
+    darkMode: Boolean,
+    currentRound: Number
   },
   data() {
     return {
