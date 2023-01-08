@@ -14,22 +14,10 @@ export default defineConfig({
       devOptions: {
         enabled: true
       },
+      strategies: 'generateSW',
       workbox: {
         globPatterns: ['**/*.{js,css,html,ico,png,svg,mp3}'],
-        sourcemap: true,
-        runtimeCaching: [{
-          handler: 'NetworkOnly',
-          urlPattern: /^https:\/\/litreach.ie/,
-          method: 'GET',
-          options: {
-            backgroundSync: {
-              name: 'LitreachCaching',
-              options: {
-                maxRetentionTime: 24 * 60
-              }
-            }
-          }
-        }]
+        sourcemap: true
       },
       includeAssets: ['favicon.ico', 'apple-touch-icon.png', 'masked-icon.svg'],
       manifest: {
