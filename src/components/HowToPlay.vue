@@ -28,7 +28,7 @@
       Buíochas leis an fhoireann uilig i Stiúideo Raidió na Life agus le Donal Hennessy i Stiúideo Mhic an Daill.
       Buíochas le Gráinne Ní Scolláin in Foras na Gaeilge agus le hEoghan Mac Giolla Bhríde as a chomhairle.
       <p class="signature"> Linda Keating
-        <small>Dearthóir agus forbróir ghréasáin</small>
+        <small>Dearthóir agus forbróir gréasáin</small>
       </p>
       
       
