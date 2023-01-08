@@ -22,7 +22,7 @@
     -moz-border-radius: 3px;
     -webkit-border-radius: 3px;
     margin: 0 3px 3px 0;
-    width: 17px;
+    width: 10vw;
     min-height: 58px;
     text-transform: uppercase;
     font-weight: 700;

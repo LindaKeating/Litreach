@@ -1,6 +1,6 @@
 {
   "name": "litreach",
-  "version": "1.8.3",
+  "version": "1.9.3",
   "scripts": {
     "dev": "vite",
     "build": "vite build",
