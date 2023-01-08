@@ -22,13 +22,18 @@
     <p class="col-11 ps-2 mb-5">{{dictionary.HowToPlayStepFive.ga}}</p>
 
     <hr/>
+    <h6>Buíochas</h6>
     <small class="col-11 mb-5 HowToPlay-Acknowledgements">
       Buíochas le Clodagh Ní Ghallchóir, Caitríona Ní Dhomhnaill agus Sláine Ní Chathalláin as na focail a léamh amach.
       Buíochas leis an fhoireann uilig i Stiúideo Raidió na Life agus le Donal Hennessy i Stiúideo Mhic an Daill.
       Buíochas le Gráinne Ní Scolláin in Foras na Gaeilge agus le hEoghan Mac Giolla Bhríde as a chomhairle.
-
-      <small class="signature">Linda Keating</small>
+      <p class="signature"> Linda Keating
+        <small>Dearthóir agus forbróir ghréasáin</small>
+      </p>
+      
+      
     </small>
+   
     <div class="HowToPlay-Sponser">
       <img 
         class="HowToPlay-LogoSponsor"
@@ -56,8 +61,13 @@
     flex-wrap: wrap;
 
     .signature {
+      padding-top: 1rem;
       display: block;
       font-family: ShadowsIntoLight;
+      small {
+        display: block;
+        font-family: LatoLatin;
+      }
     }
 
     &-Acknowledgements {
