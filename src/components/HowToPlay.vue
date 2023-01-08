@@ -26,6 +26,8 @@
       Buíochas le Clodagh Ní Ghallchóir, Caitríona Ní Dhomhnaill agus Sláine Ní Chathalláin as na focail a léamh amach.
       Buíochas leis an fhoireann uilig i Stiúideo Raidió na Life agus le Donal Hennessy i Stiúideo Mhic an Daill.
       Buíochas le Gráinne Ní Scolláin in Foras na Gaeilge agus le hEoghan Mac Giolla Bhríde as a chomhairle.
+
+      <small class="signature">Linda Keating</small>
     </small>
     <div class="HowToPlay-Sponser">
       <img 
@@ -52,6 +54,11 @@
     position: relative;
     display: flex;
     flex-wrap: wrap;
+
+    .signature {
+      display: block;
+      font-family: ShadowsIntoLight;
+    }
 
     &-Acknowledgements {
       font-size: .75em;

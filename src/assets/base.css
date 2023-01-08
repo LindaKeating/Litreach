@@ -67,6 +67,13 @@
   src: url("@/assets/LatoLatin-Regular.woff");
 }
 
+@font-face {
+  font-family: 'ShadowsIntoLight';
+  font-style: normal;
+  font-weight: 400;
+  src: url("@/assets/ShadowsIntoLight.woff");
+}
+
 
 body {
   min-height: 100vh;
