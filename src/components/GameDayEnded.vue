@@ -3,7 +3,6 @@
     <apexchart
       width="100%"
       type="line"
-      height="auto"
       :options="chartOptions"
       :series="this.series"
     ></apexchart>
@@ -62,7 +61,6 @@
     props: {
       statistics: Object,
       todaysAttempt: Array,
-      height: String,
       darkMode: Boolean
     },
     data() {
@@ -129,7 +127,6 @@
           chart: {
             id: "vuechart-example",
             type: 'line',
-            height: this.height,
             width: '100%;',
             zoom: {
               enabled: false
