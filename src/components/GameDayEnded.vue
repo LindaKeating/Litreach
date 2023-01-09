@@ -1,13 +1,17 @@
 <template>
   <div class="container GameDayEnded">
     <apexchart
+      v-if="this.dailyAverages().length > 0"
       width="100%"
       type="line"
       :options="chartOptions"
       :series="this.series"
     ></apexchart>
+    <p 
+      v-else
+      class="GameDayEnded-NoData">Níl teacht ar shonraí go fóill</p>
     <div class="GameDayEnded-NextLetters d-grid gap-2 mt-4">
-      <p class="GameDayEnded-CeadLitreadhEile text-center">An Chéad LITREACH Eile</p>
+      <p class="GameDayEnded-CeadLitreadhEile text-center">An chéad LITREACH eile</p>
       <countdown 
         :class="'text-center'"
         :counting="true"
@@ -179,6 +183,10 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
+
+    &-NoData {
+      text-align: center;
+    }
 
     &-TimeContainer {
       display: flex;

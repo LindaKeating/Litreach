@@ -63,6 +63,10 @@ const dictionary = {
     en: "seconds",
     ga: "soicind"
   },
+  GameDayEndedNoDataAvailable: {
+    en: 'No data available yet',
+    ga: 'Níl teacht ar shonraí go fóill'
+  },
   GameDayEndedShareButton: {
     en: "Share",
     ga: "Roinn"
