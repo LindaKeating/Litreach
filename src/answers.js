@@ -72,7 +72,7 @@ const definitions = [
 'lánsuim, an rud ar fad ',
 'acht, comhaontú ',
 'áit; suíomh',
-'eacht glan glé de chumasc hidrigine agus ocsaigine',
+'leacht glan glé de chumasc hidrigine agus ocsaigine',
 'gan a bheith cam ná cuartha',
 'rud a thugtar mar dheimhniú go ndéanfar rud éigin',
 'talamh agus uisce thart air, inis;',
