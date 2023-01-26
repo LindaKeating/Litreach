@@ -69,7 +69,8 @@
           definitions: todaysDefinitions,
           dictionary: dictionary,
           tileTimeouts: false,
-          playedBefore: puzzleState.playedBefore
+          playedBefore: puzzleState.playedBefore,
+          todaysDOY: todaysDOY
         }        
       }
     },
@@ -309,6 +310,7 @@
     :file="'./Litreach-Leachtanch13.mp3'"
     :definition="data.definitions[data.currentRound]"
     :tile-timeouts="data.tileTimeouts"
+    :todays-DOY="data.todaysDOY"
     /> 
 
   <Keyboard 

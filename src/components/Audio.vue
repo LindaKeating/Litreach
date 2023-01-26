@@ -53,7 +53,9 @@ export default {
     kStartTime: String,
     kDuration: String,
     file: String,
-    definition: String
+    definition: String,
+    currentWord: String,
+    todaysDOY: Number
   },
   data() {
     return {
@@ -107,22 +109,40 @@ export default {
       return (minutes * 60 ) + seconds;
     },
     playMunster() {
-      let startTime = this.startTimeSecsMillisecs(this.kStartTime);
-      let duration = this.durationAsMilliseconds(this.kDuration) / 1000;
-      let endTime = this.endTimeSecsMillisecs(startTime, duration);
-      this.playBackSpeedNormal ? this.playWebAudioApi(startTime, duration, this.munsterAudioContext, this.munsterAudioBuff) : this.playHtmlAudio('./Kerry-Leathanach1.mp3', startTime, endTime);;
+      if (this.todaysDOY > 26) {
+        var src = '/munster/' + this.currentWord + '.mp3';
+        var aud = new Audio(src);
+        aud.play();
+      } else {
+        let startTime = this.startTimeSecsMillisecs(this.kStartTime);
+        let duration = this.durationAsMilliseconds(this.kDuration) / 1000;
+        let endTime = this.endTimeSecsMillisecs(startTime, duration);
+        this.playBackSpeedNormal ? this.playWebAudioApi(startTime, duration, this.munsterAudioContext, this.munsterAudioBuff) : this.playHtmlAudio('./Kerry-Leathanach1.mp3', startTime, endTime);
+      }
     },
     playConnaght() {
-      let startTime = this.startTimeSecsMillisecs(this.connStartTime);
-      let duration = this.durationAsMilliseconds(this.connDuration) / 1000;
-      let endTime = this.endTimeSecsMillisecs(startTime, duration);
-      this.playBackSpeedNormal ? this.playWebAudioApi(startTime, duration, this.connaughtAudioContext, this.connaughtAudioBuff) : this.playHtmlAudio('./Connacht-Leathanach1.mp3', startTime, endTime);
+      if (this.todaysDOY > 26) {
+        var src = '/connaught/' + this.currentWord + '.mp3';
+        var aud = new Audio(src);
+        aud.play();
+      } else {
+        let startTime = this.startTimeSecsMillisecs(this.connStartTime);
+        let duration = this.durationAsMilliseconds(this.connDuration) / 1000;
+        let endTime = this.endTimeSecsMillisecs(startTime, duration);
+        this.playBackSpeedNormal ? this.playWebAudioApi(startTime, duration, this.connaughtAudioContext, this.connaughtAudioBuff) : this.playHtmlAudio('./Connacht-Leathanach1.mp3', startTime, endTime);
+      }
     },
     playUlster() {
-      let startTime = this.startTimeSecsMillisecs(this.uladhStartTime);
-      let duration = this.durationAsMilliseconds(this.uladhDuration) / 1000;
-      let endTime = this.endTimeSecsMillisecs(startTime, duration);
-      this.playBackSpeedNormal ? this.playWebAudioApi(startTime, duration, this.ulsterAudioContext, this.ulsterAudioBuff) : this.playHtmlAudio('./Leathanach1-Normalised.mp3', startTime, endTime);
+      if (this.todaysDOY > 26) {
+        var src = '/ulster/' + this.currentWord + '.mp3';
+        var aud = new Audio(src);
+        aud.play();
+      } else {
+        let startTime = this.startTimeSecsMillisecs(this.uladhStartTime);
+        let duration = this.durationAsMilliseconds(this.uladhDuration) / 1000;
+        let endTime = this.endTimeSecsMillisecs(startTime, duration);
+        this.playBackSpeedNormal ? this.playWebAudioApi(startTime, duration, this.ulsterAudioContext, this.ulsterAudioBuff) : this.playHtmlAudio('./Leathanach1-Normalised.mp3', startTime, endTime);
+      }
     }
   },
   mounted() {

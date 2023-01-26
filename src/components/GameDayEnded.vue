@@ -165,8 +165,7 @@
             palette: 'palette10',
           },
           yaxis: {
-            max: 100,
-            forceNiceScale: true,
+            max: 100
           }
         },
         series: [{

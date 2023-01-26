@@ -21,7 +21,8 @@ export default {
     kDuration: String,
     file: String,
     definition: String,
-    tileTimeouts: Boolean
+    tileTimeouts: Boolean,
+    todaysDOY: Number
   },
   data(){
     return {}
@@ -156,6 +157,8 @@ export default {
         :duration="duration"
         :definition="definition"
         :file="'./Litreach-Leachtanch13.mp3'"
+        :current-word="todaysAnswer"
+        :todays-DOY="todaysDOY"
       />
   </div>
 </template>
