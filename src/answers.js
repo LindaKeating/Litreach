@@ -146,7 +146,6 @@ const definitions = [
 'an chuid tosaigh den cheann',
 'glac, toiligh, ceadaigh',
 'duine den chléir',
-'European',
 'bail an ruda nó an duine a thuilleann meas',
 'plean; córas gníomhaíochta',
 'tarlú gan choinne nó de thaisme',
