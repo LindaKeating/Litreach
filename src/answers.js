@@ -286,7 +286,7 @@ const definitions = [
 'réiteach',
 'togra, fiontar',
 'áis chodlata',
-'ball de chumann nó d'eagraíocht',
+'ball de chumann nó d\'eagraíocht',
 'athair nó máthair',
 'an uimhir 10',
 'teilgean pictiúr ó áit i bhfad i gcéin',
