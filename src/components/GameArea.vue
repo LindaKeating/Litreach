@@ -61,7 +61,7 @@ export default {
 
     },
     letterStatus(row, position) {
-      if (this.boardState[row].charAt(position) === this.todaysAnswer.charAt(position)) {
+      if (this.boardState[row].charAt(position).toLowerCase() === this.todaysAnswer.charAt(position).toLowerCase()) {
         return 'correctLetter';
       } else if (this.boardState[row].charAt(position).length > 0) {
         return 'incorrectLetter';
