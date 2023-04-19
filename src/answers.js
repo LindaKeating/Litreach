@@ -538,6 +538,7 @@ const definitions = [
 'béasa, gnásanna etc., a thagann anuas ó ghlúin go glúin',
 'réitigh',
 'raon',
+'raon',
 'aitheamh airgid; airgead caite',
 'triail eolais nó ábaltachta',
 'imeacht, siúl, bogadh ó áit go háit',
