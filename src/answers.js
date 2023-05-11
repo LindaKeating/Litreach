@@ -653,7 +653,7 @@ const definitions = [
 'aon rud a fhásann as an talamh a bhfuil cos',
 'údarás foirmiúil chun rud áirithe a dhéanamh',
 'ag réiteach nó ag teacht le',
-'acú le páirtí polaitíochta nó le hiarrthóir i dtoghchán',
+'tacú le páirtí polaitíochta nó le hiarrthóir i dtoghchán',
 'duine a leagtar mar chúram air obair nó dualgas éigin a chomhlíonadh',
 'ón aird thiar; ón taobh thiar',
 'súil',
