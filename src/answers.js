@@ -2772,7 +2772,7 @@ const answers=[
 'teoiric',
 'dramhaíl',
 'fionn',
-'nua-aimseartha',
+'nuaaimseartha',
 'comhrac',
 'bomaite',
 'tomhas',
