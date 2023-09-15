@@ -1312,7 +1312,7 @@
 'teoiric',
 'dramhaíl',
 'fionn',
-'nua-aimseartha',
+'nuaaimseartha',
 'comhrac',
 'Breathnach',
 'bomaite',
