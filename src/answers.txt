@@ -1566,7 +1566,7 @@
 'misean',
 'mallaibh',
 'cosantóir',
-'sean-nós',
+'seannós',
 'ramhar',
 'caladh',
 'cóirigh',

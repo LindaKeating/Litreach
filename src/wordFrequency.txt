@@ -2102,7 +2102,7 @@ coll	847	40564
 misean	847	40564
 mallaibh	845	40660
 cosantóir	845	40660
-sean-nós	844	40708
+seannós	844	40708
 ramhar	843	40757
 caladh	843	40757
 gann	842	40805
