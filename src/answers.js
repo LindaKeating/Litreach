@@ -1618,7 +1618,7 @@ const definitions = [
 'áit chlochach; coinbhint',
 'duine a bhíonn ag goid',
 'áilleacht, breáthacht; iompar',
-'',
+'páirt a ghlacadh i gcluiche',
 '',
 '',
 '',
