@@ -1753,7 +1753,7 @@ const definitions = [
 'cinntiú, dearbhú',
 'patrún nó plean',
 'an-bheag ar fad',
-'',
+'an ceantar thart nó in aice láimhe',
 '',
 '',
 '',
@@ -3604,7 +3604,6 @@ const answers=[
 'deimhniú',
 'dearadh',
 'bídeach', // deireadh colum 3 leathanach 13
-'tograch',
 'comharsanacht',
 'scóráil',
 'altóir',
