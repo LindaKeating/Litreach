@@ -149,7 +149,6 @@ const definitions = [
 'European',
 'European',
 'bail an ruda nó an duine a thuilleann meas',
-'plean; córas gníomhaíochta',
 'tarlú gan choinne nó de thaisme',
 'an tríú séasúr den bhliain',
 'gan dóthain de riachtanais na beatha',
