@@ -154,6 +154,7 @@ const definitions = [
 'gan dóthain de riachtanais na beatha',
 'admhaigh, glac le',
 'troid idir airm dhá thír nó níos mó',
+'gan a bheith príobháideach',
 'an treo a dtéann an ghrian faoi',
 'focail agus ceol le chéile',
 'déan, buaigh, faigh',
