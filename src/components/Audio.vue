@@ -122,7 +122,7 @@ export default {
     },
     playConnaght() {
       if (this.todaysDOY > 26) {
-        var src = '/connaught/' + this.currentWord + '.mp3';
+        var src = 'https://www.teanglann.ie/CanC/' + this.currentWord + '.mp3';
         var aud = new Audio(src);
         aud.play();
       } else {
