@@ -147,7 +147,6 @@ const definitions = [
 'glac, toiligh, ceadaigh',
 'duine den chléir',
 'European',
-'European',
 'bail an ruda nó an duine a thuilleann meas',
 'tarlú gan choinne nó de thaisme',
 'an tríú séasúr den bhliain',
