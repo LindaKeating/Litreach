@@ -154,6 +154,7 @@ const definitions = [
 'admhaigh, glac le',
 'troid idir airm dhá thír nó níos mó',
 'gan a bheith príobháideach',
+'gan a bheith príobháideach', //misaligned meanings
 'an treo a dtéann an ghrian faoi',
 'focail agus ceol le chéile',
 'déan, buaigh, faigh',
