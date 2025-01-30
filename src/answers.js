@@ -148,13 +148,13 @@ const definitions = [
 'duine den chléir',
 'European',
 'bail an ruda nó an duine a thuilleann meas',
+'bail an ruda nó an duine a thuilleann meas', // misaligned meanings
 'tarlú gan choinne nó de thaisme',
 'an tríú séasúr den bhliain',
 'gan dóthain de riachtanais na beatha',
 'admhaigh, glac le',
 'troid idir airm dhá thír nó níos mó',
 'gan a bheith príobháideach',
-'gan a bheith príobháideach', //misaligned meanings
 'an treo a dtéann an ghrian faoi',
 'focail agus ceol le chéile',
 'déan, buaigh, faigh',
